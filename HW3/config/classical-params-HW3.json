@@ -1,0 +1,29 @@
+{
+  "plan_id": "FloorPlan1",
+  "source": "assets/FloorPlan1.png",
+  "inherited_topology": "../HW1/config/plan1_geometry.json",
+  "coordinate_frame": {
+    "description": "Affine frame measured from the printed 10.90 m by 15.90 m main rectangle; y pixels increase downward.",
+    "x_px_at_m": [[663.0, 0.0], [2089.0, 10.9]],
+    "y_px_at_m": [[2586.0, 1.0], [509.0, 16.9]]
+  },
+  "classical": {
+    "grey_threshold": 225,
+    "diagonal_kernel_px": 11,
+    "horizontal_open_px": 17,
+    "vertical_open_px": 21,
+    "long_line_remove_px": 80,
+    "shape_ratio_min": 4.0,
+    "ocr_acceptance": 0.85,
+    "wall_search_padding_m": 0.35,
+    "column_search_padding_m": 0.15,
+    "continuity_bins": 24,
+    "continuity_min_supported_fraction": 0.70,
+    "continuity_max_gap_m": 0.50
+  },
+  "floor": {
+    "load_kN_m2": 8.75,
+    "storeys": 5,
+    "storey_height_m": 3.0
+  }
+}

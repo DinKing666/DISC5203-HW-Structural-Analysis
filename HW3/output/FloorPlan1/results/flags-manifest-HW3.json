@@ -1,0 +1,93 @@
+{
+  "confidence_threshold": 0.85,
+  "flags": [
+    {
+      "flag_id": "FloorPlan1:T3:continuity",
+      "label": "T3",
+      "flag": "wall_in_pieces_along_axis+low_support_completion",
+      "source": "classical audit",
+      "question": "For T3, does the labelled 250x2000 mm wall form one continuous bar along its labelled axis? Read the printed size and answer continuity only.",
+      "answer_schema": {
+        "label": "T3",
+        "size_mm": "250x2000",
+        "continuous": "boolean",
+        "confidence": "0..1",
+        "reason": "short text"
+      },
+      "crop": "output/FloorPlan1/flags/crops/FloorPlan1_T3_continuity.png",
+      "crop_box_px": [
+        1467,
+        2443,
+        1966,
+        2719
+      ],
+      "crop_sha256": "fd4c215dc5ecb0174813961d0e85d799543338e69229af6551de96b0f3954e10"
+    },
+    {
+      "flag_id": "FloorPlan1:T4:continuity",
+      "label": "T4",
+      "flag": "low_support_completion",
+      "source": "classical audit",
+      "question": "For T4, does the labelled 250x2000 mm wall form one continuous bar along its labelled axis? Read the printed size and answer continuity only.",
+      "answer_schema": {
+        "label": "T4",
+        "size_mm": "250x2000",
+        "continuous": "boolean",
+        "confidence": "0..1",
+        "reason": "short text"
+      },
+      "crop": "output/FloorPlan1/flags/crops/FloorPlan1_T4_continuity.png",
+      "crop_box_px": [
+        1886,
+        2224,
+        2424,
+        2685
+      ],
+      "crop_sha256": "6b7ef25669c027a50fc368ac1c2ae0d8d5271eba13a73f6d17f4e292b01e52ff"
+    },
+    {
+      "flag_id": "FloorPlan1:T10:continuity",
+      "label": "T10",
+      "flag": "low_support_completion",
+      "source": "classical audit",
+      "question": "For T10, does the labelled 250x2000 mm wall form one continuous bar along its labelled axis? Read the printed size and answer continuity only.",
+      "answer_schema": {
+        "label": "T10",
+        "size_mm": "250x2000",
+        "continuous": "boolean",
+        "confidence": "0..1",
+        "reason": "short text"
+      },
+      "crop": "output/FloorPlan1/flags/crops/FloorPlan1_T10_continuity.png",
+      "crop_box_px": [
+        288,
+        407,
+        868,
+        868
+      ],
+      "crop_sha256": "5d3beb62b24541c0873bb0c7039f075b2f3e654c9a3092498c68743931cee26a"
+    },
+    {
+      "flag_id": "FloorPlan1:T11:continuity",
+      "label": "T11",
+      "flag": "low_support_completion",
+      "source": "classical audit",
+      "question": "For T11, does the labelled 250x2000 mm wall form one continuous bar along its labelled axis? Read the printed size and answer continuity only.",
+      "answer_schema": {
+        "label": "T11",
+        "size_mm": "250x2000",
+        "continuous": "boolean",
+        "confidence": "0..1",
+        "reason": "short text"
+      },
+      "crop": "output/FloorPlan1/flags/crops/FloorPlan1_T11_continuity.png",
+      "crop_box_px": [
+        1886,
+        409,
+        2451,
+        870
+      ],
+      "crop_sha256": "05fb1b3ccb2c6d5ae54133837b20309676587e3ce93acf9554faaa670d9a7d11"
+    }
+  ]
+}

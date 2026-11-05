@@ -1,0 +1,233 @@
+[
+  {
+    "label": "C1",
+    "centre_px": [
+      695,
+      1792
+    ],
+    "window_px": [
+      52,
+      52
+    ]
+  },
+  {
+    "label": "C2",
+    "centre_px": [
+      1651,
+      1807
+    ],
+    "window_px": [
+      52,
+      52
+    ]
+  },
+  {
+    "label": "C3",
+    "centre_px": [
+      2057,
+      1817
+    ],
+    "window_px": [
+      52,
+      52
+    ]
+  },
+  {
+    "label": "C4",
+    "centre_px": [
+      695,
+      1104
+    ],
+    "window_px": [
+      52,
+      52
+    ]
+  },
+  {
+    "label": "C5",
+    "centre_px": [
+      2066,
+      1104
+    ],
+    "window_px": [
+      52,
+      52
+    ]
+  },
+  {
+    "label": "C6",
+    "centre_px": [
+      1089,
+      542
+    ],
+    "window_px": [
+      52,
+      52
+    ]
+  },
+  {
+    "label": "C7",
+    "centre_px": [
+      1651,
+      542
+    ],
+    "window_px": [
+      52,
+      52
+    ]
+  },
+  {
+    "label": "T1",
+    "centre_px": [
+      688.0,
+      2462.5
+    ],
+    "axis_interval_px": [
+      2332,
+      2593
+    ],
+    "orientation": "vertical",
+    "score": 215730.0,
+    "scale_growth_px_per_m": 125.0
+  },
+  {
+    "label": "T2",
+    "centre_px": [
+      1141.0,
+      2573.0
+    ],
+    "axis_interval_px": [
+      1010,
+      1272
+    ],
+    "orientation": "horizontal",
+    "score": 370260.0,
+    "scale_growth_px_per_m": 125.5
+  },
+  {
+    "label": "T3",
+    "centre_px": [
+      1698.0,
+      2573.0
+    ],
+    "axis_interval_px": [
+      1567,
+      1829
+    ],
+    "orientation": "horizontal",
+    "score": 235875.0,
+    "scale_growth_px_per_m": 125.5
+  },
+  {
+    "label": "T4",
+    "centre_px": [
+      2066.0,
+      2454.5
+    ],
+    "axis_interval_px": [
+      2324,
+      2585
+    ],
+    "orientation": "vertical",
+    "score": 163455.0,
+    "scale_growth_px_per_m": 125.0
+  },
+  {
+    "label": "T5",
+    "centre_px": [
+      1232.0,
+      1808.0
+    ],
+    "axis_interval_px": [
+      1062,
+      1402
+    ],
+    "orientation": "horizontal",
+    "score": 302685.0,
+    "scale_growth_px_per_m": 126.5385
+  },
+  {
+    "label": "T6",
+    "centre_px": [
+      1096.0,
+      1229.5
+    ],
+    "axis_interval_px": [
+      1099,
+      1360
+    ],
+    "orientation": "vertical",
+    "score": 256530.0,
+    "scale_growth_px_per_m": 125.0
+  },
+  {
+    "label": "T7",
+    "centre_px": [
+      1273.0,
+      1277.0
+    ],
+    "axis_interval_px": [
+      1091,
+      1463
+    ],
+    "orientation": "vertical",
+    "score": 469710.0,
+    "scale_growth_px_per_m": 126.6667
+  },
+  {
+    "label": "T8",
+    "centre_px": [
+      1652.0,
+      1269.0
+    ],
+    "axis_interval_px": [
+      1083,
+      1455
+    ],
+    "orientation": "vertical",
+    "score": 260610.0,
+    "scale_growth_px_per_m": 126.6667
+  },
+  {
+    "label": "T9",
+    "centre_px": [
+      1368.5,
+      1098.0
+    ],
+    "axis_interval_px": [
+      1074,
+      1663
+    ],
+    "orientation": "horizontal",
+    "score": 598740.0,
+    "scale_growth_px_per_m": 128.4444
+  },
+  {
+    "label": "T10",
+    "centre_px": [
+      688.0,
+      637.5
+    ],
+    "axis_interval_px": [
+      507,
+      768
+    ],
+    "orientation": "vertical",
+    "score": 188445.0,
+    "scale_growth_px_per_m": 125.0
+  },
+  {
+    "label": "T11",
+    "centre_px": [
+      2066.0,
+      639.5
+    ],
+    "axis_interval_px": [
+      509,
+      770
+    ],
+    "orientation": "vertical",
+    "score": 218025.0,
+    "scale_growth_px_per_m": 125.0
+  }
+]

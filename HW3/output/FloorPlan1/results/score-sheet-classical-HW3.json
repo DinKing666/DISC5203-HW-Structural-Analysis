@@ -1,0 +1,22 @@
+{
+  "plan": "FloorPlan1",
+  "threshold": 225,
+  "connected_components_kept": 399,
+  "shape_rule_elongated_candidates": 68,
+  "named_elements_expected": 18,
+  "named_elements_found": 18,
+  "labels_original_pass": 18,
+  "labels_long_lines_removed_pass": 18,
+  "labels_union": 18,
+  "merged_named_elements": 0,
+  "broken_or_low_support_named_elements": 4,
+  "scale_growth_px_per_m": {
+    "x_median": 126.0192,
+    "y_median": 125.0,
+    "growth_g_px": 11
+  },
+  "frame_scale_px_per_m": {
+    "x": 130.8257,
+    "y": 130.6289
+  }
+}

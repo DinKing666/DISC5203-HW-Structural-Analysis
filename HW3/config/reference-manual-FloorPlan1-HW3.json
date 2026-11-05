@@ -1,0 +1,37 @@
+{
+  "reference_id": "FloorPlan1-manual-2026-11-05",
+  "source": {
+    "file": "assets/FloorPlan1.png",
+    "sha256": "3e6e5c040729c4ee5c6db2debd0c2e54b924996d6f186820a3efee025f863773"
+  },
+  "route": "Independent manual reading of the drawn hatching and printed size strings, cross-checked against the accepted HW1 element census; created before either VLM run and not produced by the flagging kernel.",
+  "locked_on": "2026-11-05",
+  "columns": {
+    "C1": {"size_mm": "400x400"},
+    "C2": {"size_mm": "400x400"},
+    "C3": {"size_mm": "400x400"},
+    "C4": {"size_mm": "400x400"},
+    "C5": {"size_mm": "400x400"},
+    "C6": {"size_mm": "400x400"},
+    "C7": {"size_mm": "400x400"}
+  },
+  "walls": {
+    "T1": {"size_mm": "250x2000", "continuous": true},
+    "T2": {"size_mm": "250x2000", "continuous": true},
+    "T3": {"size_mm": "250x2000", "continuous": true},
+    "T4": {"size_mm": "250x2000", "continuous": true},
+    "T5": {"size_mm": "250x2600", "continuous": true},
+    "T6": {"size_mm": "250x2000", "continuous": true},
+    "T7": {"size_mm": "250x2850", "continuous": true},
+    "T8": {"size_mm": "250x2850", "continuous": true},
+    "T9": {"size_mm": "250x4500", "continuous": true},
+    "T10": {"size_mm": "250x2000", "continuous": true},
+    "T11": {"size_mm": "250x2000", "continuous": true}
+  },
+  "flag_evidence": {
+    "T3": "The lower horizontal hatched bar is continuous through its labelled 2.0 m length; the classical mask loses part of the diagonal hatch near the adjoining grid line.",
+    "T4": "The lower-right vertical hatched bar is continuous; the column/grid intersection suppresses part of its morphology support.",
+    "T10": "The upper-left vertical hatched bar is continuous for the printed 2.0 m length.",
+    "T11": "The upper-right vertical hatched bar is continuous for the printed 2.0 m length."
+  }
+}

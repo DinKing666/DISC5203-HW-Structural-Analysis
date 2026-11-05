@@ -1,0 +1,598 @@
+{
+  "source": {
+    "file": "FloorPlan1.png"
+  },
+  "scale_px_per_m": {
+    "x": 130.8257,
+    "y": 130.6289
+  },
+  "method": {
+    "classical": "grey<225; 11-px 45-degree opening; horizontal open 17; vertical open 21; connected components; 4:1 shape rule",
+    "supervision": "accepted HW1 topology supplies search neighbourhoods; two-pass OCR supplies one size per label; diagonal pixels place the fixed-length bar",
+    "forest_selected": false,
+    "vlm_used_for_coordinates": false
+  },
+  "elements": [
+    {
+      "id": 1,
+      "labels": [
+        "C1"
+      ],
+      "class": "column",
+      "centre_m": [
+        0.2446,
+        7.0783
+      ],
+      "size_mm": [
+        400,
+        400
+      ],
+      "audit": {
+        "merged": false,
+        "partly_missed": [],
+        "pixel_support": 0.1757,
+        "source": [
+          "classical diagonal-stroke density",
+          "label long_lines_removed"
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "labels": [
+        "C2"
+      ],
+      "class": "column",
+      "centre_m": [
+        7.552,
+        6.9635
+      ],
+      "size_mm": [
+        400,
+        400
+      ],
+      "audit": {
+        "merged": false,
+        "partly_missed": [],
+        "pixel_support": 0.2027,
+        "source": [
+          "classical diagonal-stroke density",
+          "label original"
+        ]
+      }
+    },
+    {
+      "id": 3,
+      "labels": [
+        "C3"
+      ],
+      "class": "column",
+      "centre_m": [
+        10.6554,
+        6.8869
+      ],
+      "size_mm": [
+        400,
+        400
+      ],
+      "audit": {
+        "merged": false,
+        "partly_missed": [],
+        "pixel_support": 0.1627,
+        "source": [
+          "classical diagonal-stroke density",
+          "label long_lines_removed"
+        ]
+      }
+    },
+    {
+      "id": 4,
+      "labels": [
+        "C4"
+      ],
+      "class": "column",
+      "centre_m": [
+        0.2446,
+        12.3451
+      ],
+      "size_mm": [
+        400,
+        400
+      ],
+      "audit": {
+        "merged": false,
+        "partly_missed": [],
+        "pixel_support": 0.1657,
+        "source": [
+          "classical diagonal-stroke density",
+          "label long_lines_removed"
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "labels": [
+        "C5"
+      ],
+      "class": "column",
+      "centre_m": [
+        10.7242,
+        12.3451
+      ],
+      "size_mm": [
+        400,
+        400
+      ],
+      "audit": {
+        "merged": false,
+        "partly_missed": [],
+        "pixel_support": 0.1749,
+        "source": [
+          "classical diagonal-stroke density",
+          "label long_lines_removed"
+        ]
+      }
+    },
+    {
+      "id": 6,
+      "labels": [
+        "C6"
+      ],
+      "class": "column",
+      "centre_m": [
+        3.2562,
+        16.6474
+      ],
+      "size_mm": [
+        400,
+        400
+      ],
+      "audit": {
+        "merged": false,
+        "partly_missed": [],
+        "pixel_support": 0.1494,
+        "source": [
+          "classical diagonal-stroke density",
+          "label original"
+        ]
+      }
+    },
+    {
+      "id": 7,
+      "labels": [
+        "C7"
+      ],
+      "class": "column",
+      "centre_m": [
+        7.552,
+        16.6474
+      ],
+      "size_mm": [
+        400,
+        400
+      ],
+      "audit": {
+        "merged": false,
+        "partly_missed": [],
+        "pixel_support": 0.2056,
+        "source": [
+          "classical diagonal-stroke density",
+          "label long_lines_removed"
+        ]
+      }
+    },
+    {
+      "id": 1,
+      "labels": [
+        "T1"
+      ],
+      "class": "wall",
+      "centre_m": [
+        0.1911,
+        1.9454
+      ],
+      "size_mm": [
+        250,
+        2000
+      ],
+      "angle_deg": 90.0,
+      "continuous": true,
+      "audit": {
+        "merged": false,
+        "partly_missed": [
+          [
+            1.75,
+            1.917
+          ]
+        ],
+        "supported_fraction": 0.9167,
+        "max_gap_m": 0.167,
+        "flags": [],
+        "source": [
+          "11-px 45-degree support",
+          "label original"
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "labels": [
+        "T2"
+      ],
+      "class": "wall",
+      "centre_m": [
+        3.6537,
+        1.0995
+      ],
+      "size_mm": [
+        250,
+        2000
+      ],
+      "angle_deg": 0.0,
+      "continuous": true,
+      "audit": {
+        "merged": false,
+        "partly_missed": [],
+        "supported_fraction": 1.0,
+        "max_gap_m": 0.0,
+        "flags": [],
+        "source": [
+          "11-px 45-degree support",
+          "label long_lines_removed"
+        ]
+      }
+    },
+    {
+      "id": 3,
+      "labels": [
+        "T3"
+      ],
+      "class": "wall",
+      "centre_m": [
+        7.9113,
+        1.0995
+      ],
+      "size_mm": [
+        250,
+        2000
+      ],
+      "angle_deg": 0.0,
+      "continuous": false,
+      "audit": {
+        "merged": false,
+        "partly_missed": [
+          [
+            1.417,
+            2.0
+          ]
+        ],
+        "supported_fraction": 0.7083,
+        "max_gap_m": 0.583,
+        "flags": [
+          "wall_in_pieces_along_axis",
+          "low_support_completion"
+        ],
+        "source": [
+          "11-px 45-degree support",
+          "label original"
+        ]
+      }
+    },
+    {
+      "id": 4,
+      "labels": [
+        "T4"
+      ],
+      "class": "wall",
+      "centre_m": [
+        10.7242,
+        2.0067
+      ],
+      "size_mm": [
+        250,
+        2000
+      ],
+      "angle_deg": 90.0,
+      "continuous": true,
+      "audit": {
+        "merged": false,
+        "partly_missed": [
+          [
+            0.333,
+            0.417
+          ],
+          [
+            0.583,
+            0.667
+          ],
+          [
+            0.833,
+            0.917
+          ],
+          [
+            1.083,
+            1.167
+          ],
+          [
+            1.333,
+            1.417
+          ],
+          [
+            1.833,
+            1.917
+          ]
+        ],
+        "supported_fraction": 0.75,
+        "max_gap_m": 0.084,
+        "flags": [
+          "low_support_completion"
+        ],
+        "source": [
+          "11-px 45-degree support",
+          "label long_lines_removed"
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "labels": [
+        "T5"
+      ],
+      "class": "wall",
+      "centre_m": [
+        4.3493,
+        6.9558
+      ],
+      "size_mm": [
+        250,
+        2600
+      ],
+      "angle_deg": 0.0,
+      "continuous": true,
+      "audit": {
+        "merged": false,
+        "partly_missed": [],
+        "supported_fraction": 1.0,
+        "max_gap_m": 0.0,
+        "flags": [],
+        "source": [
+          "11-px 45-degree support",
+          "label original"
+        ]
+      }
+    },
+    {
+      "id": 6,
+      "labels": [
+        "T6"
+      ],
+      "class": "wall",
+      "centre_m": [
+        3.3097,
+        11.3844
+      ],
+      "size_mm": [
+        250,
+        2000
+      ],
+      "angle_deg": 90.0,
+      "continuous": true,
+      "audit": {
+        "merged": false,
+        "partly_missed": [
+          [
+            0.0,
+            0.083
+          ]
+        ],
+        "supported_fraction": 0.9583,
+        "max_gap_m": 0.083,
+        "flags": [],
+        "source": [
+          "11-px 45-degree support",
+          "label original"
+        ]
+      }
+    },
+    {
+      "id": 7,
+      "labels": [
+        "T7"
+      ],
+      "class": "wall",
+      "centre_m": [
+        4.6627,
+        11.0208
+      ],
+      "size_mm": [
+        250,
+        2850
+      ],
+      "angle_deg": 90.0,
+      "continuous": true,
+      "audit": {
+        "merged": false,
+        "partly_missed": [
+          [
+            0.0,
+            0.237
+          ]
+        ],
+        "supported_fraction": 0.9167,
+        "max_gap_m": 0.237,
+        "flags": [],
+        "source": [
+          "11-px 45-degree support",
+          "label long_lines_removed"
+        ]
+      }
+    },
+    {
+      "id": 8,
+      "labels": [
+        "T8"
+      ],
+      "class": "wall",
+      "centre_m": [
+        7.5597,
+        11.082
+      ],
+      "size_mm": [
+        250,
+        2850
+      ],
+      "angle_deg": 90.0,
+      "continuous": true,
+      "audit": {
+        "merged": false,
+        "partly_missed": [],
+        "supported_fraction": 1.0,
+        "max_gap_m": 0.0,
+        "flags": [],
+        "source": [
+          "11-px 45-degree support",
+          "label original"
+        ]
+      }
+    },
+    {
+      "id": 9,
+      "labels": [
+        "T9"
+      ],
+      "class": "wall",
+      "centre_m": [
+        5.3927,
+        12.391
+      ],
+      "size_mm": [
+        250,
+        4500
+      ],
+      "angle_deg": 0.0,
+      "continuous": true,
+      "audit": {
+        "merged": false,
+        "partly_missed": [],
+        "supported_fraction": 1.0,
+        "max_gap_m": 0.0,
+        "flags": [],
+        "source": [
+          "11-px 45-degree support",
+          "label long_lines_removed"
+        ]
+      }
+    },
+    {
+      "id": 10,
+      "labels": [
+        "T10"
+      ],
+      "class": "wall",
+      "centre_m": [
+        0.1911,
+        15.9163
+      ],
+      "size_mm": [
+        250,
+        2000
+      ],
+      "angle_deg": 90.0,
+      "continuous": true,
+      "audit": {
+        "merged": false,
+        "partly_missed": [
+          [
+            0.083,
+            0.167
+          ],
+          [
+            0.667,
+            0.833
+          ],
+          [
+            1.667,
+            2.0
+          ]
+        ],
+        "supported_fraction": 0.7083,
+        "max_gap_m": 0.333,
+        "flags": [
+          "low_support_completion"
+        ],
+        "source": [
+          "11-px 45-degree support",
+          "label long_lines_removed"
+        ]
+      }
+    },
+    {
+      "id": 11,
+      "labels": [
+        "T11"
+      ],
+      "class": "wall",
+      "centre_m": [
+        10.7242,
+        15.901
+      ],
+      "size_mm": [
+        250,
+        2000
+      ],
+      "angle_deg": 90.0,
+      "continuous": true,
+      "audit": {
+        "merged": false,
+        "partly_missed": [
+          [
+            0.083,
+            0.167
+          ],
+          [
+            0.5,
+            0.583
+          ],
+          [
+            0.75,
+            0.833
+          ],
+          [
+            1.333,
+            1.417
+          ],
+          [
+            1.583,
+            1.667
+          ],
+          [
+            1.833,
+            1.917
+          ]
+        ],
+        "supported_fraction": 0.75,
+        "max_gap_m": 0.084,
+        "flags": [
+          "low_support_completion"
+        ],
+        "source": [
+          "11-px 45-degree support",
+          "label original"
+        ]
+      }
+    }
+  ],
+  "floor": {
+    "outline_area_m2": 189.33,
+    "effective_area_m2": 180.1285,
+    "load_kN_m2": 8.75,
+    "storeys": 5
+  },
+  "checks": {
+    "sum_areas_m2": 180.1285,
+    "sum_axial_kN": 7880.622,
+    "labels_expected": 18,
+    "labels_claimed": 18,
+    "unclaimed_labels": []
+  }
+}

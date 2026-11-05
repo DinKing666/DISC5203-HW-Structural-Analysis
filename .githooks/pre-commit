@@ -5,6 +5,7 @@ import sys
 checks = [
     [sys.executable, "HW1/scripts/verify_outputs.py"],
     [sys.executable, "HW2/scripts/verify_hw2_outputs.py"],
+    [sys.executable, "HW3/scripts/verify_hw3_outputs.py"],
 ]
 for check in checks:
     result = subprocess.call(check)
