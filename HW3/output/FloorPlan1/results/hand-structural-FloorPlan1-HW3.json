@@ -1,0 +1,408 @@
+{
+  "plan": "FloorPlan1",
+  "primary_source": "record-promoted-FloorPlan1-HW3.json",
+  "mechanics": {
+    "E_kN_m2": 30000000.0,
+    "nu": 0.2,
+    "G_kN_m2": 12500000.0,
+    "height_m": 3.0,
+    "shear_kappa": 0.833333333,
+    "wall_formula": "1 / (H^3/(3EI) + H/(G*(5/6)*t*L))",
+    "continuous_false_excluded": true
+  },
+  "mass": {
+    "regions": [
+      {
+        "name": "main floor",
+        "sign": 1.0,
+        "area_m2": 173.31,
+        "centroid_x_m": 5.45,
+        "centroid_y_m": 8.95,
+        "width_m": 10.9,
+        "height_m": 15.9
+      },
+      {
+        "name": "lower balcony",
+        "sign": 1.0,
+        "area_m2": 8.9,
+        "centroid_x_m": 5.45,
+        "centroid_y_m": 0.5,
+        "width_m": 8.9,
+        "height_m": 1.0
+      },
+      {
+        "name": "upper balcony",
+        "sign": 1.0,
+        "area_m2": 7.12,
+        "centroid_x_m": 5.45,
+        "centroid_y_m": 17.3,
+        "width_m": 8.9,
+        "height_m": 0.8
+      },
+      {
+        "name": "opening west",
+        "sign": -1.0,
+        "area_m2": -3.344,
+        "centroid_x_m": 4.02,
+        "centroid_y_m": 10.63,
+        "width_m": 1.1,
+        "height_m": 3.04
+      },
+      {
+        "name": "opening east",
+        "sign": -1.0,
+        "area_m2": -5.8575,
+        "centroid_x_m": 5.945,
+        "centroid_y_m": 10.175,
+        "width_m": 2.75,
+        "height_m": 2.13
+      }
+    ],
+    "effective_area_m2": 180.1285,
+    "cm_m": [
+      5.460450637,
+      8.79152226
+    ],
+    "polar_area_about_cm_m4": 6566.03148668,
+    "mass_per_storey_t": 160.665073904,
+    "five_storey_mass_t": 803.325369521,
+    "polar_mass_per_storey_t_m2": 5856.552039597
+  },
+  "promoted_shear_included": {
+    "included_walls": [
+      "T1",
+      "T2",
+      "T4",
+      "T5",
+      "T6",
+      "T7",
+      "T8",
+      "T9",
+      "T10",
+      "T11"
+    ],
+    "K_at_cm": [
+      [
+        3628347.338793434,
+        0.0,
+        -4002308.759736642
+      ],
+      [
+        0.0,
+        4053192.869924443,
+        358277.662888799
+      ],
+      [
+        -4002308.759736642,
+        358277.662888799,
+        112420475.13182625
+      ]
+    ],
+    "F_at_cm": [
+      [
+        2.87e-07,
+        -1e-09,
+        1e-08
+      ],
+      [
+        -1e-09,
+        2.47e-07,
+        -1e-09
+      ],
+      [
+        1e-08,
+        -1e-09,
+        9e-09
+      ]
+    ],
+    "cr_m": [
+      5.548844571,
+      9.89458886
+    ],
+    "eccentricity_m": 1.106602643,
+    "direct_weighted_cr_m": [
+      5.548844571,
+      9.89458886
+    ]
+  },
+  "promoted_bending_only": {
+    "included_walls": [
+      "T1",
+      "T2",
+      "T4",
+      "T5",
+      "T6",
+      "T7",
+      "T8",
+      "T9",
+      "T10",
+      "T11"
+    ],
+    "K_at_cm": [
+      [
+        8104236.111111112,
+        0.0,
+        -16263998.366506726
+      ],
+      [
+        0.0,
+        5992934.027777779,
+        891175.781079469
+      ],
+      [
+        -16263998.366506726,
+        891175.781079469,
+        191286564.20714745
+      ]
+    ],
+    "F_at_cm": [
+      [
+        1.49e-07,
+        -2e-09,
+        1.3e-08
+      ],
+      [
+        -2e-09,
+        1.67e-07,
+        -1e-09
+      ],
+      [
+        1.3e-08,
+        -1e-09,
+        6e-09
+      ]
+    ],
+    "cr_m": [
+      5.609155057,
+      10.798373757
+    ],
+    "eccentricity_m": 2.012353332,
+    "direct_weighted_cr_m": [
+      5.609155057,
+      10.798373757
+    ]
+  },
+  "independent_reference_shear": {
+    "included_walls": [
+      "T1",
+      "T2",
+      "T3",
+      "T4",
+      "T5",
+      "T6",
+      "T7",
+      "T8",
+      "T9",
+      "T10",
+      "T11"
+    ],
+    "K_at_cm": [
+      [
+        4049222.759668855,
+        0.0,
+        -764925.653466706
+      ],
+      [
+        0.0,
+        4053192.869924443,
+        358277.662888799
+      ],
+      [
+        -764925.653466706,
+        358277.662888799,
+        137322498.0510127
+      ]
+    ],
+    "F_at_cm": [
+      [
+        2.47e-07,
+        -0.0,
+        1e-09
+      ],
+      [
+        -0.0,
+        2.47e-07,
+        -1e-09
+      ],
+      [
+        1e-09,
+        -1e-09,
+        7e-09
+      ]
+    ],
+    "cr_m": [
+      5.548844571,
+      8.980429046
+    ],
+    "eccentricity_m": 0.208564765,
+    "direct_weighted_cr_m": [
+      5.548844571,
+      8.980429046
+    ]
+  },
+  "vlm_structural_consequence": {
+    "smolvlm2-256m": {
+      "cr_m": [
+        5.548844571,
+        9.89458886
+      ],
+      "eccentricity_m": 1.106602643,
+      "cr_shift_from_reference_m": [
+        0.0,
+        0.914159814
+      ],
+      "shift_norm_from_reference_m": 0.914159814
+    },
+    "llava-onevision-0.5b": {
+      "cr_m": [
+        5.548844571,
+        9.89458886
+      ],
+      "eccentricity_m": 1.106602643,
+      "cr_shift_from_reference_m": [
+        0.0,
+        0.914159814
+      ],
+      "shift_norm_from_reference_m": 0.914159814
+    }
+  },
+  "design_load_and_equilibrium": {
+    "design_force_kN": 1000.0,
+    "direction": "+x at CM",
+    "torque_about_cr_kNm": 1103.066599205,
+    "torsional_stiffness_about_cr_kN_m": 107973992.44718172,
+    "rotation_rad": 1.0216e-05,
+    "equilibrium_sum_fx_kN": 1000.0,
+    "equilibrium_sum_fy_kN": -0.0,
+    "equilibrium_moment_about_cr_kNm": 1103.066599205
+  },
+  "push_turn_decoupling": {
+    "unit_x_at_cm_load": [
+      1.0,
+      0.0,
+      0.0
+    ],
+    "unit_x_at_cm_displacement": [
+      2.87e-07,
+      -1e-09,
+      1e-08
+    ],
+    "unit_x_at_cr_load_about_cm": [
+      1.0,
+      0.0,
+      -1.103066599
+    ],
+    "unit_x_at_cr_displacement": [
+      2.76e-07,
+      -0.0,
+      0.0
+    ],
+    "rotation_at_cm_push_rad": 1e-08,
+    "rotation_at_cr_push_rad": 0.0,
+    "matrix_times_cm_displacement": [
+      1.0,
+      0.0,
+      0.0
+    ]
+  },
+  "modal_properties": {
+    "mass_matrix_at_cm": [
+      [
+        160.665073904,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        160.665073904,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        5856.552039597
+      ]
+    ],
+    "coupled_modes": [
+      {
+        "mode": 1,
+        "eigenvalue_rad2_s2": 16418.658286317,
+        "period_s": 0.049035548,
+        "mass_normalized_vector_at_cm": [
+          0.043854901,
+          -0.002747335,
+          0.010852674
+        ],
+        "kinetic_energy_fractions": {
+          "x-translation": 0.308999479,
+          "y-translation": 0.001212676,
+          "torsion": 0.689787845
+        },
+        "dominant_character": "torsion"
+      },
+      {
+        "mode": 2,
+        "eigenvalue_rad2_s2": 25080.98740311,
+        "period_s": 0.039674143,
+        "mass_normalized_vector_at_cm": [
+          -0.041056709,
+          -0.06261598,
+          0.00411655
+        ],
+        "kinetic_energy_fractions": {
+          "x-translation": 0.270825626,
+          "y-translation": 0.629929357,
+          "torsion": 0.099245018
+        },
+        "dominant_character": "y-translation"
+      },
+      {
+        "mode": 3,
+        "eigenvalue_rad2_s2": 25506.920467944,
+        "period_s": 0.039341495,
+        "mass_normalized_vector_at_cm": [
+          0.051139245,
+          -0.047914708,
+          -0.006001867
+        ],
+        "kinetic_energy_fractions": {
+          "x-translation": 0.420174896,
+          "y-translation": 0.368857967,
+          "torsion": 0.210967137
+        },
+        "dominant_character": "x-translation"
+      }
+    ],
+    "K_transformed_to_cr": [
+      [
+        3628347.338793434,
+        0.0,
+        -3e-09
+      ],
+      [
+        0.0,
+        4053192.869924443,
+        -2e-09
+      ],
+      [
+        -3e-09,
+        -2e-09,
+        107973992.4471817
+      ]
+    ],
+    "uncoupled_periods_s": {
+      "Tx": 0.041810579,
+      "Ty": 0.039558696,
+      "Ttheta": 0.046274453
+    },
+    "period_ratio_Ttheta_over_Tx": 1.106764223
+  },
+  "checks": {
+    "area_matches_promoted_m2": 0.0,
+    "cr_routes_difference_m": 0.0,
+    "unit_push_at_cr_rotation_abs_rad": 0.0,
+    "design_force_residual_kN": 0.0,
+    "cross_wall_force_residual_kN": -0.0,
+    "design_moment_residual_kNm": -0.0
+  }
+}

@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import csv
 from pathlib import Path
 
 
@@ -179,6 +180,40 @@ def verify_optional_later_stages() -> None:
             "vlm-comparison-FloorPlan1-prompt-v2-strict-parser-HW3.json",
         ):
             require(rejected / name)
+
+    hand_path = PLAN / "results" / "hand-structural-FloorPlan1-HW3.json"
+    if hand_path.exists():
+        hand = load_json(hand_path)
+        mass = hand["mass"]
+        assert abs(mass["effective_area_m2"] - 180.1285) < 1e-9
+        assert abs(mass["cm_m"][0] - 5.460450637) < 1e-8
+        assert abs(mass["cm_m"][1] - 8.791522260) < 1e-8
+        promoted = hand["promoted_shear_included"]
+        reference = hand["independent_reference_shear"]
+        assert "T3" not in promoted["included_walls"]
+        assert "T3" in reference["included_walls"]
+        assert abs(promoted["cr_m"][0] - 5.548844571) < 1e-8
+        assert abs(promoted["cr_m"][1] - 9.894588860) < 1e-8
+        assert abs(promoted["eccentricity_m"] - 1.106602643) < 1e-8
+        assert abs(reference["cr_m"][1] - 8.980429046) < 1e-8
+        assert hand["promoted_bending_only"]["eccentricity_m"] > promoted["eccentricity_m"] + 0.8
+        for row_index, row in enumerate(promoted["K_at_cm"]):
+            for column_index, value in enumerate(row):
+                assert abs(value - promoted["K_at_cm"][column_index][row_index]) < 1e-6
+        checks = hand["checks"]
+        assert max(abs(value) for value in checks.values()) < 1e-6
+        assert hand["modal_properties"]["coupled_modes"][0]["dominant_character"] == "torsion"
+        assert hand["modal_properties"]["period_ratio_Ttheta_over_Tx"] > 1.0
+        for model in ("smolvlm2-256m", "llava-onevision-0.5b"):
+            consequence = hand["vlm_structural_consequence"][model]
+            assert abs(consequence["shift_norm_from_reference_m"] - 0.914159814) < 1e-8
+        csv_path = PLAN / "results" / "wall-stiffness-and-forces-FloorPlan1-HW3.csv"
+        require(csv_path)
+        with csv_path.open(encoding="utf-8", newline="") as stream:
+            rows = list(csv.DictReader(stream))
+        assert len(rows) == 11
+        assert next(row for row in rows if row["id"] == "T3")["continuous"] == "False"
+        require(PLAN / "figures" / "hw3_06_cm_cr_and_wall_forces.png")
 
 
 def main() -> None:

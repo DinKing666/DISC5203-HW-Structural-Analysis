@@ -127,3 +127,21 @@
 - Promotion: LLaVA-OneVision passes the no-regression gate and is copied to `record-promoted-FloorPlan1-HW3.json`. Only the three resolved audit flags are cleared; T3 stays flagged and `continuous: false`. All centres are byte-for-byte equal to the classical record.
 - Added verifier invariants for pinned model revisions, identical evidence/order, nonempty raw answers, the 3-to-0 score, T3 contradiction, zero coordinate changes, and both rejected audit generations.
 - Status: Gate 4 accepted pending automated checks and Git commit.
+
+## 2026-11-05 - Gate 5a: isolate the OpenSees binary-version failure
+
+- The installed `openseespywin 3.7.0.3` extension was inspected at the PE import table. It directly imports `python312.dll`; the repository `.venv` runs Python 3.11.9. The earlier DLL failure is therefore a Python ABI mismatch, not a structural-model failure.
+- A host PostgreSQL/pgAdmin installation supplies an isolated Python 3.12.4 runtime with pip. Use it only with a repository-local ignored `.opensees-py312/` target directory; do not change the system Python, the repository's main `.venv`, or global packages.
+- Hand calculation remains the primary result. OpenSees will be run only after the hand CM, stiffness matrix and CR are frozen.
+- Status: isolated OpenSees runtime pending installation and import test.
+
+## 2026-11-05 - Gate 5b: freeze the primary hand calculation
+
+- CM is calculated from five signed non-overlapping rectangles: the 10.90 × 15.90 m main floor, two balconies and two openings. Net area = 180.1285 m², CM = (5.4605, 8.7915) m, floor mass = 160.665 t and five-storey aggregate mass = 803.325 t at 8.75 kN/m².
+- The promoted extraction is used literally: T3 is the sole `continuous: false` wall and is excluded; the other ten walls use `k = 1/[H³/(3EI)+H/(G(5/6)tL)]` with E = 30 GPa, G = 12.5 GPa and H = 3 m.
+- Shear-included hand result: CR = (5.5488, 9.8946) m and e = 1.1066 m. Omitting shear moves CR to (5.6092, 10.7984) m and e to 2.0124 m, so the shear assumption is structurally material.
+- The independent-reference case includes T3 and gives CR = (5.5488, 8.9804) m, e = 0.2086 m. Both actual VLM outputs leave T3 unresolved, so each model extraction is 0.9142 m above the reference CR; LLaVA still wins the flag gate because it independently cleared three other audits without breaking one.
+- A fixed +x design push of 1000 kN through CM is decomposed into a push through CR plus 1103.067 kN·m torque. Wall forces close to 1000 kN in x, zero in cross-wall y and the applied torque to displayed precision. A unit push through CR produces zero rotation; the same push through CM does not.
+- The single-storey rigid-diaphragm characteristic ratio is Tθ/Tx = 1.1068; the first coupled mode is torsion-dominant. This freezes the baseline needed by Tasks 5 and 7 before any design modification.
+- A separate Python 3.12 target successfully imports OpenSees 3.8.0. Exact isolated dependencies are recorded in `requirements-opensees-py312-HW3.txt`.
+- Status: hand baseline accepted pending automated checks and Git commit; OpenSees has not been used to tune it.
