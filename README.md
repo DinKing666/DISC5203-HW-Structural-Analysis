@@ -8,6 +8,7 @@ This is the single cumulative Git repository for **Shuhan He / 何抒翰**, stud
 |---|---|---|---|
 | HW1 | Floor-plan digitisation, tributary areas and gravity loads | [`HW1/report/21345221-report-HW1.md`](HW1/report/21345221-report-HW1.md) | [`HW1/README-HW1.md`](HW1/README-HW1.md) |
 | HW2 | Slab-to-beam transfer, four OpenSees models and response checks | [`HW2/report/21345221-report-HW2.md`](HW2/report/21345221-report-HW2.md) | [`HW2/README-HW2.md`](HW2/README-HW2.md) |
+| HW3 | Classical plan reading, dual-VLM flag gate and rigid-diaphragm CM/CR analysis | `HW3/report/21345221-report-HW3.md` (in progress) | [`HW3/README-HW3.md`](HW3/README-HW3.md) |
 
 ## Repository convention
 

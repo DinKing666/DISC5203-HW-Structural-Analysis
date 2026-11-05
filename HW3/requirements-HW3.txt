@@ -1,0 +1,13 @@
+matplotlib
+numpy
+opencv-python
+openseespy
+pandas
+Pillow
+pypdf
+pytesseract
+reportlab
+scikit-image
+scikit-learn
+scipy
+shapely

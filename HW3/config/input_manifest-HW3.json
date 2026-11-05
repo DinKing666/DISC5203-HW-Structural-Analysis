@@ -1,0 +1,19 @@
+{
+  "frozen_on": "2026-11-05",
+  "source": "course-supplied HW3 package",
+  "assigned_plan": "HW3/assets/FloorPlan1.png",
+  "student": {
+    "name": "Shuhan He / 何抒翰",
+    "id": "21345221"
+  },
+  "files": [
+    {"path": "HW3/assets/FloorPlan1.png", "bytes": 1023010, "sha256": "3e6e5c040729c4ee5c6db2debd0c2e54b924996d6f186820a3efee025f863773"},
+    {"path": "HW3/assets/FloorPlan2.png", "bytes": 1504899, "sha256": "50efb3e85d1ab844cd686f2b5c655ca2d5511a574ee23e36c3cc6a87f3cd2c90"},
+    {"path": "HW3/assets/FloorPlan3.png", "bytes": 1432352, "sha256": "54c95338e3b81f1a5778066970f4c56b9b180e5e327b11413ed251a866400c6d"},
+    {"path": "HW3/assets/NewPlan.png", "bytes": 2185983, "sha256": "d70577698599310ca4a62e0c5a3cb4133df16b02dfc417dcf9d2899e673f63c1"},
+    {"path": "HW3/assets/UST_logo.png", "bytes": 4877, "sha256": "63fad79032535cd64eb78ad806836587ed242be2f19065a5e665cec126baece7"},
+    {"path": "HW3/assignment/assets-HW3.zip", "bytes": 5929236, "sha256": "78253de347b07535cfe90a478270bcc989a2231c21bb15ea38365207387284f1"},
+    {"path": "HW3/assignment/assignment-HW3.md", "bytes": 25610, "sha256": "649bce4e96cff0021fa1cfb3773a29676df9d2444b246313ad652de87b6748f4"},
+    {"path": "HW3/assignment/assignment-HW3.pdf", "bytes": 274062, "sha256": "b6b866e374ac59c4753d1f7ad738fde4e75595572350df8acdfec99246a2397b"}
+  ]
+}
