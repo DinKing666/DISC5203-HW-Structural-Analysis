@@ -68,3 +68,22 @@
 - Repository setup: enable the tracked `.githooks` directory through repository-local `core.hooksPath`; do not change global Git settings.
 - Environment follow-up: the image/OCR stack is operational in `.venv`; the installed Windows OpenSeesPy binary currently fails to load a dependent DLL and remains a named issue for the structural-model gate.
 - Status: Gate 2 accepted for Git commit.
+
+## 2026-11-05 - Gate 3: kept-but-never-chosen random forest
+
+- Freeze the accepted label-supervised classical record as the pseudo-label raster; the forest receives no independent ground truth.
+- Features: grey, Sobel edge strength, ink density in 5/11/21/45 px windows and the 11 px 45-degree stroke response.
+- Fixed model: 80 trees, maximum depth 14, minimum leaf size 3, balanced classes and random seed 21345221.
+- Required evidence: serialised model, feature-importance CSV/plot, held-out metrics, full ROI prediction and rule-target IoU.
+- Promotion prohibition is machine-readable (`selected: false`) and checked by `verify_hw3_outputs.py`.
+- Status: training and acceptance pending.
+
+### Forest Revision 1
+
+- Held-out F1 was 0.9828 and the full-ROI rule-target IoU was 0.5757, demonstrating that the model mostly copied the pseudo-label appearance.
+- Rejected feature interpretation: a single-pixel 45-degree boolean had importance 0.00014 because the response is sparse; 21 px and 45 px ink density dominated instead.
+- Correction: retain the same 11 px diagonal morphology but represent its response as local 21 px stroke density, matching the intended neighbourhood feature. Hyperparameters, seed and pseudo-labels remain unchanged.
+- Revision 2 result: held-out F1 = 0.9835, OOB score = 0.9830 and full-ROI rule-target IoU = 0.5848. The 21/45 px ink densities plus local 45-degree density carry 0.8402 of total feature importance.
+- The 2.55 MB serialised forest is retained with its prediction and importance table. Its moderate full-plan IoU illustrates the catch: high held-out agreement with copied labels does not create an independent correction route.
+- Determinism: a second training run reproduced the model, prediction masks, CSV, summary and figure byte for byte; the stage-aware verifier passed.
+- Status: Revision 2 accepted for Git commit; selection remains prohibited.

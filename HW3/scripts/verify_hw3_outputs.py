@@ -97,7 +97,17 @@ def verify_optional_later_stages() -> None:
         payload = load_json(forest)
         assert payload["selected"] is False
         assert abs(sum(payload["feature_importance"].values()) - 1.0) < 1e-6
-        require(ROOT / payload["model_path"])
+        assert payload["test_f1"] > 0.95
+        hand_features = sum(
+            value for name, value in payload["feature_importance"].items()
+            if "density" in name
+        )
+        assert hand_features > 0.75
+        model = ROOT / payload["model_path"]
+        require(model)
+        assert model.stat().st_size < 50_000_000
+        require(PLAN / "figures" / "hw3_05_random_forest_never_chosen.png")
+        require(PLAN / "intermediate" / "forest-prediction-HW3.png")
 
 
 def main() -> None:
