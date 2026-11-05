@@ -1,0 +1,100 @@
+{
+  "plan": "FloorPlan1",
+  "independent_reference": "HW3/config/reference-manual-FloorPlan1-HW3.json",
+  "confidence_threshold": 0.85,
+  "same_crops_questions_order": true,
+  "selection_rule": "zero broken required; then more resolved; ties use lower mean size error, higher mean reported confidence, then deterministic model key",
+  "models": [
+    {
+      "model_key": "smolvlm2-256m",
+      "model_id": "HuggingFaceTB/SmolVLM2-256M-Video-Instruct",
+      "flags_total": 4,
+      "flags_resolved": 0,
+      "flags_broken": 0,
+      "flags_unresolved": 4,
+      "mean_reported_confidence": null,
+      "mean_size_error_mm": null,
+      "details": [
+        {
+          "flag_id": "FloorPlan1:T3:continuity",
+          "label": "T3",
+          "status": "unresolved",
+          "confidence": null,
+          "size_error_mm": null,
+          "gate_reason": "strict JSON parse failed: Expecting value"
+        },
+        {
+          "flag_id": "FloorPlan1:T4:continuity",
+          "label": "T4",
+          "status": "unresolved",
+          "confidence": null,
+          "size_error_mm": null,
+          "gate_reason": "strict JSON parse failed: Expecting value"
+        },
+        {
+          "flag_id": "FloorPlan1:T10:continuity",
+          "label": "T10",
+          "status": "unresolved",
+          "confidence": null,
+          "size_error_mm": null,
+          "gate_reason": "strict JSON parse failed: Expecting value"
+        },
+        {
+          "flag_id": "FloorPlan1:T11:continuity",
+          "label": "T11",
+          "status": "unresolved",
+          "confidence": null,
+          "size_error_mm": null,
+          "gate_reason": "strict JSON parse failed: Expecting value"
+        }
+      ]
+    },
+    {
+      "model_key": "llava-onevision-0.5b",
+      "model_id": "llava-hf/llava-onevision-qwen2-0.5b-ov-hf",
+      "flags_total": 4,
+      "flags_resolved": 0,
+      "flags_broken": 0,
+      "flags_unresolved": 4,
+      "mean_reported_confidence": null,
+      "mean_size_error_mm": null,
+      "details": [
+        {
+          "flag_id": "FloorPlan1:T3:continuity",
+          "label": "T3",
+          "status": "unresolved",
+          "confidence": null,
+          "size_error_mm": null,
+          "gate_reason": "strict JSON parse failed: Extra data"
+        },
+        {
+          "flag_id": "FloorPlan1:T4:continuity",
+          "label": "T4",
+          "status": "unresolved",
+          "confidence": null,
+          "size_error_mm": null,
+          "gate_reason": "strict JSON parse failed: Expecting value"
+        },
+        {
+          "flag_id": "FloorPlan1:T10:continuity",
+          "label": "T10",
+          "status": "unresolved",
+          "confidence": null,
+          "size_error_mm": null,
+          "gate_reason": "strict JSON parse failed: Extra data"
+        },
+        {
+          "flag_id": "FloorPlan1:T11:continuity",
+          "label": "T11",
+          "status": "unresolved",
+          "confidence": null,
+          "size_error_mm": null,
+          "gate_reason": "strict JSON parse failed: Extra data"
+        }
+      ]
+    }
+  ],
+  "promoted_model_key": "smolvlm2-256m",
+  "promoted_model_id": "HuggingFaceTB/SmolVLM2-256M-Video-Instruct",
+  "gate_passed": true
+}

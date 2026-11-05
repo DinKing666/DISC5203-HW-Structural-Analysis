@@ -87,3 +87,43 @@
 - The 2.55 MB serialised forest is retained with its prediction and importance table. Its moderate full-plan IoU illustrates the catch: high held-out agreement with copied labels does not create an independent correction route.
 - Determinism: a second training run reproduced the model, prediction masks, CSV, summary and figure byte for byte; the stage-aware verifier passed.
 - Status: Revision 2 accepted for Git commit; selection remains prohibited.
+
+## 2026-11-05 - Gate 4a: freeze two genuinely different local VLM backends
+
+- No course-provided `visionprobe`, `lecturekit` or hosted-model credential is available on this machine. A plugin audit also found no relevant connected multimodal inference backend, so no irrelevant plugin was installed.
+- Rejected Moondream2 for this run: its 3.86 GB checkpoint plus the second model and runtime would leave insufficient working disk margin.
+- Rejected Florence-2-base-ft as the second reader: although compact, its published task interface is caption/OCR/detection rather than unrestricted visual question answering, so it would not receive the frozen question on equal terms.
+- Frozen readers: `HuggingFaceTB/SmolVLM2-256M-Video-Instruct` revision `067788b187b95ebe7b2e040b3e4299e342e5b8fd` (Idefics3/SmolLM2) and `llava-hf/llava-onevision-qwen2-0.5b-ov-hf` revision `74dd0bf867a4cda7950c17663794267c60cf4b40` (SO400M/Qwen2). They are distinct architectures, not two runs of one checkpoint.
+- The installed PyTorch wheel is CPU-only. This is slower but deterministic and avoids changing the already configured repository environment to an unverified CUDA wheel.
+- Frozen generation: seed 21345221, greedy decoding, 160 new tokens maximum, strict five-key JSON only. Both readers receive the same four crop byte streams, questions and order. A malformed answer remains unresolved; it is never repaired by hand.
+- Promotion gate: zero broken flags is mandatory, then more resolved; a tie uses lower mean size error, higher mean reported confidence, and finally the deterministic model key. The independent reference remains the file frozen at Gate 2e.
+- Status: harness written; real model downloads and runs pending.
+
+### VLM execution Revision 1
+
+- The first SmolVLM2 launch stopped before loading weights or generating an answer because its processor requires the separately packaged `num2words` dependency.
+- Correction: pin `num2words==0.5.14` in the declared environment and restart the unchanged frozen run. No output was scored or hand-filled.
+
+### VLM execution Revision 2
+
+- SmolVLM2 completed all four real CPU inferences. It repeated explanatory prose rather than emitting the required five-key JSON, so strict parsing leaves all four answers unresolved. The verbatim text and runtimes are retained in its result JSON; none is rewritten into an answer.
+- A harness orchestration defect then raised `FileNotFoundError`: after saving a requested single-model run it attempted to score both readers before the LLaVA witness file existed.
+- Correction: score only after both frozen result files exist. This changes neither model prompt nor generated output nor gate logic.
+
+### VLM execution Revision 3
+
+- LLaVA completed all four real CPU inferences. Three responses copied the JSON example but also copied its `confidence: 0.00` placeholder and appended a period; the fourth returned prose. Together with SmolVLM2's prose, both readers scored zero resolved and zero broken.
+- Rejected verdict: the mechanical tie-break would promote SmolVLM2 by model key even though neither reader resolved a flag. That is deterministic but not a defensible Task 2 winner.
+- Cause: the prompt included a fully populated example with `continuous: true` and `confidence: 0.00`; both small readers treated those placeholder values as content. This is a prompt-design failure rather than visual evidence.
+- Correction: archive every Revision 2 output and its premature comparison under `results/rejected/`. Prompt Revision 2 keeps the original question verbatim but names the five required keys without supplying any values; it explicitly requires a non-placeholder confidence and forbids text outside the closing brace. Both readers must rerun from the first crop under this identical prompt. Crop bytes, flag order, threshold and reference remain frozen.
+
+### VLM execution Revision 4
+
+- Prompt Revision 2 produced useful but imperfect machine syntax. SmolVLM2 still returned prose or wrong keys. LLaVA read all four labels and printed sizes correctly and reported 0.9 confidence, but wrapped each object in a JSON code fence and quoted its boolean and numeric values.
+- Rejected parser verdict: the original byte-strict parser scored both readers zero and again invoked the tie-break. This confuses harmless transport syntax with the checkable semantic answer.
+- Correction: archive the strict-parser files, then apply one deterministic syntax normalizer to both models: remove at most one outer JSON fence, coerce only literal `"true"`/`"false"`, and coerce only a quoted decimal. It never changes a label, size, continuity value, confidence value or reason, and wrong keys/prose still fail.
+- Semantic guard: an above-threshold object is unresolved if its reason contradicts its continuity field. Therefore LLaVA's T3 answer (`continuous: true` but reason says it is not a continuous bar) is not accepted. No human answer is substituted.
+- Accepted result: SmolVLM2 resolved 0/4 and broke 0; LLaVA-OneVision resolved T4, T10 and T11 (3/4), broke 0, mean reported confidence 0.9 and mean size error 0 mm. T3 remains unresolved because of the internal contradiction.
+- Promotion: LLaVA-OneVision passes the no-regression gate and is copied to `record-promoted-FloorPlan1-HW3.json`. Only the three resolved audit flags are cleared; T3 stays flagged and `continuous: false`. All centres are byte-for-byte equal to the classical record.
+- Added verifier invariants for pinned model revisions, identical evidence/order, nonempty raw answers, the 3-to-0 score, T3 contradiction, zero coordinate changes, and both rejected audit generations.
+- Status: Gate 4 accepted pending automated checks and Git commit.

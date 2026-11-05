@@ -1,0 +1,79 @@
+{
+  "plan": "FloorPlan1",
+  "model_key": "llava-onevision-0.5b",
+  "model_id": "llava-hf/llava-onevision-qwen2-0.5b-ov-hf",
+  "revision": "74dd0bf867a4cda7950c17663794267c60cf4b40",
+  "prompt_version": 2,
+  "architecture": "LLaVA-OneVision SO400M / Qwen2",
+  "device": "cpu",
+  "torch_version": "2.7.1+cpu",
+  "transformers_generation": {
+    "do_sample": false,
+    "max_new_tokens": 160,
+    "seed": 21345221
+  },
+  "confidence_threshold": 0.85,
+  "whole_plan_seen": false,
+  "coordinates_editable_by_vlm": false,
+  "question_order": [
+    "FloorPlan1:T3:continuity",
+    "FloorPlan1:T4:continuity",
+    "FloorPlan1:T10:continuity",
+    "FloorPlan1:T11:continuity"
+  ],
+  "total_runtime_seconds": 222.104,
+  "answers": [
+    {
+      "order": 1,
+      "flag_id": "FloorPlan1:T3:continuity",
+      "label_expected": "T3",
+      "crop": "output/FloorPlan1/flags/crops/FloorPlan1_T3_continuity.png",
+      "crop_sha256": "fd4c215dc5ecb0174813961d0e85d799543338e69229af6551de96b0f3954e10",
+      "question": "For T3, does the labelled 250x2000 mm wall form one continuous bar along its labelled axis? Read the printed size and answer continuity only.",
+      "prompt": "For T3, does the labelled 250x2000 mm wall form one continuous bar along its labelled axis? Read the printed size and answer continuity only.\nInspect the crop, then return exactly one valid JSON object with exactly these five keys: label, size_mm, continuous, confidence, reason. label and size_mm must be strings read from the image; continuous must be true or false; confidence must be your non-placeholder decimal judgment from 0 to 1; reason must be one short string. Output JSON only, with no markdown and no text or punctuation outside the closing brace. Do not merely repeat the question.",
+      "raw_answer": "```json\n{\n  \"label\": \"T3\",\n  \"size_mm\": \"250x2000\",\n  \"continuous\": \"true\",\n  \"confidence\": \"0.9\",\n  \"reason\": \"The 250x2000 mm wall is not a single continuous bar along its labelled axis. It is a series of smaller segments that are connected to form a larger structure.\"\n}\n```",
+      "parsed_answer": null,
+      "parse_error": "strict JSON parse failed: Expecting value",
+      "generation_seconds": 33.278
+    },
+    {
+      "order": 2,
+      "flag_id": "FloorPlan1:T4:continuity",
+      "label_expected": "T4",
+      "crop": "output/FloorPlan1/flags/crops/FloorPlan1_T4_continuity.png",
+      "crop_sha256": "6b7ef25669c027a50fc368ac1c2ae0d8d5271eba13a73f6d17f4e292b01e52ff",
+      "question": "For T4, does the labelled 250x2000 mm wall form one continuous bar along its labelled axis? Read the printed size and answer continuity only.",
+      "prompt": "For T4, does the labelled 250x2000 mm wall form one continuous bar along its labelled axis? Read the printed size and answer continuity only.\nInspect the crop, then return exactly one valid JSON object with exactly these five keys: label, size_mm, continuous, confidence, reason. label and size_mm must be strings read from the image; continuous must be true or false; confidence must be your non-placeholder decimal judgment from 0 to 1; reason must be one short string. Output JSON only, with no markdown and no text or punctuation outside the closing brace. Do not merely repeat the question.",
+      "raw_answer": "```json\n{\n  \"label\": \"T4\",\n  \"size_mm\": \"250x2000\",\n  \"continuous\": \"true\",\n  \"confidence\": \"0.9\",\n  \"reason\": \"The label 'T4' is correctly printed on the wall, and the size '250x2000' is specified in millimeters. The continuous label is true, and the confidence level is 0.9, indicating a high degree of certainty. The reason for this is that the label and size are clearly visible and the continuous label is consistent throughout the wall.\"\n}\n```",
+      "parsed_answer": null,
+      "parse_error": "strict JSON parse failed: Expecting value",
+      "generation_seconds": 66.99
+    },
+    {
+      "order": 3,
+      "flag_id": "FloorPlan1:T10:continuity",
+      "label_expected": "T10",
+      "crop": "output/FloorPlan1/flags/crops/FloorPlan1_T10_continuity.png",
+      "crop_sha256": "5d3beb62b24541c0873bb0c7039f075b2f3e654c9a3092498c68743931cee26a",
+      "question": "For T10, does the labelled 250x2000 mm wall form one continuous bar along its labelled axis? Read the printed size and answer continuity only.",
+      "prompt": "For T10, does the labelled 250x2000 mm wall form one continuous bar along its labelled axis? Read the printed size and answer continuity only.\nInspect the crop, then return exactly one valid JSON object with exactly these five keys: label, size_mm, continuous, confidence, reason. label and size_mm must be strings read from the image; continuous must be true or false; confidence must be your non-placeholder decimal judgment from 0 to 1; reason must be one short string. Output JSON only, with no markdown and no text or punctuation outside the closing brace. Do not merely repeat the question.",
+      "raw_answer": "```json\n{\n  \"label\": \"T10\",\n  \"size_mm\": \"250x2000\",\n  \"continuous\": \"true\",\n  \"confidence\": \"0.9\",\n  \"reason\": \"The label 'T10' is correctly printed on the wall, and the size '250x2000' is specified in millimeters. The continuous label is true, and the confidence level is 0.9, indicating a high degree of certainty in the accuracy of the label. The reason for this is that the label is clearly visible and the size is accurately printed, which are both important factors in ensuring the accuracy of the information presented.\"\n}\n```",
+      "parsed_answer": null,
+      "parse_error": "strict JSON parse failed: Expecting value",
+      "generation_seconds": 67.02
+    },
+    {
+      "order": 4,
+      "flag_id": "FloorPlan1:T11:continuity",
+      "label_expected": "T11",
+      "crop": "output/FloorPlan1/flags/crops/FloorPlan1_T11_continuity.png",
+      "crop_sha256": "05fb1b3ccb2c6d5ae54133837b20309676587e3ce93acf9554faaa670d9a7d11",
+      "question": "For T11, does the labelled 250x2000 mm wall form one continuous bar along its labelled axis? Read the printed size and answer continuity only.",
+      "prompt": "For T11, does the labelled 250x2000 mm wall form one continuous bar along its labelled axis? Read the printed size and answer continuity only.\nInspect the crop, then return exactly one valid JSON object with exactly these five keys: label, size_mm, continuous, confidence, reason. label and size_mm must be strings read from the image; continuous must be true or false; confidence must be your non-placeholder decimal judgment from 0 to 1; reason must be one short string. Output JSON only, with no markdown and no text or punctuation outside the closing brace. Do not merely repeat the question.",
+      "raw_answer": "```json\n{\n  \"label\": \"T11\",\n  \"size_mm\": \"250x2000\",\n  \"continuous\": \"true\",\n  \"confidence\": \"0.9\",\n  \"reason\": \"The label 'T11' is correctly printed with a size of 250x2000 mm and a continuous measurement of 250x2000 mm.\"\n}\n```",
+      "parsed_answer": null,
+      "parse_error": "strict JSON parse failed: Expecting value",
+      "generation_seconds": 54.639
+    }
+  ]
+}

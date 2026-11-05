@@ -109,12 +109,83 @@ def verify_optional_later_stages() -> None:
         require(PLAN / "figures" / "hw3_05_random_forest_never_chosen.png")
         require(PLAN / "intermediate" / "forest-prediction-HW3.png")
 
+    comparison_path = PLAN / "results" / "vlm-comparison-FloorPlan1-HW3.json"
+    if comparison_path.exists():
+        result_names = (
+            "vlm-smolvlm2-256m-FloorPlan1-HW3.json",
+            "vlm-llava-onevision-0.5b-FloorPlan1-HW3.json",
+        )
+        manifest = load_json(PLAN / "results" / "flags-manifest-HW3.json")
+        expected_order = [item["flag_id"] for item in manifest["flags"]]
+        results = [load_json(PLAN / "results" / name) for name in result_names]
+        assert [item["model_key"] for item in results] == [
+            "smolvlm2-256m",
+            "llava-onevision-0.5b",
+        ]
+        assert [item["revision"] for item in results] == [
+            "067788b187b95ebe7b2e040b3e4299e342e5b8fd",
+            "74dd0bf867a4cda7950c17663794267c60cf4b40",
+        ]
+        for result in results:
+            assert result["prompt_version"] == 2
+            assert result["parser_version"] == 2
+            assert result["whole_plan_seen"] is False
+            assert result["coordinates_editable_by_vlm"] is False
+            assert result["question_order"] == expected_order
+            assert len(result["answers"]) == 4
+            for answer, flag in zip(result["answers"], manifest["flags"], strict=True):
+                assert answer["flag_id"] == flag["flag_id"]
+                assert answer["crop_sha256"] == flag["crop_sha256"]
+                assert answer["question"] == flag["question"]
+                assert answer["raw_answer"].strip()
+
+        comparison = load_json(comparison_path)
+        assert comparison["same_crops_questions_order"] is True
+        assert comparison["gate_passed"] is True
+        assert comparison["promoted_model_key"] == "llava-onevision-0.5b"
+        scores = {item["model_key"]: item for item in comparison["models"]}
+        assert (scores["smolvlm2-256m"]["flags_resolved"], scores["smolvlm2-256m"]["flags_broken"]) == (0, 0)
+        assert (scores["llava-onevision-0.5b"]["flags_resolved"], scores["llava-onevision-0.5b"]["flags_broken"]) == (3, 0)
+        assert scores["llava-onevision-0.5b"]["flags_unresolved"] == 1
+        assert scores["llava-onevision-0.5b"]["mean_size_error_mm"] == 0.0
+        t3 = next(
+            item for item in scores["llava-onevision-0.5b"]["details"]
+            if item["label"] == "T3"
+        )
+        assert t3["status"] == "unresolved" and t3["internal_contradiction"] is True
+
+        classical = load_json(PLAN / "results" / "record-classical-label-supervised-HW3.json")
+        promoted = load_json(PLAN / "results" / "record-promoted-FloorPlan1-HW3.json")
+        assert promoted["source"]["promoted_vlm"] == comparison["promoted_model_id"]
+        classical_elements = {
+            item["labels"][0]: item for item in classical["elements"]
+        }
+        promoted_elements = {
+            item["labels"][0]: item for item in promoted["elements"]
+        }
+        assert classical_elements.keys() == promoted_elements.keys()
+        for label in classical_elements:
+            assert promoted_elements[label]["centre_m"] == classical_elements[label]["centre_m"]
+        assert promoted_elements["T3"]["continuous"] is False
+        assert promoted_elements["T3"]["audit"]["flags"]
+        for label in ("T4", "T10", "T11"):
+            element = promoted_elements[label]
+            assert element["audit"]["flags"] == []
+            assert element["audit"]["vlm_resolution"]["coordinates_changed"] is False
+
+        rejected = PLAN / "results" / "rejected"
+        for name in (
+            "vlm-comparison-FloorPlan1-prompt-v1-HW3.json",
+            "vlm-comparison-FloorPlan1-prompt-v2-strict-parser-HW3.json",
+        ):
+            require(rejected / name)
+
 
 def main() -> None:
     verify_frozen_inputs()
     verify_classical()
     verify_optional_later_stages()
-    print("HW3 verification passed: frozen inputs, 18 labels, four audited flags, identical-crop hashes and independent reference are present.")
+    print("HW3 verification passed: frozen inputs, classical/forest gates, identical dual-VLM evidence, syntax audit and promoted-copy invariants are present.")
 
 
 if __name__ == "__main__":

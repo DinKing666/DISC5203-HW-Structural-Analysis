@@ -1,0 +1,108 @@
+{
+  "plan": "FloorPlan1",
+  "independent_reference": "HW3/config/reference-manual-FloorPlan1-HW3.json",
+  "confidence_threshold": 0.85,
+  "same_crops_questions_order": true,
+  "selection_rule": "zero broken required; then more resolved; ties use lower mean size error, higher mean reported confidence, then deterministic model key",
+  "models": [
+    {
+      "model_key": "smolvlm2-256m",
+      "model_id": "HuggingFaceTB/SmolVLM2-256M-Video-Instruct",
+      "flags_total": 4,
+      "flags_resolved": 0,
+      "flags_broken": 0,
+      "flags_unresolved": 4,
+      "mean_reported_confidence": null,
+      "mean_size_error_mm": null,
+      "details": [
+        {
+          "flag_id": "FloorPlan1:T3:continuity",
+          "label": "T3",
+          "status": "unresolved",
+          "confidence": null,
+          "size_error_mm": null,
+          "internal_contradiction": false,
+          "gate_reason": "JSON parse failed after allowed syntax normalization: Expecting value"
+        },
+        {
+          "flag_id": "FloorPlan1:T4:continuity",
+          "label": "T4",
+          "status": "unresolved",
+          "confidence": null,
+          "size_error_mm": null,
+          "internal_contradiction": false,
+          "gate_reason": "JSON parse failed after allowed syntax normalization: Expecting value"
+        },
+        {
+          "flag_id": "FloorPlan1:T10:continuity",
+          "label": "T10",
+          "status": "unresolved",
+          "confidence": null,
+          "size_error_mm": null,
+          "internal_contradiction": false,
+          "gate_reason": "JSON parse failed after allowed syntax normalization: Expecting value"
+        },
+        {
+          "flag_id": "FloorPlan1:T11:continuity",
+          "label": "T11",
+          "status": "unresolved",
+          "confidence": null,
+          "size_error_mm": null,
+          "internal_contradiction": false,
+          "gate_reason": "JSON parse failed after allowed syntax normalization: Expecting value"
+        }
+      ]
+    },
+    {
+      "model_key": "llava-onevision-0.5b",
+      "model_id": "llava-hf/llava-onevision-qwen2-0.5b-ov-hf",
+      "flags_total": 4,
+      "flags_resolved": 3,
+      "flags_broken": 0,
+      "flags_unresolved": 1,
+      "mean_reported_confidence": 0.9,
+      "mean_size_error_mm": 0.0,
+      "details": [
+        {
+          "flag_id": "FloorPlan1:T3:continuity",
+          "label": "T3",
+          "status": "unresolved",
+          "confidence": 0.9,
+          "size_error_mm": 0.0,
+          "internal_contradiction": true,
+          "gate_reason": "answer field and visual reason contradict each other"
+        },
+        {
+          "flag_id": "FloorPlan1:T4:continuity",
+          "label": "T4",
+          "status": "resolved",
+          "confidence": 0.9,
+          "size_error_mm": 0.0,
+          "internal_contradiction": false,
+          "gate_reason": "above threshold and agrees with frozen independent reference"
+        },
+        {
+          "flag_id": "FloorPlan1:T10:continuity",
+          "label": "T10",
+          "status": "resolved",
+          "confidence": 0.9,
+          "size_error_mm": 0.0,
+          "internal_contradiction": false,
+          "gate_reason": "above threshold and agrees with frozen independent reference"
+        },
+        {
+          "flag_id": "FloorPlan1:T11:continuity",
+          "label": "T11",
+          "status": "resolved",
+          "confidence": 0.9,
+          "size_error_mm": 0.0,
+          "internal_contradiction": false,
+          "gate_reason": "above threshold and agrees with frozen independent reference"
+        }
+      ]
+    }
+  ],
+  "promoted_model_key": "llava-onevision-0.5b",
+  "promoted_model_id": "llava-hf/llava-onevision-qwen2-0.5b-ov-hf",
+  "gate_passed": true
+}

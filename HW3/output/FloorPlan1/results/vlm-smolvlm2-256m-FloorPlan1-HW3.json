@@ -1,0 +1,84 @@
+{
+  "plan": "FloorPlan1",
+  "model_key": "smolvlm2-256m",
+  "model_id": "HuggingFaceTB/SmolVLM2-256M-Video-Instruct",
+  "revision": "067788b187b95ebe7b2e040b3e4299e342e5b8fd",
+  "prompt_version": 2,
+  "architecture": "Idefics3 / SmolLM2",
+  "device": "cpu",
+  "torch_version": "2.7.1+cpu",
+  "transformers_generation": {
+    "do_sample": false,
+    "max_new_tokens": 160,
+    "seed": 21345221
+  },
+  "confidence_threshold": 0.85,
+  "whole_plan_seen": false,
+  "coordinates_editable_by_vlm": false,
+  "question_order": [
+    "FloorPlan1:T3:continuity",
+    "FloorPlan1:T4:continuity",
+    "FloorPlan1:T10:continuity",
+    "FloorPlan1:T11:continuity"
+  ],
+  "total_runtime_seconds": 92.389,
+  "answers": [
+    {
+      "order": 1,
+      "flag_id": "FloorPlan1:T3:continuity",
+      "label_expected": "T3",
+      "crop": "output/FloorPlan1/flags/crops/FloorPlan1_T3_continuity.png",
+      "crop_sha256": "fd4c215dc5ecb0174813961d0e85d799543338e69229af6551de96b0f3954e10",
+      "question": "For T3, does the labelled 250x2000 mm wall form one continuous bar along its labelled axis? Read the printed size and answer continuity only.",
+      "prompt": "For T3, does the labelled 250x2000 mm wall form one continuous bar along its labelled axis? Read the printed size and answer continuity only.\nInspect the crop, then return exactly one valid JSON object with exactly these five keys: label, size_mm, continuous, confidence, reason. label and size_mm must be strings read from the image; continuous must be true or false; confidence must be your non-placeholder decimal judgment from 0 to 1; reason must be one short string. Output JSON only, with no markdown and no text or punctuation outside the closing brace. Do not merely repeat the question.",
+      "raw_answer": "The labelled 250x2000 mm wall forms one continuous bar along its labelled axis. The label is \"T3 250x2000\". The size is 250mm, and the continuous is true or false. The confidence is 0.1, and the reason is \"You must read the text from the image\". The label and size_mm must be strings read from the image. The JSON object is \"JSONObject{\n    \"label\": \"T3 250x2000\",\n    \"size\": 250,\n    \"continuous\": true,\n    \"confidence\": 0.1,\n    \"reason\": \"You must read the text from the image\"\n}\n\nOutput:",
+      "parsed_answer": null,
+      "parse_error": "JSON parse failed after allowed syntax normalization: Expecting value",
+      "generation_seconds": 22.332,
+      "syntax_normalizations": []
+    },
+    {
+      "order": 2,
+      "flag_id": "FloorPlan1:T4:continuity",
+      "label_expected": "T4",
+      "crop": "output/FloorPlan1/flags/crops/FloorPlan1_T4_continuity.png",
+      "crop_sha256": "6b7ef25669c027a50fc368ac1c2ae0d8d5271eba13a73f6d17f4e292b01e52ff",
+      "question": "For T4, does the labelled 250x2000 mm wall form one continuous bar along its labelled axis? Read the printed size and answer continuity only.",
+      "prompt": "For T4, does the labelled 250x2000 mm wall form one continuous bar along its labelled axis? Read the printed size and answer continuity only.\nInspect the crop, then return exactly one valid JSON object with exactly these five keys: label, size_mm, continuous, confidence, reason. label and size_mm must be strings read from the image; continuous must be true or false; confidence must be your non-placeholder decimal judgment from 0 to 1; reason must be one short string. Output JSON only, with no markdown and no text or punctuation outside the closing brace. Do not merely repeat the question.",
+      "raw_answer": "The label is a string, the size is a string, the continuous is a boolean, the confidence is a boolean, the reason is a string. The label is \"250x2000\", the size is \"250x2000\", the continuous is \"true\", the confidence is \"0\", the reason is \"1\". The JSON object is:\n\n{\n    \"label\": \"250x2000\",\n    \"size\": \"250x2000\",\n    \"continuous\": true,\n    \"confidence\": \"0\",\n    \"reason\": \"1\"\n}",
+      "parsed_answer": null,
+      "parse_error": "JSON parse failed after allowed syntax normalization: Expecting value",
+      "generation_seconds": 21.405,
+      "syntax_normalizations": []
+    },
+    {
+      "order": 3,
+      "flag_id": "FloorPlan1:T10:continuity",
+      "label_expected": "T10",
+      "crop": "output/FloorPlan1/flags/crops/FloorPlan1_T10_continuity.png",
+      "crop_sha256": "5d3beb62b24541c0873bb0c7039f075b2f3e654c9a3092498c68743931cee26a",
+      "question": "For T10, does the labelled 250x2000 mm wall form one continuous bar along its labelled axis? Read the printed size and answer continuity only.",
+      "prompt": "For T10, does the labelled 250x2000 mm wall form one continuous bar along its labelled axis? Read the printed size and answer continuity only.\nInspect the crop, then return exactly one valid JSON object with exactly these five keys: label, size_mm, continuous, confidence, reason. label and size_mm must be strings read from the image; continuous must be true or false; confidence must be your non-placeholder decimal judgment from 0 to 1; reason must be one short string. Output JSON only, with no markdown and no text or punctuation outside the closing brace. Do not merely repeat the question.",
+      "raw_answer": "The image shows a wall with dimensions T10 250x2000 mm. The wall is labeled as T10 250x2000 mm. The wall has a continuous bar that is 250 mm long. The wall has a label of T10 250x2000 mm. The wall has a label of T10 250x2000 mm. The wall has a label of T10 250x2000 mm. The wall has a label of T10 250x2000 mm. The wall has a label of T10 250x2000 mm. The wall has a label",
+      "parsed_answer": null,
+      "parse_error": "JSON parse failed after allowed syntax normalization: Expecting value",
+      "generation_seconds": 23.541,
+      "syntax_normalizations": []
+    },
+    {
+      "order": 4,
+      "flag_id": "FloorPlan1:T11:continuity",
+      "label_expected": "T11",
+      "crop": "output/FloorPlan1/flags/crops/FloorPlan1_T11_continuity.png",
+      "crop_sha256": "05fb1b3ccb2c6d5ae54133837b20309676587e3ce93acf9554faaa670d9a7d11",
+      "question": "For T11, does the labelled 250x2000 mm wall form one continuous bar along its labelled axis? Read the printed size and answer continuity only.",
+      "prompt": "For T11, does the labelled 250x2000 mm wall form one continuous bar along its labelled axis? Read the printed size and answer continuity only.\nInspect the crop, then return exactly one valid JSON object with exactly these five keys: label, size_mm, continuous, confidence, reason. label and size_mm must be strings read from the image; continuous must be true or false; confidence must be your non-placeholder decimal judgment from 0 to 1; reason must be one short string. Output JSON only, with no markdown and no text or punctuation outside the closing brace. Do not merely repeat the question.",
+      "raw_answer": "The label is \"250x2000 mm\", the size is 250mm, the continuous is true, the confidence is 0, the reason is \"1.000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "parsed_answer": null,
+      "parse_error": "JSON parse failed after allowed syntax normalization: Expecting value",
+      "generation_seconds": 23.396,
+      "syntax_normalizations": []
+    }
+  ],
+  "parser_version": 2
+}
