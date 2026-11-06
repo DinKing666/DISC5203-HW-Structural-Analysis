@@ -199,7 +199,22 @@ def size_error_mm(answer: str, expected: str) -> float | None:
     wanted = dimensions(expected)
     if got is None or wanted is None:
         return None
-    return (abs(got[0] - wanted[0]) + abs(got[1] - wanted[1])) / 2.0
+    # Rectangular dimensions are order-invariant: a printed 3500x400 wall and
+    # the normalised engineering record 400x3500 describe the same section.
+    got_ordered = sorted(got)
+    wanted_ordered = sorted(wanted)
+    return (
+        abs(got_ordered[0] - wanted_ordered[0])
+        + abs(got_ordered[1] - wanted_ordered[1])
+    ) / 2.0
+
+
+def comparison_path() -> Path:
+    return RESULTS_DIR / f"vlm-comparison-{PLAN}-HW3.json"
+
+
+def promoted_path() -> Path:
+    return RESULTS_DIR / f"record-promoted-{PLAN}-HW3.json"
 
 
 def run_model(model_key: str, manifest: dict[str, Any]) -> Path:
@@ -277,8 +292,8 @@ def archive_rejected_prompt_outputs() -> None:
         return
     candidates = [
         *model_paths,
-        RESULTS_DIR / "vlm-comparison-FloorPlan1-HW3.json",
-        RESULTS_DIR / "record-promoted-FloorPlan1-HW3.json",
+        comparison_path(),
+        promoted_path(),
     ]
     for source in candidates:
         if not source.exists():
@@ -311,8 +326,8 @@ def refresh_parser_outputs() -> None:
         changed = True
     if changed:
         for source in [
-            RESULTS_DIR / "vlm-comparison-FloorPlan1-HW3.json",
-            RESULTS_DIR / "record-promoted-FloorPlan1-HW3.json",
+            comparison_path(),
+            promoted_path(),
         ]:
             if not source.exists():
                 continue
@@ -481,9 +496,9 @@ def score_and_promote(manifest: dict[str, Any]) -> None:
         "promoted_model_id": results[winner_key]["model_id"],
         "gate_passed": True,
     }
-    write_json(RESULTS_DIR / "vlm-comparison-FloorPlan1-HW3.json", comparison)
+    write_json(comparison_path(), comparison)
     promoted = build_promoted_record(results[winner_key], winner_score)
-    write_json(RESULTS_DIR / "record-promoted-FloorPlan1-HW3.json", promoted)
+    write_json(promoted_path(), promoted)
     print(
         f"Promoted {winner_key}: {winner_score['flags_resolved']} resolved, "
         f"{winner_score['flags_broken']} broken"

@@ -234,3 +234,14 @@
 - The first combined regression command named the HW1 verifier incorrectly as `verify_hw1_outputs.py`; that path does not exist. HW2 and HW3 still passed, but the missing HW1 launch is not counted as a full regression gate. Correct the command to the repository's actual `HW1/scripts/verify_outputs.py` and rerun all three.
 - Determinism: a second complete training run reproduced the model and all five derived artifacts byte for byte.
 - Status: accepted pending the corrected three-homework regression run and Git commit; `selected` remains false.
+
+## 2026-11-06 - Gate 7d: freeze the NewPlan dual-VLM execution
+
+- NewPlan reuses the exact FloorPlan1 model IDs, pinned revisions, prompt Revision 2, parser Revision 2, seed, greedy decoding, 160-token limit, 0.85 confidence gate, contradiction guard and promotion ranking.
+- The only evidence is the already frozen `NewPlan:T1:continuity` crop/question pair. Neither reader receives `NewPlan.png`, and the promoted copy cannot alter an element centre.
+- Dimension comparison is made order-invariant for both plans: `3500x400` and `400x3500` are the same rectangular wall dimensions. A score still fails if either number differs; the FloorPlan1 comparison and promoted record must remain byte-identical after this general implementation change.
+- Baseline non-regression: replaying the updated general scorer left the FloorPlan1 comparison and promoted record byte-identical.
+- SmolVLM2 returned prose plus invalid JSON, used the wrong `size` key, read 3300 mm and reported confidence 0. Its verbatim output is retained; T1 remains unresolved for this reader.
+- LLaVA-OneVision returned a fenced five-key object with quoted boolean/decimal values. The already accepted parser normalization removed the single fence and coerced those two literal types without changing values. It read `T1`, `400x3500`, continuous true and confidence 0.9, agreeing with the frozen independent reference.
+- Promotion: LLaVA resolves 1/1 and breaks 0; SmolVLM2 resolves 0/1 and breaks 0. LLaVA is promoted, T1's classical audit flag is cleared and all 38 extracted centres remain exactly equal to the classical record.
+- Status: Gate 7d accepted pending score-only reproducibility, automated checks and Git commit. No human answer was substituted.

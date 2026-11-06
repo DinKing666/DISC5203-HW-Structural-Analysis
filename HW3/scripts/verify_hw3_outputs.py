@@ -251,6 +251,72 @@ def verify_newplan_forest() -> None:
     require(plan_dir / "figures" / "hw3_12_newplan_random_forest_never_chosen.png")
 
 
+def verify_newplan_vlm() -> None:
+    plan_dir = ROOT / "output" / "NewPlan"
+    comparison_path = plan_dir / "results" / "vlm-comparison-NewPlan-HW3.json"
+    if not comparison_path.exists():
+        return
+    manifest = load_json(
+        plan_dir / "results" / "flags-manifest-NewPlan-HW3.json"
+    )
+    expected_order = [item["flag_id"] for item in manifest["flags"]]
+    result_names = (
+        "vlm-smolvlm2-256m-NewPlan-HW3.json",
+        "vlm-llava-onevision-0.5b-NewPlan-HW3.json",
+    )
+    results = [load_json(plan_dir / "results" / name) for name in result_names]
+    assert [item["model_key"] for item in results] == [
+        "smolvlm2-256m",
+        "llava-onevision-0.5b",
+    ]
+    assert [item["revision"] for item in results] == [
+        "067788b187b95ebe7b2e040b3e4299e342e5b8fd",
+        "74dd0bf867a4cda7950c17663794267c60cf4b40",
+    ]
+    for result in results:
+        assert result["plan"] == "NewPlan"
+        assert result["prompt_version"] == 2
+        assert result["parser_version"] == 2
+        assert result["whole_plan_seen"] is False
+        assert result["coordinates_editable_by_vlm"] is False
+        assert result["question_order"] == expected_order
+        assert len(result["answers"]) == 1
+        answer = result["answers"][0]
+        flag = manifest["flags"][0]
+        assert answer["flag_id"] == flag["flag_id"]
+        assert answer["crop_sha256"] == flag["crop_sha256"]
+        assert answer["question"] == flag["question"]
+        assert answer["raw_answer"].strip()
+
+    comparison = load_json(comparison_path)
+    assert comparison["same_crops_questions_order"] is True
+    assert comparison["gate_passed"] is True
+    assert comparison["promoted_model_key"] == "llava-onevision-0.5b"
+    scores = {item["model_key"]: item for item in comparison["models"]}
+    assert (scores["smolvlm2-256m"]["flags_resolved"], scores["smolvlm2-256m"]["flags_broken"]) == (0, 0)
+    assert scores["smolvlm2-256m"]["flags_unresolved"] == 1
+    assert (scores["llava-onevision-0.5b"]["flags_resolved"], scores["llava-onevision-0.5b"]["flags_broken"]) == (1, 0)
+    assert scores["llava-onevision-0.5b"]["mean_size_error_mm"] == 0.0
+    assert scores["llava-onevision-0.5b"]["mean_reported_confidence"] == 0.9
+
+    classical = load_json(
+        plan_dir / "results" / "record-classical-label-supervised-NewPlan-HW3.json"
+    )
+    promoted = load_json(
+        plan_dir / "results" / "record-promoted-NewPlan-HW3.json"
+    )
+    assert promoted["source"]["promoted_vlm"] == comparison["promoted_model_id"]
+    classical_elements = {item["labels"][0]: item for item in classical["elements"]}
+    promoted_elements = {item["labels"][0]: item for item in promoted["elements"]}
+    assert classical_elements.keys() == promoted_elements.keys()
+    for label in classical_elements:
+        assert promoted_elements[label]["centre_m"] == classical_elements[label]["centre_m"]
+    t1 = promoted_elements["T1"]
+    assert t1["continuous"] is True
+    assert t1["audit"]["flags"] == []
+    assert t1["audit"]["vlm_resolution"]["coordinates_changed"] is False
+
+
 def verify_optional_later_stages() -> None:
     forest = PLAN / "results" / "random-forest-summary-HW3.json"
     if forest.exists():
@@ -449,6 +515,7 @@ def main() -> None:
     verify_classical()
     verify_newplan_classical()
     verify_newplan_forest()
+    verify_newplan_vlm()
     verify_optional_later_stages()
     print("HW3 verification passed: frozen inputs, classical/forest gates, identical dual-VLM evidence, syntax audit and promoted-copy invariants are present.")
 

@@ -1,0 +1,1079 @@
+{
+  "source": {
+    "file": "NewPlan.png",
+    "path": "assets/NewPlan.png",
+    "sha256": "d70577698599310ca4a62e0c5a3cb4133df16b02dfc417dcf9d2899e673f63c1",
+    "plan": "NewPlan",
+    "promoted_vlm": "llava-hf/llava-onevision-qwen2-0.5b-ov-hf",
+    "promoted_vlm_revision": "74dd0bf867a4cda7950c17663794267c60cf4b40"
+  },
+  "scale_px_per_m": {
+    "x": 114.60414,
+    "y": 112.318333
+  },
+  "elements": [
+    {
+      "id": 1,
+      "labels": [
+        "C1"
+      ],
+      "class": "column",
+      "centre_m": [
+        0.0851,
+        18.0807
+      ],
+      "size_mm": [
+        800,
+        800
+      ],
+      "audit": {
+        "merged": false,
+        "partly_missed": [],
+        "pixel_support": 1.0,
+        "source": [
+          "classical diagonal-stroke density",
+          "label original"
+        ]
+      },
+      "tributary_area_m2": 9.0,
+      "axial_load_5storey_kN": 393.75
+    },
+    {
+      "id": 2,
+      "labels": [
+        "C2"
+      ],
+      "class": "column",
+      "centre_m": [
+        5.8615,
+        18.0807
+      ],
+      "size_mm": [
+        800,
+        800
+      ],
+      "audit": {
+        "merged": false,
+        "partly_missed": [],
+        "pixel_support": 1.0,
+        "source": [
+          "classical diagonal-stroke density",
+          "label original"
+        ]
+      },
+      "tributary_area_m2": 18.0,
+      "axial_load_5storey_kN": 787.5
+    },
+    {
+      "id": 3,
+      "labels": [
+        "C3"
+      ],
+      "class": "column",
+      "centre_m": [
+        11.8822,
+        18.0807
+      ],
+      "size_mm": [
+        800,
+        800
+      ],
+      "audit": {
+        "merged": false,
+        "partly_missed": [],
+        "pixel_support": 1.0,
+        "source": [
+          "classical diagonal-stroke density",
+          "label original"
+        ]
+      },
+      "tributary_area_m2": 34.125,
+      "axial_load_5storey_kN": 1492.96875
+    },
+    {
+      "id": 4,
+      "labels": [
+        "C4"
+      ],
+      "class": "column",
+      "centre_m": [
+        19.9535,
+        18.0807
+      ],
+      "size_mm": [
+        800,
+        800
+      ],
+      "audit": {
+        "merged": false,
+        "partly_missed": [],
+        "pixel_support": 1.0,
+        "source": [
+          "classical diagonal-stroke density",
+          "label original"
+        ]
+      },
+      "tributary_area_m2": 21.0,
+      "axial_load_5storey_kN": 918.75
+    },
+    {
+      "id": 5,
+      "labels": [
+        "C5"
+      ],
+      "class": "column",
+      "centre_m": [
+        25.9742,
+        18.0807
+      ],
+      "size_mm": [
+        800,
+        800
+      ],
+      "audit": {
+        "merged": false,
+        "partly_missed": [],
+        "pixel_support": 1.0,
+        "source": [
+          "classical diagonal-stroke density",
+          "label original"
+        ]
+      },
+      "tributary_area_m2": 21.0,
+      "axial_load_5storey_kN": 918.75
+    },
+    {
+      "id": 6,
+      "labels": [
+        "C6"
+      ],
+      "class": "column",
+      "centre_m": [
+        34.0018,
+        18.0807
+      ],
+      "size_mm": [
+        800,
+        800
+      ],
+      "audit": {
+        "merged": false,
+        "partly_missed": [],
+        "pixel_support": 1.0,
+        "source": [
+          "classical diagonal-stroke density",
+          "label long_lines_removed"
+        ]
+      },
+      "tributary_area_m2": 34.125,
+      "axial_load_5storey_kN": 1492.96875
+    },
+    {
+      "id": 7,
+      "labels": [
+        "C7"
+      ],
+      "class": "column",
+      "centre_m": [
+        40.0836,
+        18.0807
+      ],
+      "size_mm": [
+        800,
+        800
+      ],
+      "audit": {
+        "merged": false,
+        "partly_missed": [],
+        "pixel_support": 1.0,
+        "source": [
+          "classical diagonal-stroke density",
+          "label original"
+        ]
+      },
+      "tributary_area_m2": 18.0,
+      "axial_load_5storey_kN": 787.5
+    },
+    {
+      "id": 8,
+      "labels": [
+        "C8"
+      ],
+      "class": "column",
+      "centre_m": [
+        45.8513,
+        18.0807
+      ],
+      "size_mm": [
+        800,
+        800
+      ],
+      "audit": {
+        "merged": false,
+        "partly_missed": [],
+        "pixel_support": 1.0,
+        "source": [
+          "classical diagonal-stroke density",
+          "label original"
+        ]
+      },
+      "tributary_area_m2": 9.0,
+      "axial_load_5storey_kN": 393.75
+    },
+    {
+      "id": 9,
+      "labels": [
+        "C9"
+      ],
+      "class": "column",
+      "centre_m": [
+        0.0327,
+        12.16
+      ],
+      "size_mm": [
+        800,
+        800
+      ],
+      "audit": {
+        "merged": false,
+        "partly_missed": [],
+        "pixel_support": 1.0,
+        "source": [
+          "classical diagonal-stroke density",
+          "label original"
+        ]
+      },
+      "tributary_area_m2": 18.0,
+      "axial_load_5storey_kN": 787.5
+    },
+    {
+      "id": 10,
+      "labels": [
+        "C10"
+      ],
+      "class": "column",
+      "centre_m": [
+        5.844,
+        12.16
+      ],
+      "size_mm": [
+        800,
+        800
+      ],
+      "audit": {
+        "merged": false,
+        "partly_missed": [],
+        "pixel_support": 1.0,
+        "source": [
+          "classical diagonal-stroke density",
+          "label original"
+        ]
+      },
+      "tributary_area_m2": 45.0,
+      "axial_load_5storey_kN": 1968.75
+    },
+    {
+      "id": 11,
+      "labels": [
+        "C11"
+      ],
+      "class": "column",
+      "centre_m": [
+        19.9099,
+        12.16
+      ],
+      "size_mm": [
+        800,
+        800
+      ],
+      "audit": {
+        "merged": false,
+        "partly_missed": [],
+        "pixel_support": 1.0,
+        "source": [
+          "classical diagonal-stroke density",
+          "label original"
+        ]
+      },
+      "tributary_area_m2": 48.75,
+      "axial_load_5storey_kN": 2132.8125
+    },
+    {
+      "id": 12,
+      "labels": [
+        "C12"
+      ],
+      "class": "column",
+      "centre_m": [
+        25.948,
+        12.16
+      ],
+      "size_mm": [
+        800,
+        800
+      ],
+      "audit": {
+        "merged": false,
+        "partly_missed": [],
+        "pixel_support": 1.0,
+        "source": [
+          "classical diagonal-stroke density",
+          "label long_lines_removed"
+        ]
+      },
+      "tributary_area_m2": 48.75,
+      "axial_load_5storey_kN": 2132.8125
+    },
+    {
+      "id": 13,
+      "labels": [
+        "C13"
+      ],
+      "class": "column",
+      "centre_m": [
+        40.0313,
+        12.16
+      ],
+      "size_mm": [
+        800,
+        800
+      ],
+      "audit": {
+        "merged": false,
+        "partly_missed": [],
+        "pixel_support": 1.0,
+        "source": [
+          "classical diagonal-stroke density",
+          "label long_lines_removed"
+        ]
+      },
+      "tributary_area_m2": 45.0,
+      "axial_load_5storey_kN": 1968.75
+    },
+    {
+      "id": 14,
+      "labels": [
+        "C14"
+      ],
+      "class": "column",
+      "centre_m": [
+        45.8513,
+        12.16
+      ],
+      "size_mm": [
+        800,
+        800
+      ],
+      "audit": {
+        "merged": false,
+        "partly_missed": [],
+        "pixel_support": 1.0,
+        "source": [
+          "classical diagonal-stroke density",
+          "label original"
+        ]
+      },
+      "tributary_area_m2": 18.0,
+      "axial_load_5storey_kN": 787.5
+    },
+    {
+      "id": 15,
+      "labels": [
+        "C15"
+      ],
+      "class": "column",
+      "centre_m": [
+        0.0415,
+        6.0167
+      ],
+      "size_mm": [
+        800,
+        800
+      ],
+      "audit": {
+        "merged": false,
+        "partly_missed": [],
+        "pixel_support": 1.0,
+        "source": [
+          "classical diagonal-stroke density",
+          "label long_lines_removed"
+        ]
+      },
+      "tributary_area_m2": 18.0,
+      "axial_load_5storey_kN": 787.5
+    },
+    {
+      "id": 16,
+      "labels": [
+        "C16"
+      ],
+      "class": "column",
+      "centre_m": [
+        5.8615,
+        6.0167
+      ],
+      "size_mm": [
+        800,
+        800
+      ],
+      "audit": {
+        "merged": false,
+        "partly_missed": [],
+        "pixel_support": 1.0,
+        "source": [
+          "classical diagonal-stroke density",
+          "label long_lines_removed"
+        ]
+      },
+      "tributary_area_m2": 36.0,
+      "axial_load_5storey_kN": 1575.0
+    },
+    {
+      "id": 17,
+      "labels": [
+        "C17"
+      ],
+      "class": "column",
+      "centre_m": [
+        11.8909,
+        5.8921
+      ],
+      "size_mm": [
+        800,
+        800
+      ],
+      "audit": {
+        "merged": false,
+        "partly_missed": [],
+        "pixel_support": 0.3205,
+        "source": [
+          "classical diagonal-stroke density",
+          "label original"
+        ]
+      },
+      "tributary_area_m2": 55.125,
+      "axial_load_5storey_kN": 2411.71875
+    },
+    {
+      "id": 18,
+      "labels": [
+        "C18"
+      ],
+      "class": "column",
+      "centre_m": [
+        19.9535,
+        6.0167
+      ],
+      "size_mm": [
+        800,
+        800
+      ],
+      "audit": {
+        "merged": false,
+        "partly_missed": [],
+        "pixel_support": 1.0,
+        "source": [
+          "classical diagonal-stroke density",
+          "label original"
+        ]
+      },
+      "tributary_area_m2": 42.0,
+      "axial_load_5storey_kN": 1837.5
+    },
+    {
+      "id": 19,
+      "labels": [
+        "C19"
+      ],
+      "class": "column",
+      "centre_m": [
+        25.9742,
+        6.0167
+      ],
+      "size_mm": [
+        800,
+        800
+      ],
+      "audit": {
+        "merged": false,
+        "partly_missed": [],
+        "pixel_support": 1.0,
+        "source": [
+          "classical diagonal-stroke density",
+          "label original"
+        ]
+      },
+      "tributary_area_m2": 42.0,
+      "axial_load_5storey_kN": 1837.5
+    },
+    {
+      "id": 20,
+      "labels": [
+        "C20"
+      ],
+      "class": "column",
+      "centre_m": [
+        34.1414,
+        5.9099
+      ],
+      "size_mm": [
+        800,
+        800
+      ],
+      "audit": {
+        "merged": false,
+        "partly_missed": [],
+        "pixel_support": 0.3423,
+        "source": [
+          "classical diagonal-stroke density",
+          "label long_lines_removed"
+        ]
+      },
+      "tributary_area_m2": 55.125,
+      "axial_load_5storey_kN": 2411.71875
+    },
+    {
+      "id": 21,
+      "labels": [
+        "C21"
+      ],
+      "class": "column",
+      "centre_m": [
+        40.0662,
+        6.0167
+      ],
+      "size_mm": [
+        800,
+        800
+      ],
+      "audit": {
+        "merged": false,
+        "partly_missed": [],
+        "pixel_support": 1.0,
+        "source": [
+          "classical diagonal-stroke density",
+          "label long_lines_removed"
+        ]
+      },
+      "tributary_area_m2": 36.0,
+      "axial_load_5storey_kN": 1575.0
+    },
+    {
+      "id": 22,
+      "labels": [
+        "C22"
+      ],
+      "class": "column",
+      "centre_m": [
+        45.8513,
+        6.0167
+      ],
+      "size_mm": [
+        800,
+        800
+      ],
+      "audit": {
+        "merged": false,
+        "partly_missed": [],
+        "pixel_support": 1.0,
+        "source": [
+          "classical diagonal-stroke density",
+          "label original"
+        ]
+      },
+      "tributary_area_m2": 18.0,
+      "axial_load_5storey_kN": 787.5
+    },
+    {
+      "id": 23,
+      "labels": [
+        "C23"
+      ],
+      "class": "column",
+      "centre_m": [
+        0.0938,
+        -0.0642
+      ],
+      "size_mm": [
+        800,
+        800
+      ],
+      "audit": {
+        "merged": false,
+        "partly_missed": [],
+        "pixel_support": 1.0,
+        "source": [
+          "classical diagonal-stroke density",
+          "label original"
+        ]
+      },
+      "tributary_area_m2": 9.0,
+      "axial_load_5storey_kN": 393.75
+    },
+    {
+      "id": 24,
+      "labels": [
+        "C24"
+      ],
+      "class": "column",
+      "centre_m": [
+        5.844,
+        -0.0642
+      ],
+      "size_mm": [
+        800,
+        800
+      ],
+      "audit": {
+        "merged": false,
+        "partly_missed": [],
+        "pixel_support": 1.0,
+        "source": [
+          "classical diagonal-stroke density",
+          "label long_lines_removed"
+        ]
+      },
+      "tributary_area_m2": 18.0,
+      "axial_load_5storey_kN": 787.5
+    },
+    {
+      "id": 25,
+      "labels": [
+        "C25"
+      ],
+      "class": "column",
+      "centre_m": [
+        12.048,
+        0.007
+      ],
+      "size_mm": [
+        800,
+        800
+      ],
+      "audit": {
+        "merged": false,
+        "partly_missed": [],
+        "pixel_support": 1.0,
+        "source": [
+          "classical diagonal-stroke density",
+          "label original"
+        ]
+      },
+      "tributary_area_m2": 21.0,
+      "axial_load_5storey_kN": 918.75
+    },
+    {
+      "id": 26,
+      "labels": [
+        "C26"
+      ],
+      "class": "column",
+      "centre_m": [
+        19.9186,
+        -0.0642
+      ],
+      "size_mm": [
+        800,
+        800
+      ],
+      "audit": {
+        "merged": false,
+        "partly_missed": [],
+        "pixel_support": 1.0,
+        "source": [
+          "classical diagonal-stroke density",
+          "label long_lines_removed"
+        ]
+      },
+      "tributary_area_m2": 21.0,
+      "axial_load_5storey_kN": 918.75
+    },
+    {
+      "id": 27,
+      "labels": [
+        "C27"
+      ],
+      "class": "column",
+      "centre_m": [
+        25.948,
+        -0.0642
+      ],
+      "size_mm": [
+        800,
+        800
+      ],
+      "audit": {
+        "merged": false,
+        "partly_missed": [],
+        "pixel_support": 1.0,
+        "source": [
+          "classical diagonal-stroke density",
+          "label original"
+        ]
+      },
+      "tributary_area_m2": 21.0,
+      "axial_load_5storey_kN": 918.75
+    },
+    {
+      "id": 28,
+      "labels": [
+        "C28"
+      ],
+      "class": "column",
+      "centre_m": [
+        33.8448,
+        -0.0642
+      ],
+      "size_mm": [
+        800,
+        800
+      ],
+      "audit": {
+        "merged": false,
+        "partly_missed": [],
+        "pixel_support": 1.0,
+        "source": [
+          "classical diagonal-stroke density",
+          "label long_lines_removed"
+        ]
+      },
+      "tributary_area_m2": 21.0,
+      "axial_load_5storey_kN": 918.75
+    },
+    {
+      "id": 29,
+      "labels": [
+        "C29"
+      ],
+      "class": "column",
+      "centre_m": [
+        40.1447,
+        -0.082
+      ],
+      "size_mm": [
+        800,
+        800
+      ],
+      "audit": {
+        "merged": false,
+        "partly_missed": [],
+        "pixel_support": 0.9978,
+        "source": [
+          "classical diagonal-stroke density",
+          "label long_lines_removed"
+        ]
+      },
+      "tributary_area_m2": 18.0,
+      "axial_load_5storey_kN": 787.5
+    },
+    {
+      "id": 30,
+      "labels": [
+        "C30"
+      ],
+      "class": "column",
+      "centre_m": [
+        45.8513,
+        -0.0642
+      ],
+      "size_mm": [
+        800,
+        800
+      ],
+      "audit": {
+        "merged": false,
+        "partly_missed": [],
+        "pixel_support": 1.0,
+        "source": [
+          "classical diagonal-stroke density",
+          "label original"
+        ]
+      },
+      "tributary_area_m2": 9.0,
+      "axial_load_5storey_kN": 393.75
+    },
+    {
+      "id": 1,
+      "labels": [
+        "T1"
+      ],
+      "class": "wall",
+      "centre_m": [
+        11.952,
+        10.6064
+      ],
+      "size_mm": [
+        400,
+        3500
+      ],
+      "angle_deg": 90.0,
+      "continuous": true,
+      "audit": {
+        "merged": false,
+        "partly_missed": [],
+        "supported_fraction": 1.0,
+        "max_gap_m": 0.0,
+        "flags": [],
+        "source": [
+          "11-px 45-degree support",
+          "label original",
+          "isolated numeric token joined to one nearby size string"
+        ],
+        "label_reconstructed": true,
+        "classical_flags": [
+          "misread_label"
+        ],
+        "vlm_resolution": {
+          "source": "corrected by llava-hf/llava-onevision-qwen2-0.5b-ov-hf",
+          "revision": "74dd0bf867a4cda7950c17663794267c60cf4b40",
+          "confidence": 0.9,
+          "answer_size_mm": "400x3500",
+          "continuous": true,
+          "coordinates_changed": false
+        }
+      }
+    },
+    {
+      "id": 2,
+      "labels": [
+        "T2"
+      ],
+      "class": "wall",
+      "centre_m": [
+        13.3961,
+        12.0621
+      ],
+      "size_mm": [
+        400,
+        3500
+      ],
+      "angle_deg": 0.0,
+      "continuous": true,
+      "audit": {
+        "merged": false,
+        "partly_missed": [],
+        "supported_fraction": 1.0,
+        "max_gap_m": 0.0,
+        "flags": [],
+        "source": [
+          "11-px 45-degree support",
+          "label original"
+        ],
+        "label_reconstructed": false
+      }
+    },
+    {
+      "id": 3,
+      "labels": [
+        "T3"
+      ],
+      "class": "wall",
+      "centre_m": [
+        11.952,
+        1.9257
+      ],
+      "size_mm": [
+        400,
+        3500
+      ],
+      "angle_deg": 90.0,
+      "continuous": true,
+      "audit": {
+        "merged": false,
+        "partly_missed": [],
+        "supported_fraction": 1.0,
+        "max_gap_m": 0.0,
+        "flags": [],
+        "source": [
+          "11-px 45-degree support",
+          "label long_lines_removed"
+        ],
+        "label_reconstructed": false
+      }
+    },
+    {
+      "id": 4,
+      "labels": [
+        "T4"
+      ],
+      "class": "wall",
+      "centre_m": [
+        13.0035,
+        -0.1354
+      ],
+      "size_mm": [
+        300,
+        2000
+      ],
+      "angle_deg": 0.0,
+      "continuous": true,
+      "audit": {
+        "merged": false,
+        "partly_missed": [],
+        "supported_fraction": 1.0,
+        "max_gap_m": 0.0,
+        "flags": [],
+        "source": [
+          "11-px 45-degree support",
+          "label original"
+        ],
+        "label_reconstructed": false
+      }
+    },
+    {
+      "id": 5,
+      "labels": [
+        "T5"
+      ],
+      "class": "wall",
+      "centre_m": [
+        32.1738,
+        12.0621
+      ],
+      "size_mm": [
+        400,
+        3500
+      ],
+      "angle_deg": 0.0,
+      "continuous": true,
+      "audit": {
+        "merged": false,
+        "partly_missed": [],
+        "supported_fraction": 1.0,
+        "max_gap_m": 0.0,
+        "flags": [],
+        "source": [
+          "11-px 45-degree support",
+          "label original"
+        ],
+        "label_reconstructed": false
+      }
+    },
+    {
+      "id": 6,
+      "labels": [
+        "T6"
+      ],
+      "class": "wall",
+      "centre_m": [
+        34.0629,
+        10.0188
+      ],
+      "size_mm": [
+        400,
+        3500
+      ],
+      "angle_deg": 90.0,
+      "continuous": true,
+      "audit": {
+        "merged": false,
+        "partly_missed": [],
+        "supported_fraction": 1.0,
+        "max_gap_m": 0.0,
+        "flags": [],
+        "source": [
+          "11-px 45-degree support",
+          "label original"
+        ],
+        "label_reconstructed": false
+      }
+    },
+    {
+      "id": 7,
+      "labels": [
+        "T7"
+      ],
+      "class": "wall",
+      "centre_m": [
+        34.0629,
+        1.9791
+      ],
+      "size_mm": [
+        400,
+        3500
+      ],
+      "angle_deg": 90.0,
+      "continuous": true,
+      "audit": {
+        "merged": false,
+        "partly_missed": [],
+        "supported_fraction": 1.0,
+        "max_gap_m": 0.0,
+        "flags": [],
+        "source": [
+          "11-px 45-degree support",
+          "label original"
+        ],
+        "label_reconstructed": false
+      }
+    },
+    {
+      "id": 8,
+      "labels": [
+        "T8"
+      ],
+      "class": "wall",
+      "centre_m": [
+        33.0377,
+        -0.1354
+      ],
+      "size_mm": [
+        300,
+        2000
+      ],
+      "angle_deg": 0.0,
+      "continuous": true,
+      "audit": {
+        "merged": false,
+        "partly_missed": [],
+        "supported_fraction": 1.0,
+        "max_gap_m": 0.0,
+        "flags": [],
+        "source": [
+          "11-px 45-degree support",
+          "label original"
+        ],
+        "label_reconstructed": false
+      }
+    }
+  ],
+  "floor": {
+    "outline_area_m2": 828.0,
+    "effective_area_m2": 828.0,
+    "load_kN_m2": 8.75,
+    "storeys": 5,
+    "storey_height_m": 3.0,
+    "polygon_m": [
+      [
+        0.0,
+        0.0
+      ],
+      [
+        46.0,
+        0.0
+      ],
+      [
+        46.0,
+        18.0
+      ],
+      [
+        0.0,
+        18.0
+      ]
+    ]
+  },
+  "checks": {
+    "sum_tributary_areas_m2": 828.0,
+    "sum_axial_kN": 36225.0,
+    "floor_total_axial_kN": 36225.0
+  },
+  "method": {
+    "locked_to_floorplan1_parameters": true,
+    "parameter_file": "config/classical-params-HW3.json",
+    "labels_supervise_one_element": true,
+    "forest_selected": false,
+    "vlm_used_for_coordinates": false,
+    "size_order_normalisation": "smaller printed dimension is thickness; larger is wall length",
+    "vlm_scope": "frozen flag crops only"
+  }
+}

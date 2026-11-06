@@ -1,0 +1,49 @@
+{
+  "plan": "NewPlan",
+  "model_key": "llava-onevision-0.5b",
+  "model_id": "llava-hf/llava-onevision-qwen2-0.5b-ov-hf",
+  "revision": "74dd0bf867a4cda7950c17663794267c60cf4b40",
+  "prompt_version": 2,
+  "parser_version": 2,
+  "architecture": "LLaVA-OneVision SO400M / Qwen2",
+  "device": "cpu",
+  "torch_version": "2.7.1+cpu",
+  "transformers_generation": {
+    "do_sample": false,
+    "max_new_tokens": 160,
+    "seed": 21345221
+  },
+  "confidence_threshold": 0.85,
+  "whole_plan_seen": false,
+  "coordinates_editable_by_vlm": false,
+  "question_order": [
+    "NewPlan:T1:continuity"
+  ],
+  "total_runtime_seconds": 83.737,
+  "answers": [
+    {
+      "order": 1,
+      "flag_id": "NewPlan:T1:continuity",
+      "label_expected": "T1",
+      "crop": "output/NewPlan/flags/crops/NewPlan-T1-flag.png",
+      "crop_sha256": "1b15a6b35e64e4dbe148fb2003b4ac79f29dd4ac1eb81b61509987959bf5553f",
+      "question": "For T1, does the labelled 400x3500 mm wall form one continuous bar along its labelled axis? Read the printed label and size and answer continuity only.",
+      "prompt": "For T1, does the labelled 400x3500 mm wall form one continuous bar along its labelled axis? Read the printed label and size and answer continuity only.\nInspect the crop, then return exactly one valid JSON object with exactly these five keys: label, size_mm, continuous, confidence, reason. label and size_mm must be strings read from the image; continuous must be true or false; confidence must be your non-placeholder decimal judgment from 0 to 1; reason must be one short string. Output JSON only, with no markdown and no text or punctuation outside the closing brace. Do not merely repeat the question.",
+      "raw_answer": "```json\n{\n  \"label\": \"T1\",\n  \"size_mm\": \"400x3500\",\n  \"continuous\": \"true\",\n  \"confidence\": \"0.9\",\n  \"reason\": \"The 400x3500 mm wall is a continuous bar along its labelled axis.\"\n}\n```",
+      "parsed_answer": {
+        "label": "T1",
+        "size_mm": "400x3500",
+        "continuous": true,
+        "confidence": 0.9,
+        "reason": "The 400x3500 mm wall is a continuous bar along its labelled axis."
+      },
+      "parse_error": null,
+      "syntax_normalizations": [
+        "removed one outer JSON code fence",
+        "coerced quoted JSON boolean without changing its value",
+        "coerced quoted decimal without changing its value"
+      ],
+      "generation_seconds": 83.611
+    }
+  ]
+}
