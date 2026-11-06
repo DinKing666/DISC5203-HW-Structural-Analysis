@@ -263,6 +263,14 @@
 - The reference explicitly sets `can_supply_structural_geometry` false. Even a perfect VLM continuity score cannot promote the zero-element classical record into a structural extraction.
 - Status: reference frozen before either VLM sees an MLStructFP crop; pending hash verification and Git commit.
 
+## 2026-11-06 - Gate 7i: freeze the MLStructFP dual-VLM harness
+
+- Retain the same two model IDs and revisions, CPU inference, seed 21345221, greedy generation, 160-token limit, parser Revision 2, 0.85 threshold, contradiction guard and zero-broken promotion ranking.
+- Freeze crop-audit Prompt Revision 3 for both readers. It explicitly distinguishes internal U handles from printed labels and defines `NOT_VISIBLE` as the nonnumeric missing-size sentinel, leaving only continuity for visual judgment.
+- Extend the common size comparator only for that exact sentinel pair; numeric dimensions on FloorPlan1 and NewPlan remain order-invariant and unchanged. Re-score both prior plans and require their comparison/promoted hashes to remain byte-identical before accepting this harness.
+- Even the best safe reader cannot promote a structural record: the classical result has zero claimed elements and no numeric sizes. The comparison will select only a best continuity reader, if one passes.
+- Status: harness frozen before real MLStructFP VLM inference; pending baseline non-regression and Git commit.
+
 ## 2026-11-06 - Gate 7f: locked classical reader on public MLStructFP Floor 966
 
 - Preprocessed only as declared by the public loader: fully transparent pixels become white, while every non-transparent blue source pixel is preserved. Threshold 225, 11-px diagonal opening, 17/21-px orthogonal openings, 4:1 shape rule and OCR threshold 0.85 are unchanged from FloorPlan1.

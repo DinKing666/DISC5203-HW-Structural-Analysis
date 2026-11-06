@@ -195,6 +195,10 @@ def dimensions(size: str) -> tuple[int, int] | None:
 
 
 def size_error_mm(answer: str, expected: str) -> float | None:
+    if answer.strip().upper() == "NOT_VISIBLE" and expected.strip().upper() == "NOT_VISIBLE":
+        return 0.0
+    if "NOT_VISIBLE" in {answer.strip().upper(), expected.strip().upper()}:
+        return None
     got = dimensions(answer)
     wanted = dimensions(expected)
     if got is None or wanted is None:
