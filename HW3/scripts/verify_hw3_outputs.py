@@ -215,6 +215,40 @@ def verify_optional_later_stages() -> None:
         assert next(row for row in rows if row["id"] == "T3")["continuous"] == "False"
         require(PLAN / "figures" / "hw3_06_cm_cr_and_wall_forces.png")
 
+    opensees_path = PLAN / "results" / "opensees-FloorPlan1-HW3.json"
+    if opensees_path.exists():
+        model = load_json(opensees_path)
+        assert model["runtime"]["python"].startswith("3.12")
+        assert model["runtime"]["opensees"].startswith("3.8")
+        description = model["model"]
+        assert description["element"] == "ElasticTimoshenkoBeam"
+        assert description["rigid_diaphragm"].startswith("rigidDiaphragm(3")
+        assert description["constraint_handler"] == "Transformation"
+        assert description["included_walls"] == [
+            "T1", "T2", "T4", "T5", "T6", "T7", "T8", "T9", "T10", "T11"
+        ]
+        comparison = model["comparison_to_hand"]
+        assert comparison["cr_difference_norm_m"] < 1e-6
+        assert comparison["max_abs_K_relative_difference"] < 1e-6
+        assert abs(comparison["unit_push_through_cr_rotation_rad"]) < 1e-12
+        assert abs(comparison["design_wall_sum_x_kN"] - 1000.0) < 1e-5
+        assert abs(comparison["design_cross_wall_sum_y_kN"]) < 1e-5
+        assert comparison["max_wall_force_additivity_residual_kN"] < 1e-9
+        hand_rows = {
+            row["id"]: row
+            for row in csv.DictReader(
+                (PLAN / "results" / "wall-stiffness-and-forces-FloorPlan1-HW3.csv").open(
+                    encoding="utf-8", newline=""
+                )
+            )
+        }
+        model_forces = model["design_cases"]["total_at_cm"]["wall_forces"]
+        for wall_id in description["included_walls"]:
+            assert abs(
+                model_forces[wall_id]["strong_top_shear_kN"]
+                - float(hand_rows[wall_id]["force_total_kN"])
+            ) < 1e-5
+
 
 def main() -> None:
     verify_frozen_inputs()

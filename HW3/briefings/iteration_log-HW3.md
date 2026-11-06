@@ -145,3 +145,19 @@
 - The single-storey rigid-diaphragm characteristic ratio is Tθ/Tx = 1.1068; the first coupled mode is torsion-dominant. This freezes the baseline needed by Tasks 5 and 7 before any design modification.
 - A separate Python 3.12 target successfully imports OpenSees 3.8.0. Exact isolated dependencies are recorded in `requirements-opensees-py312-HW3.txt`.
 - Status: hand baseline accepted pending automated checks and Git commit; OpenSees has not been used to tune it.
+
+## 2026-11-05 - Gate 5c: first isolated OpenSees launch
+
+- The Python 3.12 runner reached the structural script but stopped before model creation because pgAdmin's isolated `python312._pth` omits the invoked script directory from `sys.path`; the sibling `structural_params.py` could not be imported.
+- Correction: explicitly prepend the resolved HW3 script directory after the ignored package target. No model assumption or frozen hand number changes.
+- Status: corrected launch pending re-run.
+
+## 2026-11-06 - Gate 5d: accept the pertinent OpenSees model
+
+- Built one 3D `ElasticTimoshenkoBeam` from base to floor for each of the ten promoted continuous walls. The local strong axis follows the plan wall length; strong-axis shear area is `(5/6)tL`. Weak-axis action and St Venant wall torsion are set to 1e-9 of the strong idealisation so the model matches the hand premise that each wall resists only in its plane.
+- Declared `rigidDiaphragm(3, master, *wall_top_nodes)` at CM with free `ux`, `uy`, `rz`, and used the `Transformation` constraint handler.
+- Three unit loads at CM generated F directly and K by inversion. OpenSees 3.8.0 gives CR = (5.5488445701, 9.8945888601) m: 9.33e-10 m from the frozen hand CR. Maximum 3×3 K relative difference is 9.24e-9.
+- The unit +x push applied through CR produces zero rotation to output precision. The 1000 kN CM case is reproduced by the push-through-CR case plus the eccentric torque case wall by wall; maximum additivity residual is zero.
+- OpenSees wall forces agree with every hand row within 1e-5 kN. Their x sum is 999.9999989 kN and cross-wall y sum is 2.17e-8 kN.
+- Determinism: a complete second build and all seven load cases reproduced the 33,967-byte JSON exactly, SHA-256 `51d9c2ed4dcb8e4d334cc8abafaec06c6c52c919f84d302e8b23533b12d4fa5a`.
+- Status: baseline model accepted pending automated checks and Git commit.
