@@ -6,6 +6,7 @@ extension is compiled against python312.dll.
 
 from __future__ import annotations
 
+import argparse
 import json
 import math
 import sys
@@ -34,6 +35,8 @@ from structural_params import (  # noqa: E402
 PROMOTED_PATH = ROOT / "HW3/output/FloorPlan1/results/record-promoted-FloorPlan1-HW3.json"
 HAND_PATH = ROOT / "HW3/output/FloorPlan1/results/hand-structural-FloorPlan1-HW3.json"
 OUTPUT_PATH = ROOT / "HW3/output/FloorPlan1/results/opensees-FloorPlan1-HW3.json"
+MODIFIED_HAND_PATH = ROOT / "HW3/output/FloorPlan1/results/modified-hand-FloorPlan1-HW3.json"
+MODIFIED_OUTPUT_PATH = ROOT / "HW3/output/FloorPlan1/results/opensees-modified-FloorPlan1-HW3.json"
 MASTER_NODE = 9000
 WEAK_RATIO = 1.0e-9
 
@@ -76,20 +79,30 @@ def subtract(a: list[float], b: list[float]) -> list[float]:
     return [left - right for left, right in zip(a, b)]
 
 
-def wall_records() -> list[dict[str, Any]]:
+def wall_records(modified: bool) -> list[dict[str, Any]]:
     record = read_json(PROMOTED_PATH)
     walls: list[dict[str, Any]] = []
     for element in record["elements"]:
-        if element["class"] != "wall" or not element["continuous"]:
+        if element["class"] != "wall":
+            continue
+        wall_id = element["labels"][0]
+        continuous = bool(element["continuous"])
+        thickness_m = element["size_mm"][0] / 1000.0
+        if modified and wall_id == "T3":
+            continuous = True
+            thickness_m = 0.309
+        if modified and wall_id == "T7":
+            thickness_m = 0.365
+        if not continuous:
             continue
         walls.append(
             {
-                "id": element["labels"][0],
+                "id": wall_id,
                 "direction": "x" if element["angle_deg"] == 0.0 else "y",
                 "x_m": float(element["centre_m"][0]),
                 "y_m": float(element["centre_m"][1]),
                 "length_m": element["size_mm"][1] / 1000.0,
-                "thickness_m": element["size_mm"][0] / 1000.0,
+                "thickness_m": thickness_m,
             }
         )
     return walls
@@ -192,10 +205,14 @@ def analyze_case(
 
 
 def main() -> None:
-    hand = read_json(HAND_PATH)
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--modified", action="store_true")
+    args = parser.parse_args()
+    hand = read_json(MODIFIED_HAND_PATH if args.modified else HAND_PATH)
     cm = tuple(float(value) for value in hand["mass"]["cm_m"])
-    hand_cr = tuple(float(value) for value in hand["promoted_shear_included"]["cr_m"])
-    walls = wall_records()
+    hand_section = hand["modified_shear"] if args.modified else hand["promoted_shear_included"]
+    hand_cr = tuple(float(value) for value in hand_section["cr_m"])
+    walls = wall_records(args.modified)
     unit_cases = [
         analyze_case("unit Px at CM", (1.0, 0.0, 0.0), walls, cm),
         analyze_case("unit Py at CM", (0.0, 1.0, 0.0), walls, cm),
@@ -242,7 +259,7 @@ def main() -> None:
         )
         additivity[wall_id] = total - parts
 
-    hand_k = hand["promoted_shear_included"]["K_at_cm"]
+    hand_k = hand_section["K_at_cm"]
     k_difference = [
         [stiffness[row][column] - hand_k[row][column] for column in range(3)]
         for row in range(3)
@@ -268,6 +285,7 @@ def main() -> None:
     )
     output = {
         "plan": "FloorPlan1",
+        "layout": "modified" if args.modified else "promoted baseline",
         "runtime": {
             "python": sys.version.split()[0],
             "opensees": ops.version(),
@@ -318,7 +336,8 @@ def main() -> None:
             "wall_force_additivity_residual_kN": additivity,
         },
     }
-    OUTPUT_PATH.write_text(
+    output_path = MODIFIED_OUTPUT_PATH if args.modified else OUTPUT_PATH
+    output_path.write_text(
         json.dumps(clean(output), indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
     )
     print(

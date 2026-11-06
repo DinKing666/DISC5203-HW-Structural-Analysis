@@ -1,0 +1,349 @@
+{
+  "plan": "FloorPlan1",
+  "mass_layout_changed": false,
+  "centreline_or_column_moved": false,
+  "modifications": {
+    "T3": {
+      "action": "rebuild the unresolved wall as continuous at the same centreline",
+      "old_thickness_m": 0.25,
+      "new_thickness_m": 0.309,
+      "old_continuous": false,
+      "new_continuous": true,
+      "centreline_moved_m": 0.0
+    },
+    "T7": {
+      "action": "thicken the existing shaft-edge wall at the same centreline",
+      "old_thickness_m": 0.25,
+      "new_thickness_m": 0.365,
+      "old_continuous": true,
+      "new_continuous": true,
+      "centreline_moved_m": 0.0
+    }
+  },
+  "mass": {
+    "regions": [
+      {
+        "name": "main floor",
+        "sign": 1.0,
+        "area_m2": 173.31,
+        "centroid_x_m": 5.45,
+        "centroid_y_m": 8.95,
+        "width_m": 10.9,
+        "height_m": 15.9
+      },
+      {
+        "name": "lower balcony",
+        "sign": 1.0,
+        "area_m2": 8.9,
+        "centroid_x_m": 5.45,
+        "centroid_y_m": 0.5,
+        "width_m": 8.9,
+        "height_m": 1.0
+      },
+      {
+        "name": "upper balcony",
+        "sign": 1.0,
+        "area_m2": 7.12,
+        "centroid_x_m": 5.45,
+        "centroid_y_m": 17.3,
+        "width_m": 8.9,
+        "height_m": 0.8
+      },
+      {
+        "name": "opening west",
+        "sign": -1.0,
+        "area_m2": -3.344,
+        "centroid_x_m": 4.02,
+        "centroid_y_m": 10.63,
+        "width_m": 1.1,
+        "height_m": 3.04
+      },
+      {
+        "name": "opening east",
+        "sign": -1.0,
+        "area_m2": -5.8575,
+        "centroid_x_m": 5.945,
+        "centroid_y_m": 10.175,
+        "width_m": 2.75,
+        "height_m": 2.13
+      }
+    ],
+    "effective_area_m2": 180.1285,
+    "cm_m": [
+      5.460450637,
+      8.79152226
+    ],
+    "polar_area_about_cm_m4": 6566.03148668,
+    "mass_per_storey_t": 160.665073904,
+    "five_storey_mass_t": 803.325369521,
+    "polar_mass_per_storey_t_m2": 5856.552039597
+  },
+  "architectural_constraints": "Keep every column, opening, wall centreline and the shaft grid fixed; rebuild T3 on its drawn line and thicken T7 toward the non-usable shaft side.",
+  "modified_shear": {
+    "included_walls": [
+      "T1",
+      "T2",
+      "T3",
+      "T4",
+      "T5",
+      "T6",
+      "T7",
+      "T8",
+      "T9",
+      "T10",
+      "T11"
+    ],
+    "K_at_cm": [
+      [
+        4148549.358995454,
+        0.0,
+        -903.240387002
+      ],
+      [
+        0.0,
+        4501420.496000331,
+        703.788832122
+      ],
+      [
+        -903.240387002,
+        703.788832122,
+        143484630.24561125
+      ]
+    ],
+    "F_at_cm": [
+      [
+        2.41e-07,
+        -0.0,
+        0.0
+      ],
+      [
+        -0.0,
+        2.22e-07,
+        -0.0
+      ],
+      [
+        0.0,
+        -0.0,
+        7e-09
+      ]
+    ],
+    "cr_m": [
+      5.460606985,
+      8.791739985
+    ],
+    "eccentricity_m": 0.000268046,
+    "direct_weighted_cr_m": [
+      5.460606985,
+      8.791739985
+    ]
+  },
+  "design_load_and_equilibrium": {
+    "design_force_kN": 1000.0,
+    "direction": "+x at CM",
+    "torque_about_cr_kNm": 0.217724392,
+    "torsional_stiffness_about_cr_kN_m": 143484629.93891773,
+    "rotation_rad": 2e-09,
+    "equilibrium_sum_fx_kN": 1000.0,
+    "equilibrium_sum_fy_kN": -0.0,
+    "equilibrium_moment_about_cr_kNm": 0.217724392
+  },
+  "push_turn_decoupling": {
+    "unit_x_at_cm_load": [
+      1.0,
+      0.0,
+      0.0
+    ],
+    "unit_x_at_cm_displacement": [
+      2.41e-07,
+      -0.0,
+      0.0
+    ],
+    "unit_x_at_cr_load_about_cm": [
+      1.0,
+      0.0,
+      -0.000217724
+    ],
+    "unit_x_at_cr_displacement": [
+      2.41e-07,
+      -0.0,
+      0.0
+    ],
+    "rotation_at_cm_push_rad": 0.0,
+    "rotation_at_cr_push_rad": 0.0,
+    "matrix_times_cm_displacement": [
+      1.0,
+      -0.0,
+      -0.0
+    ]
+  },
+  "modal_properties": {
+    "mass_matrix_at_cm": [
+      [
+        160.665073904,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        160.665073904,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        5856.552039597
+      ]
+    ],
+    "coupled_modes": [
+      {
+        "mode": 1,
+        "eigenvalue_rad2_s2": 24499.846420864,
+        "period_s": 0.040141924,
+        "mass_normalized_vector_at_cm": [
+          -5.56e-05,
+          1.6273e-05,
+          -0.01306709
+        ],
+        "kinetic_energy_fractions": {
+          "x-translation": 4.97e-07,
+          "y-translation": 4.3e-08,
+          "torsion": 0.999999461
+        },
+        "dominant_character": "torsion"
+      },
+      {
+        "mode": 2,
+        "eigenvalue_rad2_s2": 25821.103265436,
+        "period_s": 0.039101415,
+        "mass_normalized_vector_at_cm": [
+          0.078893124,
+          1.8e-08,
+          -9.209e-06
+        ],
+        "kinetic_energy_fractions": {
+          "x-translation": 0.999999503,
+          "y-translation": 0.0,
+          "torsion": 4.97e-07
+        },
+        "dominant_character": "x-translation"
+      },
+      {
+        "mode": 3,
+        "eigenvalue_rad2_s2": 28017.417915785,
+        "period_s": 0.037537541,
+        "mass_normalized_vector_at_cm": [
+          -7e-09,
+          0.078893142,
+          2.695e-06
+        ],
+        "kinetic_energy_fractions": {
+          "x-translation": 0.0,
+          "y-translation": 0.999999957,
+          "torsion": 4.3e-08
+        },
+        "dominant_character": "y-translation"
+      }
+    ],
+    "K_transformed_to_cr": [
+      [
+        4148549.358995454,
+        0.0,
+        -1e-09
+      ],
+      [
+        0.0,
+        4501420.496000331,
+        -0.0
+      ],
+      [
+        -1e-09,
+        -0.0,
+        143484629.9389177
+      ]
+    ],
+    "uncoupled_periods_s": {
+      "Tx": 0.039101415,
+      "Ty": 0.037537541,
+      "Ttheta": 0.040141924
+    },
+    "period_ratio_Ttheta_over_Tx": 1.026610505
+  },
+  "before_after": {
+    "cm_m": [
+      5.460450637,
+      8.79152226
+    ],
+    "cr_before_m": [
+      5.548844571,
+      9.89458886
+    ],
+    "cr_after_m": [
+      5.460606985,
+      8.791739985
+    ],
+    "eccentricity_before_m": 1.106602643,
+    "eccentricity_after_m": 0.000268046,
+    "eccentricity_reduction_percent": 99.975777574,
+    "baseline_most_torsion_amplified_wall": "T2",
+    "baseline_max_amplification_ratio": 1.326010555,
+    "baseline_torsional_radius_squared_m2": 29.758449885,
+    "baseline_torsional_radius_m": 5.455130602,
+    "peak_abs_wall_force_before_kN": 604.080243653,
+    "peak_abs_wall_force_after_kN": 582.193907218,
+    "wall_force_change_kN": {
+      "T1": 23.03322203,
+      "T2": -52.356381642,
+      "T3": 125.399787944,
+      "T4": -22.249010859,
+      "T5": -51.157069867,
+      "T6": 9.626231544,
+      "T7": 8.819483132,
+      "T8": -20.014137019,
+      "T9": -21.886336435,
+      "T10": 23.03322203,
+      "T11": -22.249010859
+    },
+    "period_ratio_Ttheta_over_Tx_before": 1.106764223,
+    "period_ratio_Ttheta_over_Tx_after": 1.026610505,
+    "first_mode_before": {
+      "mode": 1,
+      "eigenvalue_rad2_s2": 16418.658286317,
+      "period_s": 0.049035548,
+      "mass_normalized_vector_at_cm": [
+        0.043854901,
+        -0.002747335,
+        0.010852674
+      ],
+      "kinetic_energy_fractions": {
+        "x-translation": 0.308999479,
+        "y-translation": 0.001212676,
+        "torsion": 0.689787845
+      },
+      "dominant_character": "torsion"
+    },
+    "first_mode_after": {
+      "mode": 1,
+      "eigenvalue_rad2_s2": 24499.846420864,
+      "period_s": 0.040141924,
+      "mass_normalized_vector_at_cm": [
+        -5.56e-05,
+        1.6273e-05,
+        -0.01306709
+      ],
+      "kinetic_energy_fractions": {
+        "x-translation": 4.97e-07,
+        "y-translation": 4.3e-08,
+        "torsion": 0.999999461
+      },
+      "dominant_character": "torsion"
+    }
+  },
+  "checks": {
+    "cm_x_minus_cr_x_m": -0.000156348,
+    "cm_y_minus_cr_y_m": -0.000217724,
+    "unit_push_at_cr_rotation_abs_rad": 0.0,
+    "design_force_residual_kN": 0.0,
+    "cross_wall_force_residual_kN": -0.0,
+    "design_moment_residual_kNm": 0.0
+  }
+}

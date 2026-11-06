@@ -249,6 +249,40 @@ def verify_optional_later_stages() -> None:
                 - float(hand_rows[wall_id]["force_total_kN"])
             ) < 1e-5
 
+    modified_hand_path = PLAN / "results" / "modified-hand-FloorPlan1-HW3.json"
+    if modified_hand_path.exists():
+        modified = load_json(modified_hand_path)
+        assert modified["mass_layout_changed"] is False
+        assert modified["centreline_or_column_moved"] is False
+        assert modified["modifications"]["T3"]["new_thickness_m"] == 0.309
+        assert modified["modifications"]["T3"]["new_continuous"] is True
+        assert modified["modifications"]["T7"]["new_thickness_m"] == 0.365
+        before_after = modified["before_after"]
+        assert before_after["eccentricity_before_m"] > 1.1
+        assert before_after["eccentricity_after_m"] < 0.001
+        assert before_after["eccentricity_reduction_percent"] > 99.9
+        assert before_after["baseline_most_torsion_amplified_wall"] == "T2"
+        assert abs(before_after["baseline_max_amplification_ratio"] - 1.326010555) < 1e-8
+        assert before_after["period_ratio_Ttheta_over_Tx_after"] < before_after["period_ratio_Ttheta_over_Tx_before"]
+        assert max(abs(value) for value in modified["checks"].values()) < 0.001
+        require(PLAN / "results" / "modified-wall-forces-FloorPlan1-HW3.csv")
+        require(PLAN / "figures" / "hw3_07_modification_before_after.png")
+
+    modified_ops_path = PLAN / "results" / "opensees-modified-FloorPlan1-HW3.json"
+    if modified_ops_path.exists():
+        modified_ops = load_json(modified_ops_path)
+        assert modified_ops["layout"] == "modified"
+        assert modified_ops["model"]["included_walls"] == [
+            "T1", "T2", "T3", "T4", "T5", "T6", "T7", "T8", "T9", "T10", "T11"
+        ]
+        comparison = modified_ops["comparison_to_hand"]
+        assert comparison["cr_difference_norm_m"] < 1e-6
+        assert comparison["max_abs_K_relative_difference"] < 1e-4
+        assert abs(comparison["unit_push_through_cr_rotation_rad"]) < 1e-12
+        assert abs(comparison["design_wall_sum_x_kN"] - 1000.0) < 1e-5
+        assert abs(comparison["design_cross_wall_sum_y_kN"]) < 1e-5
+        assert comparison["max_wall_force_additivity_residual_kN"] < 1e-9
+
 
 def main() -> None:
     verify_frozen_inputs()

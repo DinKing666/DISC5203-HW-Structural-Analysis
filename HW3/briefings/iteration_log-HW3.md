@@ -161,3 +161,15 @@
 - OpenSees wall forces agree with every hand row within 1e-5 kN. Their x sum is 999.9999989 kN and cross-wall y sum is 2.17e-8 kN.
 - Determinism: a complete second build and all seven load cases reproduced the 33,967-byte JSON exactly, SHA-256 `51d9c2ed4dcb8e4d334cc8abafaec06c6c52c919f84d302e8b23533b12d4fa5a`.
 - Status: baseline model accepted pending automated checks and Git commit.
+
+## 2026-11-06 - Gate 6: make CM and CR coincide without moving the grid
+
+- Chosen modification keeps the slab mass regions, columns, openings and all wall centrelines fixed. T3 is rebuilt as a continuous 309 × 2000 mm wall on its extracted line; T7 is thickened from 250 to 365 mm toward the shaft side.
+- The two thicknesses come from independent stiffness-weighted coordinates: horizontal-wall stiffness controls `y_CR`, vertical-wall stiffness controls `x_CR`. Millimetre rounding is applied only after solving the exact required stiffness.
+- Modified hand result: CR = (5.4606070, 8.7917400) m versus CM = (5.4604506, 8.7915223) m. Eccentricity falls from 1.106603 m to 0.000268 m (99.9758 % reduction); the residual is 0.16 mm in x and 0.22 mm in y.
+- For the fixed 1000 kN +x design push, eccentric torque falls from 1103.067 to 0.218 kN·m and peak absolute wall force falls from 604.080 to 582.194 kN. Baseline T2 was most torsion-amplified at 1.3260 times its no-turn push share.
+- The characteristic Tθ/Tx ratio changes from 1.1068 to 1.0266. The torsion mode remains first but becomes 99.9999 % pure after CM/CR decoupling; coincidence removes modal mixing, not necessarily the ordering set by mass and stiffness.
+- Modified OpenSees gives CR = (5.4606069847, 8.7917399865) m, 1.55e-9 m from the modified hand value. Unit push through CR again has zero rotation; design wall-force sums and push-plus-turn additivity pass.
+- Architectural note: no wall is relocated into either opening and no column/grid line is disturbed. The exercise holds mass fixed, so the small wall self-weight change is excluded consistently from both before and after CM.
+- Determinism: the modified hand JSON/CSV/PNG and both baseline/modified OpenSees JSON files reproduced byte for byte on complete re-runs. Modified hand SHA-256 is `ff04e3888041b89add20e014675654cc49f00bc7126b927995f5fc65efaa4719`; modified OpenSees SHA-256 is `3bafffe4258e6ec10b98fecb85af26a814ef3ce67adf562b4a9caa731d0403b7`.
+- Status: modification accepted pending automated checks and Git commit.

@@ -1,5 +1,6 @@
 {
   "plan": "FloorPlan1",
+  "layout": "promoted baseline",
   "runtime": {
     "python": "3.12.4",
     "opensees": "3.8.0",

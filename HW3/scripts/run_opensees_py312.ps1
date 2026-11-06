@@ -19,7 +19,7 @@ if (-not (Test-Path -LiteralPath (Join-Path $repo '.opensees-py312\openseespy'))
 
 Push-Location $repo
 try {
-    & $python $script
+    & $python $script @args
     exit $LASTEXITCODE
 }
 finally {
