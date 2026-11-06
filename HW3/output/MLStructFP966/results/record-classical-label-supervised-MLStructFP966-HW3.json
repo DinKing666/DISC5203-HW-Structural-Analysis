@@ -1,0 +1,430 @@
+{
+  "source": {
+    "file": "floor966.png",
+    "path": "found/MLStructFP/floor966.png",
+    "sha256": "b1c7791cb2628e7c47c2e3cfcf0274b88bb38c39695afec8e1e0db625dc2c2d9",
+    "plan": "MLStructFP966",
+    "preprocessing": "Replace fully transparent RGBA pixels by white, exactly as the public MLStructFP loader does; preserve all non-transparent source pixels."
+  },
+  "elements": [],
+  "unclaimed_candidates": [
+    {
+      "candidate_id": "U001",
+      "component_id": 1,
+      "bbox_px": [
+        7126,
+        409,
+        93,
+        1352
+      ],
+      "area_px": 4210,
+      "centre_px": [
+        7157.851,
+        1117.495
+      ],
+      "aspect_ratio": 14.538,
+      "centre_m_from_dataset_scale": [
+        19.529969,
+        -3.04905
+      ],
+      "orientation_from_bbox": "vertical",
+      "bbox_length_m": 3.688889,
+      "nearest_frozen_reference": "R71337",
+      "nearest_reference_distance_m": 0.089501,
+      "nearest_reference_continuous": true,
+      "claimed_as_element": false,
+      "claim_failure": "no printed structural label and complete size"
+    },
+    {
+      "candidate_id": "U002",
+      "component_id": 2,
+      "bbox_px": [
+        6064,
+        567,
+        92,
+        1250
+      ],
+      "area_px": 5148,
+      "centre_px": [
+        6109.745,
+        1216.195
+      ],
+      "aspect_ratio": 13.587,
+      "centre_m_from_dataset_scale": [
+        16.670246,
+        -3.318349
+      ],
+      "orientation_from_bbox": "vertical",
+      "bbox_length_m": 3.410585,
+      "nearest_frozen_reference": "R71341",
+      "nearest_reference_distance_m": 0.05735,
+      "nearest_reference_continuous": true,
+      "claimed_as_element": false,
+      "claim_failure": "no printed structural label and complete size"
+    },
+    {
+      "candidate_id": "U003",
+      "component_id": 3,
+      "bbox_px": [
+        3784,
+        909,
+        82,
+        742
+      ],
+      "area_px": 1654,
+      "centre_px": [
+        3860.696,
+        1310.802
+      ],
+      "aspect_ratio": 9.049,
+      "centre_m_from_dataset_scale": [
+        10.533787,
+        -3.576482
+      ],
+      "orientation_from_bbox": "vertical",
+      "bbox_length_m": 2.024523,
+      "nearest_frozen_reference": "R71343",
+      "nearest_reference_distance_m": 0.155225,
+      "nearest_reference_continuous": true,
+      "claimed_as_element": false,
+      "claim_failure": "no printed structural label and complete size"
+    },
+    {
+      "candidate_id": "U004",
+      "component_id": 4,
+      "bbox_px": [
+        3755,
+        926,
+        2,
+        673
+      ],
+      "area_px": 1345,
+      "centre_px": [
+        3755.5,
+        1261.75
+      ],
+      "aspect_ratio": 336.5,
+      "centre_m_from_dataset_scale": [
+        10.246763,
+        -3.442645
+      ],
+      "orientation_from_bbox": "vertical",
+      "bbox_length_m": 1.836259,
+      "nearest_frozen_reference": "R71343",
+      "nearest_reference_distance_m": 0.16174,
+      "nearest_reference_continuous": true,
+      "claimed_as_element": false,
+      "claim_failure": "no printed structural label and complete size"
+    },
+    {
+      "candidate_id": "U005",
+      "component_id": 5,
+      "bbox_px": [
+        2379,
+        1117,
+        94,
+        1319
+      ],
+      "area_px": 5412,
+      "centre_px": [
+        2403.969,
+        1802.962
+      ],
+      "aspect_ratio": 14.032,
+      "centre_m_from_dataset_scale": [
+        6.559153,
+        -4.919325
+      ],
+      "orientation_from_bbox": "vertical",
+      "bbox_length_m": 3.59885,
+      "nearest_frozen_reference": "R71327",
+      "nearest_reference_distance_m": 0.087102,
+      "nearest_reference_continuous": true,
+      "claimed_as_element": false,
+      "claim_failure": "no printed structural label and complete size"
+    },
+    {
+      "candidate_id": "U006",
+      "component_id": 6,
+      "bbox_px": [
+        7528,
+        2544,
+        828,
+        75
+      ],
+      "area_px": 3596,
+      "centre_px": [
+        7941.5,
+        2581.0
+      ],
+      "aspect_ratio": 11.04,
+      "centre_m_from_dataset_scale": [
+        21.668131,
+        -7.042177
+      ],
+      "orientation_from_bbox": "horizontal",
+      "bbox_length_m": 2.259172,
+      "nearest_frozen_reference": "R71340",
+      "nearest_reference_distance_m": 0.001037,
+      "nearest_reference_continuous": true,
+      "claimed_as_element": false,
+      "claim_failure": "no printed structural label and complete size"
+    },
+    {
+      "candidate_id": "U007",
+      "component_id": 7,
+      "bbox_px": [
+        1262,
+        2911,
+        552,
+        111
+      ],
+      "area_px": 2636,
+      "centre_px": [
+        1537.5,
+        2966.0
+      ],
+      "aspect_ratio": 4.973,
+      "centre_m_from_dataset_scale": [
+        4.19502,
+        -8.092637
+      ],
+      "orientation_from_bbox": "horizontal",
+      "bbox_length_m": 1.506114,
+      "nearest_frozen_reference": "R71325",
+      "nearest_reference_distance_m": 0.000364,
+      "nearest_reference_continuous": true,
+      "claimed_as_element": false,
+      "claim_failure": "no printed structural label and complete size"
+    },
+    {
+      "candidate_id": "U008",
+      "component_id": 9,
+      "bbox_px": [
+        2984,
+        2911,
+        882,
+        111
+      ],
+      "area_px": 3956,
+      "centre_px": [
+        3424.5,
+        2966.0
+      ],
+      "aspect_ratio": 7.946,
+      "centre_m_from_dataset_scale": [
+        9.34364,
+        -8.092637
+      ],
+      "orientation_from_bbox": "horizontal",
+      "bbox_length_m": 2.406509,
+      "nearest_frozen_reference": "R71326",
+      "nearest_reference_distance_m": 0.001408,
+      "nearest_reference_continuous": true,
+      "claimed_as_element": false,
+      "claim_failure": "no printed structural label and complete size"
+    },
+    {
+      "candidate_id": "U009",
+      "component_id": 10,
+      "bbox_px": [
+        6100,
+        2911,
+        881,
+        111
+      ],
+      "area_px": 3952,
+      "centre_px": [
+        6540.0,
+        2966.0
+      ],
+      "aspect_ratio": 7.937,
+      "centre_m_from_dataset_scale": [
+        17.844183,
+        -8.092637
+      ],
+      "orientation_from_bbox": "horizontal",
+      "bbox_length_m": 2.403781,
+      "nearest_frozen_reference": "R71334",
+      "nearest_reference_distance_m": 0.000894,
+      "nearest_reference_continuous": true,
+      "claimed_as_element": false,
+      "claim_failure": "no printed structural label and complete size"
+    },
+    {
+      "candidate_id": "U010",
+      "component_id": 14,
+      "bbox_px": [
+        7528,
+        4706,
+        817,
+        76
+      ],
+      "area_px": 3556,
+      "centre_px": [
+        7936.0,
+        4743.5
+      ],
+      "aspect_ratio": 10.75,
+      "centre_m_from_dataset_scale": [
+        21.653124,
+        -12.942489
+      ],
+      "orientation_from_bbox": "horizontal",
+      "bbox_length_m": 2.229159,
+      "nearest_frozen_reference": "R71333",
+      "nearest_reference_distance_m": 0.000807,
+      "nearest_reference_continuous": true,
+      "claimed_as_element": false,
+      "claim_failure": "no printed structural label and complete size"
+    },
+    {
+      "candidate_id": "U011",
+      "component_id": 16,
+      "bbox_px": [
+        2664,
+        5344,
+        94,
+        868
+      ],
+      "area_px": 3741,
+      "centre_px": [
+        2710.512,
+        5787.789
+      ],
+      "aspect_ratio": 9.234,
+      "centre_m_from_dataset_scale": [
+        7.395546,
+        -15.791799
+      ],
+      "orientation_from_bbox": "vertical",
+      "bbox_length_m": 2.36831,
+      "nearest_frozen_reference": "R71316",
+      "nearest_reference_distance_m": 0.028804,
+      "nearest_reference_continuous": true,
+      "claimed_as_element": false,
+      "claim_failure": "no printed structural label and complete size"
+    },
+    {
+      "candidate_id": "U012",
+      "component_id": 17,
+      "bbox_px": [
+        3782,
+        5344,
+        94,
+        868
+      ],
+      "area_px": 4606,
+      "centre_px": [
+        3836.847,
+        5785.763
+      ],
+      "aspect_ratio": 9.234,
+      "centre_m_from_dataset_scale": [
+        10.468715,
+        -15.786271
+      ],
+      "orientation_from_bbox": "vertical",
+      "bbox_length_m": 2.36831,
+      "nearest_frozen_reference": "R71321",
+      "nearest_reference_distance_m": 0.033226,
+      "nearest_reference_continuous": true,
+      "claimed_as_element": false,
+      "claim_failure": "no printed structural label and complete size"
+    },
+    {
+      "candidate_id": "U013",
+      "component_id": 18,
+      "bbox_px": [
+        6054,
+        5344,
+        94,
+        868
+      ],
+      "area_px": 3741,
+      "centre_px": [
+        6100.512,
+        5787.789
+      ],
+      "aspect_ratio": 9.234,
+      "centre_m_from_dataset_scale": [
+        16.645054,
+        -15.791799
+      ],
+      "orientation_from_bbox": "vertical",
+      "bbox_length_m": 2.36831,
+      "nearest_frozen_reference": "R71331",
+      "nearest_reference_distance_m": 0.028799,
+      "nearest_reference_continuous": true,
+      "claimed_as_element": false,
+      "claim_failure": "no printed structural label and complete size"
+    },
+    {
+      "candidate_id": "U014",
+      "component_id": 19,
+      "bbox_px": [
+        7135,
+        5344,
+        94,
+        868
+      ],
+      "area_px": 3742,
+      "centre_px": [
+        7181.5,
+        5787.902
+      ],
+      "aspect_ratio": 9.234,
+      "centre_m_from_dataset_scale": [
+        19.594495,
+        -15.792107
+      ],
+      "orientation_from_bbox": "vertical",
+      "bbox_length_m": 2.36831,
+      "nearest_frozen_reference": "R71332",
+      "nearest_reference_distance_m": 0.029111,
+      "nearest_reference_continuous": true,
+      "claimed_as_element": false,
+      "claim_failure": "no printed structural label and complete size"
+    },
+    {
+      "candidate_id": "U015",
+      "component_id": 20,
+      "bbox_px": [
+        7639,
+        6466,
+        698,
+        111
+      ],
+      "area_px": 3220,
+      "centre_px": [
+        7987.5,
+        6521.0
+      ],
+      "aspect_ratio": 6.288,
+      "centre_m_from_dataset_scale": [
+        21.79364,
+        -17.792342
+      ],
+      "orientation_from_bbox": "horizontal",
+      "bbox_length_m": 1.904471,
+      "nearest_frozen_reference": "R71335",
+      "nearest_reference_distance_m": 0.00151,
+      "nearest_reference_continuous": true,
+      "claimed_as_element": false,
+      "claim_failure": "no printed structural label and complete size"
+    }
+  ],
+  "floor": {
+    "pipeline_geometry": null,
+    "reason": "the fixed label-supervision route cannot instantiate a floor polygon from this coloured-line source"
+  },
+  "method": {
+    "locked_to_floorplan1_parameters": true,
+    "parameter_file": "config/classical-params-HW3.json",
+    "labels_supervise_one_element": true,
+    "forest_selected": false,
+    "vlm_used_for_coordinates": false,
+    "reference_used_to_claim_elements": false
+  },
+  "generalization_status": "failed safely at label supervision; no auditable element record promoted"
+}

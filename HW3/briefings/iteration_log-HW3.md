@@ -255,3 +255,13 @@
 - Bending-only eccentricity exceeds the shear-included value, so retaining the assignment's shear term remains material. The single-storey reference periods are Tx = 0.07077 s, Ty = 0.05504 s and Ttheta = 0.06752 s.
 - Visual review accepts the extracted wall layout, nearly coincident extracted/reference CR markers and the push-plus-turn force chart.
 - Status: accepted pending byte-for-byte rerun, automated checks and Git commit.
+
+## 2026-11-06 - Gate 7f: locked classical reader on public MLStructFP Floor 966
+
+- Preprocessed only as declared by the public loader: fully transparent pixels become white, while every non-transparent blue source pixel is preserved. Threshold 225, 11-px diagonal opening, 17/21-px orthogonal openings, 4:1 shape rule and OCR threshold 0.85 are unchanged from FloorPlan1.
+- Two-pass OCR produced one low-confidence `_` hallucination at 0.618 and no accepted text. This agrees with the frozen public annotation: zero printed C/T label-size strings.
+- The fixed morphology keeps 20 connected components and 15 elongated candidates. Label supervision claims zero structural elements, so the pipeline fails safely instead of borrowing public annotation IDs or sizes into its own record.
+- Post-run audit against the already frozen dataset annotation finds all 15 candidate centres within 0.25 m of a reference rectangle, but only 14 unique rectangles are hit out of 28 (50 % unique-reference recall). One wall edge is split into two candidates, while five connected L/C composites fail the 4:1 rule and contain several missed rectangles.
+- All 15 unclaimed candidates receive one local crop and one unique continuity question. Each crop is far smaller than the 9600 x 6784 whole plan; VLMs remain prohibited from seeing the full image or supplying coordinates.
+- First visual review found the U003/U004 labels overlapping on the duplicate split wall. Correct only the audit annotation positions; candidate boxes, crops, order, questions and hashes do not change.
+- Status: the honest zero-element record and 15-flag manifest are accepted pending deterministic rerun, automated checks and Git commit.

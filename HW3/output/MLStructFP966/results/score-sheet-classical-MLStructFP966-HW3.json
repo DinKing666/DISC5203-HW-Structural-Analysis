@@ -1,0 +1,29 @@
+{
+  "plan": "MLStructFP966",
+  "image_shape_px": [
+    9600,
+    6784
+  ],
+  "fixed_parameters": {
+    "grey_threshold": 225,
+    "diagonal_kernel_px": 11,
+    "horizontal_open_px": 17,
+    "vertical_open_px": 21,
+    "shape_ratio_min": 4.0,
+    "ocr_acceptance": 0.85
+  },
+  "ocr_detections_original": 1,
+  "ocr_detections_long_lines_removed": 0,
+  "ocr_above_threshold": 0,
+  "printed_element_size_labels_reference": 0,
+  "connected_components_kept": 20,
+  "shape_rule_elongated_candidates": 15,
+  "label_claimed_elements": 0,
+  "unclaimed_flags": 15,
+  "audit_candidate_matches_within_0_25m": 15,
+  "audit_unique_reference_rectangles_hit": 14,
+  "audit_reference_rectangles_total": 28,
+  "audit_unique_reference_recall": 0.5,
+  "audit_duplicate_candidate_count": 1,
+  "structural_record_available": false
+}

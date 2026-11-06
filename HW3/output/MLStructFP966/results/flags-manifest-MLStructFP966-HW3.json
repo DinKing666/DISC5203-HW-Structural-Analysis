@@ -1,0 +1,371 @@
+{
+  "plan": "MLStructFP966",
+  "confidence_threshold": 0.85,
+  "reference": "config/reference-dataset-MLStructFP966-HW3.json",
+  "crops_frozen_before_vlm": true,
+  "whole_plan_crop_prohibited": true,
+  "question_order": [
+    "MLStructFP966:U001:unclaimed_bar",
+    "MLStructFP966:U002:unclaimed_bar",
+    "MLStructFP966:U003:unclaimed_bar",
+    "MLStructFP966:U004:unclaimed_bar",
+    "MLStructFP966:U005:unclaimed_bar",
+    "MLStructFP966:U006:unclaimed_bar",
+    "MLStructFP966:U007:unclaimed_bar",
+    "MLStructFP966:U008:unclaimed_bar",
+    "MLStructFP966:U009:unclaimed_bar",
+    "MLStructFP966:U010:unclaimed_bar",
+    "MLStructFP966:U011:unclaimed_bar",
+    "MLStructFP966:U012:unclaimed_bar",
+    "MLStructFP966:U013:unclaimed_bar",
+    "MLStructFP966:U014:unclaimed_bar",
+    "MLStructFP966:U015:unclaimed_bar"
+  ],
+  "flags": [
+    {
+      "flag_id": "MLStructFP966:U001:unclaimed_bar",
+      "label": "U001",
+      "flag": "unclaimed_bar_no_printed_label_or_size",
+      "source": "locked classical shape-rule candidate",
+      "question": "For unclaimed candidate U001, is one continuous structural bar visible in this crop? No printed element label or complete size is available; use label U001 and size_mm NOT_VISIBLE, then answer continuity only.",
+      "answer_schema": {
+        "label": "U001",
+        "size_mm": "NOT_VISIBLE",
+        "continuous": true,
+        "confidence": "0..1",
+        "reason": "short text"
+      },
+      "crop": "output/MLStructFP966/flags/crops/MLStructFP966-U001-flag.png",
+      "crop_box_px": [
+        7030,
+        313,
+        7315,
+        1857
+      ],
+      "crop_sha256": "900b8ee2385c732a3e3541fa85e6b4e1174cb3b2c8b21b2befad7bd99ed360b3",
+      "nearest_frozen_reference": "R71337"
+    },
+    {
+      "flag_id": "MLStructFP966:U002:unclaimed_bar",
+      "label": "U002",
+      "flag": "unclaimed_bar_no_printed_label_or_size",
+      "source": "locked classical shape-rule candidate",
+      "question": "For unclaimed candidate U002, is one continuous structural bar visible in this crop? No printed element label or complete size is available; use label U002 and size_mm NOT_VISIBLE, then answer continuity only.",
+      "answer_schema": {
+        "label": "U002",
+        "size_mm": "NOT_VISIBLE",
+        "continuous": true,
+        "confidence": "0..1",
+        "reason": "short text"
+      },
+      "crop": "output/MLStructFP966/flags/crops/MLStructFP966-U002-flag.png",
+      "crop_box_px": [
+        5968,
+        471,
+        6252,
+        1913
+      ],
+      "crop_sha256": "29bf78c6c0ba6edb46864358a64a988bf19d18aa775a63c7cba68e930b62091b",
+      "nearest_frozen_reference": "R71341"
+    },
+    {
+      "flag_id": "MLStructFP966:U003:unclaimed_bar",
+      "label": "U003",
+      "flag": "unclaimed_bar_no_printed_label_or_size",
+      "source": "locked classical shape-rule candidate",
+      "question": "For unclaimed candidate U003, is one continuous structural bar visible in this crop? No printed element label or complete size is available; use label U003 and size_mm NOT_VISIBLE, then answer continuity only.",
+      "answer_schema": {
+        "label": "U003",
+        "size_mm": "NOT_VISIBLE",
+        "continuous": true,
+        "confidence": "0..1",
+        "reason": "short text"
+      },
+      "crop": "output/MLStructFP966/flags/crops/MLStructFP966-U003-flag.png",
+      "crop_box_px": [
+        3688,
+        813,
+        3962,
+        1747
+      ],
+      "crop_sha256": "25bd9b4b212b89b9c508c4e57cd9df2ea40fde38f07fb1a57a379006a8bcc746",
+      "nearest_frozen_reference": "R71343"
+    },
+    {
+      "flag_id": "MLStructFP966:U004:unclaimed_bar",
+      "label": "U004",
+      "flag": "unclaimed_bar_no_printed_label_or_size",
+      "source": "locked classical shape-rule candidate",
+      "question": "For unclaimed candidate U004, is one continuous structural bar visible in this crop? No printed element label or complete size is available; use label U004 and size_mm NOT_VISIBLE, then answer continuity only.",
+      "answer_schema": {
+        "label": "U004",
+        "size_mm": "NOT_VISIBLE",
+        "continuous": true,
+        "confidence": "0..1",
+        "reason": "short text"
+      },
+      "crop": "output/MLStructFP966/flags/crops/MLStructFP966-U004-flag.png",
+      "crop_box_px": [
+        3659,
+        830,
+        3853,
+        1695
+      ],
+      "crop_sha256": "bf8ca486be0a7a34db472ba87a39cfed2cc00bc8012f5426d6adeb6463ced7dd",
+      "nearest_frozen_reference": "R71343"
+    },
+    {
+      "flag_id": "MLStructFP966:U005:unclaimed_bar",
+      "label": "U005",
+      "flag": "unclaimed_bar_no_printed_label_or_size",
+      "source": "locked classical shape-rule candidate",
+      "question": "For unclaimed candidate U005, is one continuous structural bar visible in this crop? No printed element label or complete size is available; use label U005 and size_mm NOT_VISIBLE, then answer continuity only.",
+      "answer_schema": {
+        "label": "U005",
+        "size_mm": "NOT_VISIBLE",
+        "continuous": true,
+        "confidence": "0..1",
+        "reason": "short text"
+      },
+      "crop": "output/MLStructFP966/flags/crops/MLStructFP966-U005-flag.png",
+      "crop_box_px": [
+        2283,
+        1021,
+        2569,
+        2532
+      ],
+      "crop_sha256": "6d7b85b17c2ed1a73996e189ff50f1929baa2b68447e53a253046e0692c4ef19",
+      "nearest_frozen_reference": "R71327"
+    },
+    {
+      "flag_id": "MLStructFP966:U006:unclaimed_bar",
+      "label": "U006",
+      "flag": "unclaimed_bar_no_printed_label_or_size",
+      "source": "locked classical shape-rule candidate",
+      "question": "For unclaimed candidate U006, is one continuous structural bar visible in this crop? No printed element label or complete size is available; use label U006 and size_mm NOT_VISIBLE, then answer continuity only.",
+      "answer_schema": {
+        "label": "U006",
+        "size_mm": "NOT_VISIBLE",
+        "continuous": true,
+        "confidence": "0..1",
+        "reason": "short text"
+      },
+      "crop": "output/MLStructFP966/flags/crops/MLStructFP966-U006-flag.png",
+      "crop_box_px": [
+        7432,
+        2448,
+        8452,
+        2715
+      ],
+      "crop_sha256": "1e781cb890ffd367b5d6e4523b55958f09ecaf5233dc4c569aa6e61c90f40989",
+      "nearest_frozen_reference": "R71340"
+    },
+    {
+      "flag_id": "MLStructFP966:U007:unclaimed_bar",
+      "label": "U007",
+      "flag": "unclaimed_bar_no_printed_label_or_size",
+      "source": "locked classical shape-rule candidate",
+      "question": "For unclaimed candidate U007, is one continuous structural bar visible in this crop? No printed element label or complete size is available; use label U007 and size_mm NOT_VISIBLE, then answer continuity only.",
+      "answer_schema": {
+        "label": "U007",
+        "size_mm": "NOT_VISIBLE",
+        "continuous": true,
+        "confidence": "0..1",
+        "reason": "short text"
+      },
+      "crop": "output/MLStructFP966/flags/crops/MLStructFP966-U007-flag.png",
+      "crop_box_px": [
+        1166,
+        2815,
+        1910,
+        3118
+      ],
+      "crop_sha256": "56743eb1c0dfdd6b0c914cdccd7fa143159613ed97b84e913b9248b14307d4fc",
+      "nearest_frozen_reference": "R71325"
+    },
+    {
+      "flag_id": "MLStructFP966:U008:unclaimed_bar",
+      "label": "U008",
+      "flag": "unclaimed_bar_no_printed_label_or_size",
+      "source": "locked classical shape-rule candidate",
+      "question": "For unclaimed candidate U008, is one continuous structural bar visible in this crop? No printed element label or complete size is available; use label U008 and size_mm NOT_VISIBLE, then answer continuity only.",
+      "answer_schema": {
+        "label": "U008",
+        "size_mm": "NOT_VISIBLE",
+        "continuous": true,
+        "confidence": "0..1",
+        "reason": "short text"
+      },
+      "crop": "output/MLStructFP966/flags/crops/MLStructFP966-U008-flag.png",
+      "crop_box_px": [
+        2888,
+        2815,
+        3962,
+        3118
+      ],
+      "crop_sha256": "8029eb555931f89fd02eb97f007efa92513f62f013b9c99b4cc47d1d2f948f24",
+      "nearest_frozen_reference": "R71326"
+    },
+    {
+      "flag_id": "MLStructFP966:U009:unclaimed_bar",
+      "label": "U009",
+      "flag": "unclaimed_bar_no_printed_label_or_size",
+      "source": "locked classical shape-rule candidate",
+      "question": "For unclaimed candidate U009, is one continuous structural bar visible in this crop? No printed element label or complete size is available; use label U009 and size_mm NOT_VISIBLE, then answer continuity only.",
+      "answer_schema": {
+        "label": "U009",
+        "size_mm": "NOT_VISIBLE",
+        "continuous": true,
+        "confidence": "0..1",
+        "reason": "short text"
+      },
+      "crop": "output/MLStructFP966/flags/crops/MLStructFP966-U009-flag.png",
+      "crop_box_px": [
+        6004,
+        2815,
+        7077,
+        3118
+      ],
+      "crop_sha256": "9d6305741bcfe8f371c2ec64609d901ab2b6bde4c66625118a2d6783f5eb8d23",
+      "nearest_frozen_reference": "R71334"
+    },
+    {
+      "flag_id": "MLStructFP966:U010:unclaimed_bar",
+      "label": "U010",
+      "flag": "unclaimed_bar_no_printed_label_or_size",
+      "source": "locked classical shape-rule candidate",
+      "question": "For unclaimed candidate U010, is one continuous structural bar visible in this crop? No printed element label or complete size is available; use label U010 and size_mm NOT_VISIBLE, then answer continuity only.",
+      "answer_schema": {
+        "label": "U010",
+        "size_mm": "NOT_VISIBLE",
+        "continuous": true,
+        "confidence": "0..1",
+        "reason": "short text"
+      },
+      "crop": "output/MLStructFP966/flags/crops/MLStructFP966-U010-flag.png",
+      "crop_box_px": [
+        7432,
+        4610,
+        8441,
+        4878
+      ],
+      "crop_sha256": "25dc90544c1ad268dd51059ee2a5dd53ddaa85f3c7d422163b52c6ba5a1da328",
+      "nearest_frozen_reference": "R71333"
+    },
+    {
+      "flag_id": "MLStructFP966:U011:unclaimed_bar",
+      "label": "U011",
+      "flag": "unclaimed_bar_no_printed_label_or_size",
+      "source": "locked classical shape-rule candidate",
+      "question": "For unclaimed candidate U011, is one continuous structural bar visible in this crop? No printed element label or complete size is available; use label U011 and size_mm NOT_VISIBLE, then answer continuity only.",
+      "answer_schema": {
+        "label": "U011",
+        "size_mm": "NOT_VISIBLE",
+        "continuous": true,
+        "confidence": "0..1",
+        "reason": "short text"
+      },
+      "crop": "output/MLStructFP966/flags/crops/MLStructFP966-U011-flag.png",
+      "crop_box_px": [
+        2568,
+        5248,
+        2854,
+        6308
+      ],
+      "crop_sha256": "755ee4b83e2176fd4c37794d58ed77fc80df039c530d33ef2a2573d2b774474f",
+      "nearest_frozen_reference": "R71316"
+    },
+    {
+      "flag_id": "MLStructFP966:U012:unclaimed_bar",
+      "label": "U012",
+      "flag": "unclaimed_bar_no_printed_label_or_size",
+      "source": "locked classical shape-rule candidate",
+      "question": "For unclaimed candidate U012, is one continuous structural bar visible in this crop? No printed element label or complete size is available; use label U012 and size_mm NOT_VISIBLE, then answer continuity only.",
+      "answer_schema": {
+        "label": "U012",
+        "size_mm": "NOT_VISIBLE",
+        "continuous": true,
+        "confidence": "0..1",
+        "reason": "short text"
+      },
+      "crop": "output/MLStructFP966/flags/crops/MLStructFP966-U012-flag.png",
+      "crop_box_px": [
+        3686,
+        5248,
+        3972,
+        6308
+      ],
+      "crop_sha256": "7321cb657dfb2ea3d2dac4029b0645181f730d64768ba1eb1e8a0733daa3a50f",
+      "nearest_frozen_reference": "R71321"
+    },
+    {
+      "flag_id": "MLStructFP966:U013:unclaimed_bar",
+      "label": "U013",
+      "flag": "unclaimed_bar_no_printed_label_or_size",
+      "source": "locked classical shape-rule candidate",
+      "question": "For unclaimed candidate U013, is one continuous structural bar visible in this crop? No printed element label or complete size is available; use label U013 and size_mm NOT_VISIBLE, then answer continuity only.",
+      "answer_schema": {
+        "label": "U013",
+        "size_mm": "NOT_VISIBLE",
+        "continuous": true,
+        "confidence": "0..1",
+        "reason": "short text"
+      },
+      "crop": "output/MLStructFP966/flags/crops/MLStructFP966-U013-flag.png",
+      "crop_box_px": [
+        5958,
+        5248,
+        6244,
+        6308
+      ],
+      "crop_sha256": "755ee4b83e2176fd4c37794d58ed77fc80df039c530d33ef2a2573d2b774474f",
+      "nearest_frozen_reference": "R71331"
+    },
+    {
+      "flag_id": "MLStructFP966:U014:unclaimed_bar",
+      "label": "U014",
+      "flag": "unclaimed_bar_no_printed_label_or_size",
+      "source": "locked classical shape-rule candidate",
+      "question": "For unclaimed candidate U014, is one continuous structural bar visible in this crop? No printed element label or complete size is available; use label U014 and size_mm NOT_VISIBLE, then answer continuity only.",
+      "answer_schema": {
+        "label": "U014",
+        "size_mm": "NOT_VISIBLE",
+        "continuous": true,
+        "confidence": "0..1",
+        "reason": "short text"
+      },
+      "crop": "output/MLStructFP966/flags/crops/MLStructFP966-U014-flag.png",
+      "crop_box_px": [
+        7039,
+        5248,
+        7325,
+        6308
+      ],
+      "crop_sha256": "ee0c3df5a88e4f73925362eefb01c5e6845e8e322e4440f7b78848490befe7a7",
+      "nearest_frozen_reference": "R71332"
+    },
+    {
+      "flag_id": "MLStructFP966:U015:unclaimed_bar",
+      "label": "U015",
+      "flag": "unclaimed_bar_no_printed_label_or_size",
+      "source": "locked classical shape-rule candidate",
+      "question": "For unclaimed candidate U015, is one continuous structural bar visible in this crop? No printed element label or complete size is available; use label U015 and size_mm NOT_VISIBLE, then answer continuity only.",
+      "answer_schema": {
+        "label": "U015",
+        "size_mm": "NOT_VISIBLE",
+        "continuous": true,
+        "confidence": "0..1",
+        "reason": "short text"
+      },
+      "crop": "output/MLStructFP966/flags/crops/MLStructFP966-U015-flag.png",
+      "crop_box_px": [
+        7543,
+        6370,
+        8433,
+        6673
+      ],
+      "crop_sha256": "8a87f19434ff5008f161173caf88b67169a01c6123c8e130aa9189f97e4ab074",
+      "nearest_frozen_reference": "R71335"
+    }
+  ]
+}

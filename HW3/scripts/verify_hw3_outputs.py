@@ -369,6 +369,94 @@ def verify_newplan_structural() -> None:
     require(plan_dir / "figures" / "hw3_13_newplan_cm_cr_and_wall_forces.png")
 
 
+def verify_mlstruct_classical() -> None:
+    plan_dir = ROOT / "output" / "MLStructFP966"
+    record_path = (
+        plan_dir
+        / "results"
+        / "record-classical-label-supervised-MLStructFP966-HW3.json"
+    )
+    if not record_path.exists():
+        return
+    record = load_json(record_path)
+    assert record["elements"] == []
+    assert len(record["unclaimed_candidates"]) == 15
+    assert record["floor"]["pipeline_geometry"] is None
+    assert record["method"]["locked_to_floorplan1_parameters"] is True
+    assert record["method"]["forest_selected"] is False
+    assert record["method"]["vlm_used_for_coordinates"] is False
+    assert record["method"]["reference_used_to_claim_elements"] is False
+    assert "failed safely" in record["generalization_status"]
+    candidate_ids = [item["candidate_id"] for item in record["unclaimed_candidates"]]
+    assert candidate_ids == [f"U{index:03d}" for index in range(1, 16)]
+    assert all(item["claimed_as_element"] is False for item in record["unclaimed_candidates"])
+    assert all(item["nearest_reference_distance_m"] < 0.25 for item in record["unclaimed_candidates"])
+
+    score = load_json(
+        plan_dir / "results" / "score-sheet-classical-MLStructFP966-HW3.json"
+    )
+    assert score["image_shape_px"] == [9600, 6784]
+    assert score["fixed_parameters"] == {
+        "grey_threshold": 225,
+        "diagonal_kernel_px": 11,
+        "horizontal_open_px": 17,
+        "vertical_open_px": 21,
+        "shape_ratio_min": 4.0,
+        "ocr_acceptance": 0.85,
+    }
+    assert score["ocr_detections_original"] == 1
+    assert score["ocr_detections_long_lines_removed"] == 0
+    assert score["ocr_above_threshold"] == 0
+    assert score["printed_element_size_labels_reference"] == 0
+    assert score["connected_components_kept"] == 20
+    assert score["shape_rule_elongated_candidates"] == 15
+    assert score["label_claimed_elements"] == 0
+    assert score["unclaimed_flags"] == 15
+    assert score["audit_candidate_matches_within_0_25m"] == 15
+    assert score["audit_unique_reference_rectangles_hit"] == 14
+    assert score["audit_reference_rectangles_total"] == 28
+    assert score["audit_unique_reference_recall"] == 0.5
+    assert score["audit_duplicate_candidate_count"] == 1
+    assert score["structural_record_available"] is False
+
+    manifest = load_json(
+        plan_dir / "results" / "flags-manifest-MLStructFP966-HW3.json"
+    )
+    assert manifest["crops_frozen_before_vlm"] is True
+    assert manifest["whole_plan_crop_prohibited"] is True
+    assert manifest["confidence_threshold"] == 0.85
+    assert len(manifest["flags"]) == 15
+    assert manifest["question_order"] == [item["flag_id"] for item in manifest["flags"]]
+    seen_questions = set()
+    for item in manifest["flags"]:
+        crop = ROOT / item["crop"]
+        require(crop)
+        assert hashlib.sha256(crop.read_bytes()).hexdigest() == item["crop_sha256"]
+        x0, y0, x1, y1 = item["crop_box_px"]
+        assert 0 < x1 - x0 < 1200
+        assert 0 < y1 - y0 < 1600
+        assert item["answer_schema"]["size_mm"] == "NOT_VISIBLE"
+        assert item["question"] not in seen_questions
+        seen_questions.add(item["question"])
+
+    for name in (
+        "hw3_14_mlstruct_classical_morphology.png",
+        "hw3_15_mlstruct_connected_components.png",
+        "hw3_16_mlstruct_label_supervision_failure.png",
+        "hw3_17_mlstruct_reference_comparison.png",
+    ):
+        require(plan_dir / "figures" / name)
+    for name in (
+        "mlstruct-composited-white.png",
+        "mlstruct-threshold.png",
+        "mlstruct-diagonal-support.png",
+        "mlstruct-horizontal-open17.png",
+        "mlstruct-vertical-open21.png",
+        "mlstruct-long-lines-removed.png",
+    ):
+        require(plan_dir / "intermediate" / name)
+
+
 def verify_optional_later_stages() -> None:
     forest = PLAN / "results" / "random-forest-summary-HW3.json"
     if forest.exists():
@@ -569,6 +657,7 @@ def main() -> None:
     verify_newplan_forest()
     verify_newplan_vlm()
     verify_newplan_structural()
+    verify_mlstruct_classical()
     verify_optional_later_stages()
     print("HW3 verification passed: frozen inputs, classical/forest gates, identical dual-VLM evidence, syntax audit and promoted-copy invariants are present.")
 
