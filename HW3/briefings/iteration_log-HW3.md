@@ -256,6 +256,13 @@
 - Visual review accepts the extracted wall layout, nearly coincident extracted/reference CR markers and the push-plus-turn force chart.
 - Status: accepted pending byte-for-byte rerun, automated checks and Git commit.
 
+## 2026-11-06 - Gate 7h: freeze the MLStructFP crop-audit reference before VLM
+
+- Pair each committed U001:U015 candidate centre to its nearest already frozen MLStructFP rectangle; all distances are below 0.25 m. The public annotation is used only to audit continuity and never to assign the missing printed ID, size or candidate coordinates.
+- Freeze `NOT_VISIBLE` as an explicit size sentinel because no complete dimension appears in any crop. It is not a numeric wall size and cannot enter the structural stiffness calculation.
+- The reference explicitly sets `can_supply_structural_geometry` false. Even a perfect VLM continuity score cannot promote the zero-element classical record into a structural extraction.
+- Status: reference frozen before either VLM sees an MLStructFP crop; pending hash verification and Git commit.
+
 ## 2026-11-06 - Gate 7f: locked classical reader on public MLStructFP Floor 966
 
 - Preprocessed only as declared by the public loader: fully transparent pixels become white, while every non-transparent blue source pixel is preserved. Threshold 225, 11-px diagonal opening, 17/21-px orthogonal openings, 4:1 shape rule and OCR threshold 0.85 are unchanged from FloorPlan1.

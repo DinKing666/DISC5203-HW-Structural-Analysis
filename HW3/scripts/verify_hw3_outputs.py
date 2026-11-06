@@ -84,6 +84,27 @@ def verify_task8_frozen_sources() -> None:
         for item in found_reference["wall_rectangles"]
     )
 
+    flag_reference_path = (
+        ROOT / "config" / "reference-flags-MLStructFP966-HW3.json"
+    )
+    if flag_reference_path.exists():
+        flag_reference = load_json(flag_reference_path)
+        assert flag_reference["built_before_vlm"] is True
+        assert flag_reference["source_sha256"] == found["sha256"]
+        assert flag_reference["candidate_count"] == 15
+        assert flag_reference["can_supply_structural_geometry"] is False
+        assert list(flag_reference["walls"]) == [
+            f"U{index:03d}" for index in range(1, 16)
+        ]
+        assert all(
+            item["size_mm"] == "NOT_VISIBLE"
+            and item["continuous"] is True
+            and item["printed_label_present"] is False
+            and item["printed_complete_size_present"] is False
+            and item["nearest_reference_distance_m"] < 0.25
+            for item in flag_reference["walls"].values()
+        )
+
 
 def verify_classical() -> None:
     params = load_json(ROOT / "config" / "classical-params-HW3.json")

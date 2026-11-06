@@ -1,0 +1,161 @@
+{
+  "plan": "MLStructFP966",
+  "built_before_vlm": true,
+  "reference_route": "Each committed classical candidate is paired to the nearest already-frozen MLStructFP rectangle within 0.25 m. The public annotation supplies continuity only; NOT_VISIBLE records that no complete size is printed in the crop.",
+  "source_reference": "config/reference-dataset-MLStructFP966-HW3.json",
+  "source_sha256": "b1c7791cb2628e7c47c2e3cfcf0274b88bb38c39695afec8e1e0db625dc2c2d9",
+  "candidate_count": 15,
+  "can_supply_structural_geometry": false,
+  "walls": {
+    "U001": {
+      "internal_candidate_id": "U001",
+      "size_mm": "NOT_VISIBLE",
+      "continuous": true,
+      "printed_label_present": false,
+      "printed_complete_size_present": false,
+      "nearest_dataset_reference": "R71337",
+      "nearest_reference_distance_m": 0.089501,
+      "reference_role": "continuity audit only; not an element identity or size"
+    },
+    "U002": {
+      "internal_candidate_id": "U002",
+      "size_mm": "NOT_VISIBLE",
+      "continuous": true,
+      "printed_label_present": false,
+      "printed_complete_size_present": false,
+      "nearest_dataset_reference": "R71341",
+      "nearest_reference_distance_m": 0.05735,
+      "reference_role": "continuity audit only; not an element identity or size"
+    },
+    "U003": {
+      "internal_candidate_id": "U003",
+      "size_mm": "NOT_VISIBLE",
+      "continuous": true,
+      "printed_label_present": false,
+      "printed_complete_size_present": false,
+      "nearest_dataset_reference": "R71343",
+      "nearest_reference_distance_m": 0.155225,
+      "reference_role": "continuity audit only; not an element identity or size"
+    },
+    "U004": {
+      "internal_candidate_id": "U004",
+      "size_mm": "NOT_VISIBLE",
+      "continuous": true,
+      "printed_label_present": false,
+      "printed_complete_size_present": false,
+      "nearest_dataset_reference": "R71343",
+      "nearest_reference_distance_m": 0.16174,
+      "reference_role": "continuity audit only; not an element identity or size"
+    },
+    "U005": {
+      "internal_candidate_id": "U005",
+      "size_mm": "NOT_VISIBLE",
+      "continuous": true,
+      "printed_label_present": false,
+      "printed_complete_size_present": false,
+      "nearest_dataset_reference": "R71327",
+      "nearest_reference_distance_m": 0.087102,
+      "reference_role": "continuity audit only; not an element identity or size"
+    },
+    "U006": {
+      "internal_candidate_id": "U006",
+      "size_mm": "NOT_VISIBLE",
+      "continuous": true,
+      "printed_label_present": false,
+      "printed_complete_size_present": false,
+      "nearest_dataset_reference": "R71340",
+      "nearest_reference_distance_m": 0.001037,
+      "reference_role": "continuity audit only; not an element identity or size"
+    },
+    "U007": {
+      "internal_candidate_id": "U007",
+      "size_mm": "NOT_VISIBLE",
+      "continuous": true,
+      "printed_label_present": false,
+      "printed_complete_size_present": false,
+      "nearest_dataset_reference": "R71325",
+      "nearest_reference_distance_m": 0.000364,
+      "reference_role": "continuity audit only; not an element identity or size"
+    },
+    "U008": {
+      "internal_candidate_id": "U008",
+      "size_mm": "NOT_VISIBLE",
+      "continuous": true,
+      "printed_label_present": false,
+      "printed_complete_size_present": false,
+      "nearest_dataset_reference": "R71326",
+      "nearest_reference_distance_m": 0.001408,
+      "reference_role": "continuity audit only; not an element identity or size"
+    },
+    "U009": {
+      "internal_candidate_id": "U009",
+      "size_mm": "NOT_VISIBLE",
+      "continuous": true,
+      "printed_label_present": false,
+      "printed_complete_size_present": false,
+      "nearest_dataset_reference": "R71334",
+      "nearest_reference_distance_m": 0.000894,
+      "reference_role": "continuity audit only; not an element identity or size"
+    },
+    "U010": {
+      "internal_candidate_id": "U010",
+      "size_mm": "NOT_VISIBLE",
+      "continuous": true,
+      "printed_label_present": false,
+      "printed_complete_size_present": false,
+      "nearest_dataset_reference": "R71333",
+      "nearest_reference_distance_m": 0.000807,
+      "reference_role": "continuity audit only; not an element identity or size"
+    },
+    "U011": {
+      "internal_candidate_id": "U011",
+      "size_mm": "NOT_VISIBLE",
+      "continuous": true,
+      "printed_label_present": false,
+      "printed_complete_size_present": false,
+      "nearest_dataset_reference": "R71316",
+      "nearest_reference_distance_m": 0.028804,
+      "reference_role": "continuity audit only; not an element identity or size"
+    },
+    "U012": {
+      "internal_candidate_id": "U012",
+      "size_mm": "NOT_VISIBLE",
+      "continuous": true,
+      "printed_label_present": false,
+      "printed_complete_size_present": false,
+      "nearest_dataset_reference": "R71321",
+      "nearest_reference_distance_m": 0.033226,
+      "reference_role": "continuity audit only; not an element identity or size"
+    },
+    "U013": {
+      "internal_candidate_id": "U013",
+      "size_mm": "NOT_VISIBLE",
+      "continuous": true,
+      "printed_label_present": false,
+      "printed_complete_size_present": false,
+      "nearest_dataset_reference": "R71331",
+      "nearest_reference_distance_m": 0.028799,
+      "reference_role": "continuity audit only; not an element identity or size"
+    },
+    "U014": {
+      "internal_candidate_id": "U014",
+      "size_mm": "NOT_VISIBLE",
+      "continuous": true,
+      "printed_label_present": false,
+      "printed_complete_size_present": false,
+      "nearest_dataset_reference": "R71332",
+      "nearest_reference_distance_m": 0.029111,
+      "reference_role": "continuity audit only; not an element identity or size"
+    },
+    "U015": {
+      "internal_candidate_id": "U015",
+      "size_mm": "NOT_VISIBLE",
+      "continuous": true,
+      "printed_label_present": false,
+      "printed_complete_size_present": false,
+      "nearest_dataset_reference": "R71335",
+      "nearest_reference_distance_m": 0.00151,
+      "reference_role": "continuity audit only; not an element identity or size"
+    }
+  }
+}
