@@ -1,0 +1,538 @@
+{
+  "plan": "MLStructFP966",
+  "built_before_vlm": true,
+  "reference_route": "Public MLStructFP test annotation for dataset floor 966, selected before either VLM run; the JSON polygons and scale are independent of the locked raster morphology. They are a defensible dataset reference, not ground truth.",
+  "source_url": "https://github.com/MLSTRUCT/MLStructFP",
+  "source_sha256": "b1c7791cb2628e7c47c2e3cfcf0274b88bb38c39695afec8e1e0db625dc2c2d9",
+  "annotation_sha256": "fb9efe6388a08ff512a560b7b4fa6b3dcbde7fb8f64a1dd1da7aa1467225687e",
+  "license": "MIT",
+  "dataset_floor_id": 966,
+  "dataset_image_name": "8888a588a962b82fc219e30cc33e5a6c8dfce8b2.png",
+  "scale_px_per_m": 366.506,
+  "floor": {
+    "dataset_slab_id": 972,
+    "polygon_m": [
+      [
+        2.296,
+        -3.009
+      ],
+      [
+        6.482,
+        -2.383
+      ],
+      [
+        6.482,
+        -2.181
+      ],
+      [
+        19.682,
+        -0.208
+      ],
+      [
+        19.682,
+        -1.118
+      ],
+      [
+        25.232,
+        -0.289
+      ],
+      [
+        25.232,
+        -7.765
+      ],
+      [
+        25.132,
+        -7.765
+      ],
+      [
+        25.132,
+        -12.225
+      ],
+      [
+        25.232,
+        -12.225
+      ],
+      [
+        25.232,
+        -17.945
+      ],
+      [
+        19.707,
+        -17.945
+      ],
+      [
+        19.707,
+        -18.695
+      ],
+      [
+        7.257,
+        -18.695
+      ],
+      [
+        7.257,
+        -18.495
+      ],
+      [
+        3.379,
+        -18.495
+      ]
+    ],
+    "area_m2": 383.86362,
+    "centroid_m": [
+      14.220398,
+      -9.818857
+    ]
+  },
+  "wall_rectangles": [
+    {
+      "label": "R71316",
+      "dataset_rect_id": 71316,
+      "dataset_wall_id": 27393,
+      "centre_m": [
+        7.395,
+        -15.763
+      ],
+      "size_mm": [
+        250,
+        2360
+      ],
+      "angle_deg": 90.0,
+      "continuous": true,
+      "printed_label_present": false
+    },
+    {
+      "label": "R71317",
+      "dataset_rect_id": 71317,
+      "dataset_wall_id": 27394,
+      "centre_m": [
+        4.345,
+        -13.243
+      ],
+      "size_mm": [
+        300,
+        1200
+      ],
+      "angle_deg": 0.0,
+      "continuous": true,
+      "printed_label_present": false
+    },
+    {
+      "label": "R71318",
+      "dataset_rect_id": 71318,
+      "dataset_wall_id": 27395,
+      "centre_m": [
+        5.715,
+        -10.743
+      ],
+      "size_mm": [
+        200,
+        2360
+      ],
+      "angle_deg": 0.0,
+      "continuous": true,
+      "printed_label_present": false
+    },
+    {
+      "label": "R71319",
+      "dataset_rect_id": 71319,
+      "dataset_wall_id": 27395,
+      "centre_m": [
+        6.745,
+        -9.393
+      ],
+      "size_mm": [
+        300,
+        2900
+      ],
+      "angle_deg": 90.0,
+      "continuous": true,
+      "printed_label_present": false
+    },
+    {
+      "label": "R71320",
+      "dataset_rect_id": 71320,
+      "dataset_wall_id": 27395,
+      "centre_m": [
+        6.745,
+        -11.343
+      ],
+      "size_mm": [
+        300,
+        1400
+      ],
+      "angle_deg": 90.0,
+      "continuous": true,
+      "printed_label_present": false
+    },
+    {
+      "label": "R71321",
+      "dataset_rect_id": 71321,
+      "dataset_wall_id": 27396,
+      "centre_m": [
+        10.445,
+        -15.763
+      ],
+      "size_mm": [
+        250,
+        2360
+      ],
+      "angle_deg": 90.0,
+      "continuous": true,
+      "printed_label_present": false
+    },
+    {
+      "label": "R71322",
+      "dataset_rect_id": 71322,
+      "dataset_wall_id": 27397,
+      "centre_m": [
+        9.42,
+        -11.893
+      ],
+      "size_mm": [
+        300,
+        2550
+      ],
+      "angle_deg": 0.0,
+      "continuous": true,
+      "printed_label_present": false
+    },
+    {
+      "label": "R71323",
+      "dataset_rect_id": 71323,
+      "dataset_wall_id": 27397,
+      "centre_m": [
+        9.57,
+        -9.843
+      ],
+      "size_mm": [
+        200,
+        2250
+      ],
+      "angle_deg": 0.0,
+      "continuous": true,
+      "printed_label_present": false
+    },
+    {
+      "label": "R71324",
+      "dataset_rect_id": 71324,
+      "dataset_wall_id": 27397,
+      "centre_m": [
+        10.595,
+        -10.893
+      ],
+      "size_mm": [
+        200,
+        2300
+      ],
+      "angle_deg": 90.0,
+      "continuous": true,
+      "printed_label_present": false
+    },
+    {
+      "label": "R71325",
+      "dataset_rect_id": 71325,
+      "dataset_wall_id": 27398,
+      "centre_m": [
+        4.195,
+        -8.093
+      ],
+      "size_mm": [
+        300,
+        1500
+      ],
+      "angle_deg": 0.0,
+      "continuous": true,
+      "printed_label_present": false
+    },
+    {
+      "label": "R71326",
+      "dataset_rect_id": 71326,
+      "dataset_wall_id": 27399,
+      "centre_m": [
+        9.345,
+        -8.093
+      ],
+      "size_mm": [
+        300,
+        2400
+      ],
+      "angle_deg": 0.0,
+      "continuous": true,
+      "printed_label_present": false
+    },
+    {
+      "label": "R71327",
+      "dataset_rect_id": 71327,
+      "dataset_wall_id": 27400,
+      "centre_m": [
+        6.62,
+        -4.857
+      ],
+      "size_mm": [
+        250,
+        3572
+      ],
+      "angle_deg": 90.0,
+      "continuous": true,
+      "printed_label_present": false
+    },
+    {
+      "label": "R71328",
+      "dataset_rect_id": 71328,
+      "dataset_wall_id": 27402,
+      "centre_m": [
+        17.895,
+        -9.843
+      ],
+      "size_mm": [
+        200,
+        2200
+      ],
+      "angle_deg": 0.0,
+      "continuous": true,
+      "printed_label_present": false
+    },
+    {
+      "label": "R71329",
+      "dataset_rect_id": 71329,
+      "dataset_wall_id": 27402,
+      "centre_m": [
+        16.895,
+        -10.893
+      ],
+      "size_mm": [
+        200,
+        2300
+      ],
+      "angle_deg": 90.0,
+      "continuous": true,
+      "printed_label_present": false
+    },
+    {
+      "label": "R71330",
+      "dataset_rect_id": 71330,
+      "dataset_wall_id": 27402,
+      "centre_m": [
+        17.9675,
+        -11.893
+      ],
+      "size_mm": [
+        300,
+        2345
+      ],
+      "angle_deg": 0.0,
+      "continuous": true,
+      "printed_label_present": false
+    },
+    {
+      "label": "R71331",
+      "dataset_rect_id": 71331,
+      "dataset_wall_id": 27401,
+      "centre_m": [
+        16.645,
+        -15.763
+      ],
+      "size_mm": [
+        250,
+        2360
+      ],
+      "angle_deg": 90.0,
+      "continuous": true,
+      "printed_label_present": false
+    },
+    {
+      "label": "R71332",
+      "dataset_rect_id": 71332,
+      "dataset_wall_id": 27403,
+      "centre_m": [
+        19.595,
+        -15.763
+      ],
+      "size_mm": [
+        250,
+        2360
+      ],
+      "angle_deg": 90.0,
+      "continuous": true,
+      "printed_label_present": false
+    },
+    {
+      "label": "R71333",
+      "dataset_rect_id": 71333,
+      "dataset_wall_id": 27406,
+      "centre_m": [
+        21.6525,
+        -12.943
+      ],
+      "size_mm": [
+        200,
+        2225
+      ],
+      "angle_deg": 0.0,
+      "continuous": true,
+      "printed_label_present": false
+    },
+    {
+      "label": "R71334",
+      "dataset_rect_id": 71334,
+      "dataset_wall_id": 27404,
+      "centre_m": [
+        17.845,
+        -8.093
+      ],
+      "size_mm": [
+        300,
+        2400
+      ],
+      "angle_deg": 0.0,
+      "continuous": true,
+      "printed_label_present": false
+    },
+    {
+      "label": "R71335",
+      "dataset_rect_id": 71335,
+      "dataset_wall_id": 27405,
+      "centre_m": [
+        21.795,
+        -17.793
+      ],
+      "size_mm": [
+        300,
+        1900
+      ],
+      "angle_deg": 0.0,
+      "continuous": true,
+      "printed_label_present": false
+    },
+    {
+      "label": "R71336",
+      "dataset_rect_id": 71336,
+      "dataset_wall_id": 27407,
+      "centre_m": [
+        20.67,
+        -10.878
+      ],
+      "size_mm": [
+        250,
+        1870
+      ],
+      "angle_deg": 90.0,
+      "continuous": true,
+      "printed_label_present": false
+    },
+    {
+      "label": "R71337",
+      "dataset_rect_id": 71337,
+      "dataset_wall_id": 27410,
+      "centre_m": [
+        19.57,
+        -2.969
+      ],
+      "size_mm": [
+        250,
+        3668
+      ],
+      "angle_deg": 90.0,
+      "continuous": true,
+      "printed_label_present": false
+    },
+    {
+      "label": "R71338",
+      "dataset_rect_id": 71338,
+      "dataset_wall_id": 27407,
+      "centre_m": [
+        20.67,
+        -9.193
+      ],
+      "size_mm": [
+        250,
+        1900
+      ],
+      "angle_deg": 90.0,
+      "continuous": true,
+      "printed_label_present": false
+    },
+    {
+      "label": "R71339",
+      "dataset_rect_id": 71339,
+      "dataset_wall_id": 27407,
+      "centre_m": [
+        21.67,
+        -10.043
+      ],
+      "size_mm": [
+        200,
+        2250
+      ],
+      "angle_deg": 0.0,
+      "continuous": true,
+      "printed_label_present": false
+    },
+    {
+      "label": "R71340",
+      "dataset_rect_id": 71340,
+      "dataset_wall_id": 27409,
+      "centre_m": [
+        21.6675,
+        -7.043
+      ],
+      "size_mm": [
+        200,
+        2255
+      ],
+      "angle_deg": 0.0,
+      "continuous": true,
+      "printed_label_present": false
+    },
+    {
+      "label": "R71341",
+      "dataset_rect_id": 71341,
+      "dataset_wall_id": 27408,
+      "centre_m": [
+        16.67,
+        -3.261
+      ],
+      "size_mm": [
+        250,
+        3384
+      ],
+      "angle_deg": 90.0,
+      "continuous": true,
+      "printed_label_present": false
+    },
+    {
+      "label": "R71342",
+      "dataset_rect_id": 71342,
+      "dataset_wall_id": 27411,
+      "centre_m": [
+        21.785,
+        -0.95575
+      ],
+      "size_mm": [
+        300,
+        2000
+      ],
+      "angle_deg": 8.5,
+      "continuous": true,
+      "printed_label_present": false
+    },
+    {
+      "label": "R71343",
+      "dataset_rect_id": 71343,
+      "dataset_wall_id": 27412,
+      "centre_m": [
+        10.396,
+        -3.505
+      ],
+      "size_mm": [
+        300,
+        1996
+      ],
+      "angle_deg": 89.985,
+      "continuous": true,
+      "printed_label_present": false
+    }
+  ],
+  "wall_group_count": 20,
+  "printed_element_size_labels": 0
+}

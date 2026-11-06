@@ -1,0 +1,437 @@
+{
+  "plan": "NewPlan",
+  "built_before_vlm": true,
+  "reference_route": "Manual reading of the printed grid, C1:C30 global column note and each T1:T8 size callout; independent of the locked morphology and both VLMs.",
+  "source_sha256": "d70577698599310ca4a62e0c5a3cb4133df16b02dfc417dcf9d2899e673f63c1",
+  "floor": {
+    "polygon_m": [
+      [
+        0.0,
+        0.0
+      ],
+      [
+        46.0,
+        0.0
+      ],
+      [
+        46.0,
+        18.0
+      ],
+      [
+        0.0,
+        18.0
+      ]
+    ],
+    "area_m2": 828.0,
+    "centroid_m": [
+      23.0,
+      9.0
+    ]
+  },
+  "columns": {
+    "C1": {
+      "centre_m": [
+        0.0,
+        18.0
+      ],
+      "size_mm": [
+        800,
+        800
+      ],
+      "continuous": true
+    },
+    "C2": {
+      "centre_m": [
+        6.0,
+        18.0
+      ],
+      "size_mm": [
+        800,
+        800
+      ],
+      "continuous": true
+    },
+    "C3": {
+      "centre_m": [
+        12.0,
+        18.0
+      ],
+      "size_mm": [
+        800,
+        800
+      ],
+      "continuous": true
+    },
+    "C4": {
+      "centre_m": [
+        20.0,
+        18.0
+      ],
+      "size_mm": [
+        800,
+        800
+      ],
+      "continuous": true
+    },
+    "C5": {
+      "centre_m": [
+        26.0,
+        18.0
+      ],
+      "size_mm": [
+        800,
+        800
+      ],
+      "continuous": true
+    },
+    "C6": {
+      "centre_m": [
+        34.0,
+        18.0
+      ],
+      "size_mm": [
+        800,
+        800
+      ],
+      "continuous": true
+    },
+    "C7": {
+      "centre_m": [
+        40.0,
+        18.0
+      ],
+      "size_mm": [
+        800,
+        800
+      ],
+      "continuous": true
+    },
+    "C8": {
+      "centre_m": [
+        46.0,
+        18.0
+      ],
+      "size_mm": [
+        800,
+        800
+      ],
+      "continuous": true
+    },
+    "C9": {
+      "centre_m": [
+        0.0,
+        12.0
+      ],
+      "size_mm": [
+        800,
+        800
+      ],
+      "continuous": true
+    },
+    "C10": {
+      "centre_m": [
+        6.0,
+        12.0
+      ],
+      "size_mm": [
+        800,
+        800
+      ],
+      "continuous": true
+    },
+    "C11": {
+      "centre_m": [
+        20.0,
+        12.0
+      ],
+      "size_mm": [
+        800,
+        800
+      ],
+      "continuous": true
+    },
+    "C12": {
+      "centre_m": [
+        26.0,
+        12.0
+      ],
+      "size_mm": [
+        800,
+        800
+      ],
+      "continuous": true
+    },
+    "C13": {
+      "centre_m": [
+        40.0,
+        12.0
+      ],
+      "size_mm": [
+        800,
+        800
+      ],
+      "continuous": true
+    },
+    "C14": {
+      "centre_m": [
+        46.0,
+        12.0
+      ],
+      "size_mm": [
+        800,
+        800
+      ],
+      "continuous": true
+    },
+    "C15": {
+      "centre_m": [
+        0.0,
+        6.0
+      ],
+      "size_mm": [
+        800,
+        800
+      ],
+      "continuous": true
+    },
+    "C16": {
+      "centre_m": [
+        6.0,
+        6.0
+      ],
+      "size_mm": [
+        800,
+        800
+      ],
+      "continuous": true
+    },
+    "C17": {
+      "centre_m": [
+        12.0,
+        6.0
+      ],
+      "size_mm": [
+        800,
+        800
+      ],
+      "continuous": true
+    },
+    "C18": {
+      "centre_m": [
+        20.0,
+        6.0
+      ],
+      "size_mm": [
+        800,
+        800
+      ],
+      "continuous": true
+    },
+    "C19": {
+      "centre_m": [
+        26.0,
+        6.0
+      ],
+      "size_mm": [
+        800,
+        800
+      ],
+      "continuous": true
+    },
+    "C20": {
+      "centre_m": [
+        34.0,
+        6.0
+      ],
+      "size_mm": [
+        800,
+        800
+      ],
+      "continuous": true
+    },
+    "C21": {
+      "centre_m": [
+        40.0,
+        6.0
+      ],
+      "size_mm": [
+        800,
+        800
+      ],
+      "continuous": true
+    },
+    "C22": {
+      "centre_m": [
+        46.0,
+        6.0
+      ],
+      "size_mm": [
+        800,
+        800
+      ],
+      "continuous": true
+    },
+    "C23": {
+      "centre_m": [
+        0.0,
+        0.0
+      ],
+      "size_mm": [
+        800,
+        800
+      ],
+      "continuous": true
+    },
+    "C24": {
+      "centre_m": [
+        6.0,
+        0.0
+      ],
+      "size_mm": [
+        800,
+        800
+      ],
+      "continuous": true
+    },
+    "C25": {
+      "centre_m": [
+        12.0,
+        0.0
+      ],
+      "size_mm": [
+        800,
+        800
+      ],
+      "continuous": true
+    },
+    "C26": {
+      "centre_m": [
+        20.0,
+        0.0
+      ],
+      "size_mm": [
+        800,
+        800
+      ],
+      "continuous": true
+    },
+    "C27": {
+      "centre_m": [
+        26.0,
+        0.0
+      ],
+      "size_mm": [
+        800,
+        800
+      ],
+      "continuous": true
+    },
+    "C28": {
+      "centre_m": [
+        34.0,
+        0.0
+      ],
+      "size_mm": [
+        800,
+        800
+      ],
+      "continuous": true
+    },
+    "C29": {
+      "centre_m": [
+        40.0,
+        0.0
+      ],
+      "size_mm": [
+        800,
+        800
+      ],
+      "continuous": true
+    },
+    "C30": {
+      "centre_m": [
+        46.0,
+        0.0
+      ],
+      "size_mm": [
+        800,
+        800
+      ],
+      "continuous": true
+    }
+  },
+  "walls": {
+    "T1": {
+      "centre_m": [
+        12.0,
+        10.25
+      ],
+      "size_mm": "400x3500",
+      "angle_deg": 90.0,
+      "continuous": true
+    },
+    "T2": {
+      "centre_m": [
+        13.75,
+        12.0
+      ],
+      "size_mm": "400x3500",
+      "angle_deg": 0.0,
+      "continuous": true
+    },
+    "T3": {
+      "centre_m": [
+        12.0,
+        4.25
+      ],
+      "size_mm": "400x3500",
+      "angle_deg": 90.0,
+      "continuous": true
+    },
+    "T4": {
+      "centre_m": [
+        13.0,
+        0.0
+      ],
+      "size_mm": "300x2000",
+      "angle_deg": 0.0,
+      "continuous": true
+    },
+    "T5": {
+      "centre_m": [
+        32.25,
+        12.0
+      ],
+      "size_mm": "400x3500",
+      "angle_deg": 0.0,
+      "continuous": true
+    },
+    "T6": {
+      "centre_m": [
+        34.0,
+        10.25
+      ],
+      "size_mm": "400x3500",
+      "angle_deg": 90.0,
+      "continuous": true
+    },
+    "T7": {
+      "centre_m": [
+        34.0,
+        4.25
+      ],
+      "size_mm": "400x3500",
+      "angle_deg": 90.0,
+      "continuous": true
+    },
+    "T8": {
+      "centre_m": [
+        33.0,
+        0.0
+      ],
+      "size_mm": "300x2000",
+      "angle_deg": 0.0,
+      "continuous": true
+    }
+  }
+}

@@ -173,3 +173,13 @@
 - Architectural note: no wall is relocated into either opening and no column/grid line is disturbed. The exercise holds mass fixed, so the small wall self-weight change is excluded consistently from both before and after CM.
 - Determinism: the modified hand JSON/CSV/PNG and both baseline/modified OpenSees JSON files reproduced byte for byte on complete re-runs. Modified hand SHA-256 is `ff04e3888041b89add20e014675654cc49f00bc7126b927995f5fc65efaa4719`; modified OpenSees SHA-256 is `3bafffe4258e6ec10b98fecb85af26a814ef3ce67adf562b4a9caa731d0403b7`.
 - Status: modification accepted pending automated checks and Git commit.
+
+## 2026-11-06 - Gate 7a: freeze the two untuned-plan sources and references
+
+- `NewPlan.png` is the course-supplied unseen plan. Its SHA-256 is frozen before reuse of the FloorPlan1 reader. The printed 46 m by 18 m grid, global `C1:C30 = 800 mm x 800 mm` note and eight wall callouts form a manual independent reference; the OCR/morphology does not create this reference.
+- First found-plan candidate: the City of Pleasanton public single-family sample, PDF page 9 / sheet S-4. It is a wood shear-wall drawing whose schedule identifies nailing systems rather than one concrete wall size per element. Reject it because forcing the assignment's concrete stiffness model onto that sheet would change both the label premise and mechanics.
+- Accepted found plan: MLStructFP public test sample Floor 966, retained with its public test annotation and MIT license. It is a multi-unit structural floor plan at 366.506 px/m, with an irregular slab, 20 wall groups represented by 28 rectangles, wall thicknesses of 200/250/300 mm, and one 8.5-degree wall.
+- The found plan deliberately differs from FloorPlan1: transparent coloured-line CAD rather than black hatching, no printed C/T size strings and a non-orthogonal segment. This is a meaningful generalisation test rather than another plan tuned to the fixed reader.
+- The dataset JSON reference is frozen before any VLM output. It is an independent public annotation, explicitly treated as a defensible reference rather than absolute ground truth.
+- No VLM crop or answer has been produced at this gate. Threshold 225, 11-px diagonal kernel, 17/21-px openings, 4:1 shape rule, 0.85 OCR threshold and the existing confidence/gate rules remain locked.
+- Status: sources and independent references pending hash verification and Git commit.

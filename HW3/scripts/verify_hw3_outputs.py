@@ -32,6 +32,59 @@ def verify_frozen_inputs() -> None:
         assert hashlib.sha256(path.read_bytes()).hexdigest() == item["sha256"], path
 
 
+def verify_task8_frozen_sources() -> None:
+    config_path = ROOT / "config" / "generalization-plans-HW3.json"
+    if not config_path.exists():
+        return
+    config = load_json(config_path)
+    assert config["locked_classical_parameters"] == "config/classical-params-HW3.json"
+    new_plan = config["plans"]["NewPlan"]
+    found = config["plans"]["MLStructFP966"]
+    frozen = [
+        (ROOT / new_plan["source"], new_plan["sha256"]),
+        (ROOT / found["source"], found["sha256"]),
+        (ROOT / found["annotation_source"], found["annotation_sha256"]),
+        (ROOT / found["license"], found["license_sha256"]),
+    ]
+    for path, expected in frozen:
+        require(path)
+        assert hashlib.sha256(path.read_bytes()).hexdigest() == expected, path
+        assert path.stat().st_size < 6_000_000, path
+
+    assert len(new_plan["columns"]) == 30
+    assert len(new_plan["walls"]) == 8
+    assert new_plan["printed_column_size_mm"] == [800, 800]
+    assert set(new_plan["printed_wall_sizes_mm"]) == {
+        f"T{index}" for index in range(1, 9)
+    }
+
+    new_reference = load_json(
+        ROOT / "config" / "reference-manual-NewPlan-HW3.json"
+    )
+    assert new_reference["built_before_vlm"] is True
+    assert new_reference["source_sha256"] == new_plan["sha256"]
+    assert new_reference["floor"]["area_m2"] == 828.0
+    assert new_reference["floor"]["centroid_m"] == [23.0, 9.0]
+    assert len(new_reference["columns"]) == 30
+    assert len(new_reference["walls"]) == 8
+    assert all(item["continuous"] for item in new_reference["walls"].values())
+
+    found_reference = load_json(
+        ROOT / "config" / "reference-dataset-MLStructFP966-HW3.json"
+    )
+    assert found_reference["built_before_vlm"] is True
+    assert found_reference["dataset_floor_id"] == 966
+    assert found_reference["scale_px_per_m"] == 366.506
+    assert found_reference["wall_group_count"] == 20
+    assert len(found_reference["wall_rectangles"]) == 28
+    assert found_reference["printed_element_size_labels"] == 0
+    assert abs(found_reference["floor"]["area_m2"] - 383.86362) < 1e-8
+    assert any(
+        abs(item["angle_deg"] - 8.5) < 1e-9
+        for item in found_reference["wall_rectangles"]
+    )
+
+
 def verify_classical() -> None:
     params = load_json(ROOT / "config" / "classical-params-HW3.json")
     cfg = params["classical"]
@@ -286,6 +339,7 @@ def verify_optional_later_stages() -> None:
 
 def main() -> None:
     verify_frozen_inputs()
+    verify_task8_frozen_sources()
     verify_classical()
     verify_optional_later_stages()
     print("HW3 verification passed: frozen inputs, classical/forest gates, identical dual-VLM evidence, syntax audit and promoted-copy invariants are present.")

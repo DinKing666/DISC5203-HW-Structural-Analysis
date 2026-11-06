@@ -1,0 +1,90 @@
+{
+  "locked_classical_parameters": "config/classical-params-HW3.json",
+  "parameter_policy": "The FloorPlan1 threshold, morphology, shape ratio, OCR threshold, continuity gate and VLM gate are reused without tuning.",
+  "plans": {
+    "NewPlan": {
+      "source": "assets/NewPlan.png",
+      "sha256": "d70577698599310ca4a62e0c5a3cb4133df16b02dfc417dcf9d2899e673f63c1",
+      "source_kind": "course-supplied unseen plan",
+      "coordinate_frame": {
+        "description": "Least-squares affine frame from the centres of the printed 46 m by 18 m column grid; y pixels increase downward.",
+        "x_px_at_m": [[1631.24852321, 0.0], [6903.03897691, 46.0]],
+        "y_px_at_m": [[3409.79, 0.0], [1388.06, 18.0]]
+      },
+      "floor_polygon_m": [[0.0, 0.0], [46.0, 0.0], [46.0, 18.0], [0.0, 18.0]],
+      "columns": [
+        {"id": "C1", "point": [0.0, 18.0]},
+        {"id": "C2", "point": [6.0, 18.0]},
+        {"id": "C3", "point": [12.0, 18.0]},
+        {"id": "C4", "point": [20.0, 18.0]},
+        {"id": "C5", "point": [26.0, 18.0]},
+        {"id": "C6", "point": [34.0, 18.0]},
+        {"id": "C7", "point": [40.0, 18.0]},
+        {"id": "C8", "point": [46.0, 18.0]},
+        {"id": "C9", "point": [0.0, 12.0]},
+        {"id": "C10", "point": [6.0, 12.0]},
+        {"id": "C11", "point": [20.0, 12.0]},
+        {"id": "C12", "point": [26.0, 12.0]},
+        {"id": "C13", "point": [40.0, 12.0]},
+        {"id": "C14", "point": [46.0, 12.0]},
+        {"id": "C15", "point": [0.0, 6.0]},
+        {"id": "C16", "point": [6.0, 6.0]},
+        {"id": "C17", "point": [12.0, 6.0]},
+        {"id": "C18", "point": [20.0, 6.0]},
+        {"id": "C19", "point": [26.0, 6.0]},
+        {"id": "C20", "point": [34.0, 6.0]},
+        {"id": "C21", "point": [40.0, 6.0]},
+        {"id": "C22", "point": [46.0, 6.0]},
+        {"id": "C23", "point": [0.0, 0.0]},
+        {"id": "C24", "point": [6.0, 0.0]},
+        {"id": "C25", "point": [12.0, 0.0]},
+        {"id": "C26", "point": [20.0, 0.0]},
+        {"id": "C27", "point": [26.0, 0.0]},
+        {"id": "C28", "point": [34.0, 0.0]},
+        {"id": "C29", "point": [40.0, 0.0]},
+        {"id": "C30", "point": [46.0, 0.0]}
+      ],
+      "walls": [
+        {"id": "T1", "start": [12.0, 12.0], "end": [12.0, 8.5]},
+        {"id": "T2", "start": [12.0, 12.0], "end": [15.5, 12.0]},
+        {"id": "T3", "start": [12.0, 6.0], "end": [12.0, 2.5]},
+        {"id": "T4", "start": [12.0, 0.0], "end": [14.0, 0.0]},
+        {"id": "T5", "start": [30.5, 12.0], "end": [34.0, 12.0]},
+        {"id": "T6", "start": [34.0, 12.0], "end": [34.0, 8.5]},
+        {"id": "T7", "start": [34.0, 6.0], "end": [34.0, 2.5]},
+        {"id": "T8", "start": [32.0, 0.0], "end": [34.0, 0.0]}
+      ],
+      "printed_column_size_mm": [800, 800],
+      "printed_wall_sizes_mm": {
+        "T1": [400, 3500],
+        "T2": [400, 3500],
+        "T3": [400, 3500],
+        "T4": [300, 2000],
+        "T5": [400, 3500],
+        "T6": [400, 3500],
+        "T7": [400, 3500],
+        "T8": [300, 2000]
+      }
+    },
+    "MLStructFP966": {
+      "source": "found/MLStructFP/floor966.png",
+      "sha256": "b1c7791cb2628e7c47c2e3cfcf0274b88bb38c39695afec8e1e0db625dc2c2d9",
+      "annotation_source": "found/MLStructFP/fp-test-samples.json",
+      "annotation_sha256": "fb9efe6388a08ff512a560b7b4fa6b3dcbde7fb8f64a1dd1da7aa1467225687e",
+      "license": "found/MLStructFP/LICENSE-MLStructFP.txt",
+      "license_sha256": "f2526788ed5816a062ccd46836f711df22e5abe8cb99dfb380acad6bfd743aea",
+      "source_kind": "public MLStructFP multi-unit structural floor-plan test sample",
+      "source_url": "https://github.com/MLSTRUCT/MLStructFP",
+      "article_doi": "https://doi.org/10.1016/j.autcon.2023.105132",
+      "retrieved_date": "2026-11-06",
+      "dataset_floor_id": 966,
+      "preprocessing": "Replace fully transparent RGBA pixels by white, exactly as the public MLStructFP loader does; preserve all non-transparent source pixels.",
+      "difference_from_main_plan": "Transparent coloured-line CAD at 366.506 px/m, irregular slab, 20 wall groups/28 rectangles including an 8.5 degree wall, and no printed C/T size strings."
+    }
+  },
+  "rejected_found_plan_candidate": {
+    "name": "City of Pleasanton Sample Plans for Single-Family Dwelling, sheet S-4",
+    "source_url": "https://www.cityofpleasantonca.gov/assets/our-government/community-development/ab%202234/single-family/Sample%20Plans%20New%20Single%20Family%20Dwelling.pdf?_t=1710274469",
+    "reason": "The public sheet is a wood shear-wall layout whose schedule identifies nailing systems rather than one concrete wall size string per element. Treating it as the assignment's concrete system would change both label supervision and material mechanics."
+  }
+}
