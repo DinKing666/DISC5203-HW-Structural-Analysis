@@ -1,0 +1,39 @@
+{
+  "plan": "MLStructFP966",
+  "purpose": "kept-but-never-chosen diagnostic model trained on 15 classical shape-rule pseudo-label boxes",
+  "selected": false,
+  "selection_prohibited_reason": "The forest target copies unclaimed classical candidate boxes and contains no printed label or element-size supervision; it cannot create an auditable structural record.",
+  "locked_to_floorplan1_features_and_hyperparameters": true,
+  "public_annotation_used_for_training": false,
+  "model_path": "models/random-forest-MLStructFP966-HW3.joblib",
+  "random_seed": 21345221,
+  "prediction_roi": "entire 9600x6784 source; no annotation-defined crop",
+  "training_samples": 96000,
+  "test_samples": 24000,
+  "positive_fraction": 0.5,
+  "oob_score": 0.746687,
+  "test_accuracy": 0.7475,
+  "test_precision": 0.949591,
+  "test_recall": 0.52275,
+  "test_f1": 0.674299,
+  "rule_target_iou": 0.221414,
+  "confusion_matrix": [
+    [
+      11667,
+      333
+    ],
+    [
+      5727,
+      6273
+    ]
+  ],
+  "feature_importance": {
+    "grey": 0.00282103,
+    "edge_strength": 0.01687232,
+    "ink_density_5": 0.02843976,
+    "ink_density_11": 0.06922792,
+    "ink_density_21": 0.18903273,
+    "ink_density_45": 0.69357491,
+    "stroke_45deg_density_21": 3.133e-05
+  }
+}

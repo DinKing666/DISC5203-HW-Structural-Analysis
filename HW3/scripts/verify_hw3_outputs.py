@@ -457,6 +457,46 @@ def verify_mlstruct_classical() -> None:
         require(plan_dir / "intermediate" / name)
 
 
+def verify_mlstruct_forest() -> None:
+    plan_dir = ROOT / "output" / "MLStructFP966"
+    summary_path = (
+        plan_dir / "results" / "random-forest-summary-MLStructFP966-HW3.json"
+    )
+    if not summary_path.exists():
+        return
+    summary = load_json(summary_path)
+    assert summary["plan"] == "MLStructFP966"
+    assert summary["selected"] is False
+    assert summary["locked_to_floorplan1_features_and_hyperparameters"] is True
+    assert summary["public_annotation_used_for_training"] is False
+    assert summary["random_seed"] == 21345221
+    assert summary["training_samples"] == 96000
+    assert summary["test_samples"] == 24000
+    assert summary["oob_score"] == 0.746687
+    assert summary["test_f1"] == 0.674299
+    assert summary["rule_target_iou"] == 0.221414
+    assert abs(sum(summary["feature_importance"].values()) - 1.0) < 1e-6
+    assert summary["feature_importance"]["ink_density_45"] > 0.69
+    assert summary["feature_importance"]["stroke_45deg_density_21"] < 0.001
+    model = ROOT / summary["model_path"]
+    require(model)
+    assert model.stat().st_size < 6_000_000
+    require(
+        plan_dir
+        / "results"
+        / "random-forest-feature-importance-MLStructFP966-HW3.csv"
+    )
+    require(
+        plan_dir / "intermediate" / "forest-rule-target-MLStructFP966-HW3.png"
+    )
+    require(
+        plan_dir / "intermediate" / "forest-prediction-MLStructFP966-HW3.png"
+    )
+    require(
+        plan_dir / "figures" / "hw3_18_mlstruct_random_forest_never_chosen.png"
+    )
+
+
 def verify_optional_later_stages() -> None:
     forest = PLAN / "results" / "random-forest-summary-HW3.json"
     if forest.exists():
@@ -658,6 +698,7 @@ def main() -> None:
     verify_newplan_vlm()
     verify_newplan_structural()
     verify_mlstruct_classical()
+    verify_mlstruct_forest()
     verify_optional_later_stages()
     print("HW3 verification passed: frozen inputs, classical/forest gates, identical dual-VLM evidence, syntax audit and promoted-copy invariants are present.")
 

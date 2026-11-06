@@ -265,3 +265,11 @@
 - All 15 unclaimed candidates receive one local crop and one unique continuity question. Each crop is far smaller than the 9600 x 6784 whole plan; VLMs remain prohibited from seeing the full image or supplying coordinates.
 - First visual review found the U003/U004 labels overlapping on the duplicate split wall. Correct only the audit annotation positions; candidate boxes, crops, order, questions and hashes do not change.
 - Status: the honest zero-element record and 15-flag manifest are accepted pending deterministic rerun, automated checks and Git commit.
+
+## 2026-11-06 - Gate 7g: retain the MLStructFP forest without selecting it
+
+- Reused the exact FloorPlan1 seven feature maps, 80 trees, depth 14, minimum leaf 3, balanced class weights, 60,000-sample-per-class cap and seed 21345221. The target is the 15 classical candidate bounding boxes; the public MLStructFP annotation is not a training source.
+- Prediction covers the entire 9600 x 6784 image rather than an annotation-defined ROI. Held-out F1 = 0.674299, OOB score = 0.746687 and full-image pseudo-label IoU = 0.221414.
+- The 45-px ink-density feature alone carries 0.693575 importance, while the 45-degree stroke feature is effectively unused. The prediction copies most visible blue outlines, including the L/C composites rejected by the fixed 4:1 candidate gate.
+- This is a stronger failure than on the two course plans: the forest neither reliably copies its own box target nor supplies the absent printed IDs and sizes. Its 1.78 MB model and audit artifacts are retained precisely to document that result; selection remains prohibited.
+- Status: accepted pending byte-for-byte rerun, automated checks and Git commit.
