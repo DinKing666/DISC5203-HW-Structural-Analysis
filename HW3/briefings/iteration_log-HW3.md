@@ -183,3 +183,44 @@
 - The dataset JSON reference is frozen before any VLM output. It is an independent public annotation, explicitly treated as a defensible reference rather than absolute ground truth.
 - No VLM crop or answer has been produced at this gate. Threshold 225, 11-px diagonal kernel, 17/21-px openings, 4:1 shape rule, 0.85 OCR threshold and the existing confidence/gate rules remain locked.
 - Status: sources and independent references pending hash verification and Git commit.
+
+## 2026-11-06 - Gate 7b: NewPlan classical pass, Revision 1
+
+- The first untuned execution stopped before writing an accepted record. T1 is split by OCR into an isolated `1` and a nearby `3500x400` box; the same size box appears once in each OCR pass, so a rule requiring exactly one token/size pair saw two duplicate candidates.
+- Correction: retain the fixed 0.85 OCR threshold and pair geometry, but deterministically deduplicate the two-pass evidence by highest minimum pair confidence, then nearest x/y distance and pass name. This changes no pixel coordinate, printed dimension, morphology parameter or independent reference.
+- Status: Revision 2 pending re-run and visual audit.
+
+### NewPlan classical Revision 2
+
+- Revision 2 stopped at the label-completeness assertion: removing all spaces before the wall regex changed `T2 3500x400` to `T23500x400`, making the wall number and length ambiguous. This normalization was only needed for noisy column strings such as `IIC11`.
+- Correction: apply the wall label/size regex to the original OCR text, while retaining compact matching only for column IDs. OCR bytes, acceptance threshold, evidence pairing and all geometric rules remain unchanged.
+- Status: Revision 3 pending re-run and visual audit.
+
+### NewPlan classical Revision 3
+
+- Revision 3 recovered all 38 expected labels, then stopped before element output because the reused FloorPlan1 helper expects the full label dictionary and the new caller supplied one label record. The helper correctly rejected the incompatible call with `KeyError` rather than silently using a wrong size.
+- Correction: pass the already frozen full label dictionary to both reused element helpers. No reading, parameter or result is altered.
+- Status: Revision 4 pending re-run and visual audit.
+
+### NewPlan classical Revision 4 visual rejection
+
+- Revision 4 produced 38 named elements and one label flag, but the overlay failed the geometry gate. The initial manual topology read T3/T7 from grid line 3 downward; the drawn black bars actually rise 3.5 m from grid line 4. Correct the manual reference and topology before any VLM is run.
+- T2 and T5 were displaced by about one metre because their adjacent callouts are not centred on the bars. The inherited horizontal helper lacked the topology fallback already present for vertical bars. Make the search symmetric: intersect label and printed-grid neighbourhoods when a full labelled length fits; otherwise search the printed-grid neighbourhood. Apply the same generic rule to both plans and require the FloorPlan1 artifacts to remain byte-identical.
+- T1's split OCR evidence was represented by a union box for cropping, but using that union as one text mask erased the wall pixels between the true `1` and size boxes. Keep the union only for crop extent and mask the two actual OCR boxes independently.
+- These corrections change no locked numerical parameter and occur before either VLM sees NewPlan.
+- Status: Revision 5 pending re-run, baseline non-regression check and visual acceptance.
+
+### NewPlan classical Revision 5 baseline regression
+
+- Applying the symmetric topology fallback globally changed FloorPlan1 from four to five flags and rewrote its frozen crop/record evidence. The mandatory no-regression check rejected this change before NewPlan was accepted.
+- Correction: restore the original FloorPlan1 behaviour as the helper default. Expose the same topology fallback only as an explicit call for NewPlan, whose callouts are demonstrably adjacent to rather than centred on T2/T5. FloorPlan1 must return to a byte-clean state after its complete rerun.
+- Status: Revision 6 pending baseline restoration, NewPlan rerun and visual acceptance.
+
+### NewPlan classical Revision 6 acceptance
+
+- The complete FloorPlan1 classical rerun returned every tracked baseline artifact to its committed byte state, so the optional NewPlan topology fallback does not regress the main plan.
+- Revision 6 recovers all 38 named elements: 30 columns inherit the printed global 800 x 800 mm size note and eight walls use their own printed callouts. The two OCR passes each contribute 35 unique labels; their union plus the auditable split T1 reconstruction closes the census.
+- The fixed rules produce 727 connected components and 440 shape-rule candidates. Label supervision claims exactly the expected 38 elements; only T1 remains flagged for its OCR-split label, while its solid bar passes the unchanged continuity test.
+- Tributary Voronoi cells close exactly to the 828.0 m2 rectangular floor. At 8.75 kN/m2 and five storeys, column axial loads close to 36,225.0 kN.
+- Visual acceptance: all eight red fixed-length bars lie on the black wall strokes; every extracted wall centre is within 0.5 m of the corrected independent reading. The one frozen VLM crop contains the T1 bar and printed 3500 x 400 callout.
+- Status: accepted pending deterministic rerun, automated checks and Git commit.

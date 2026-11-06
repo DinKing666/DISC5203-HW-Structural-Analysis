@@ -256,7 +256,12 @@ def gap_spans(bin_support: np.ndarray, length_m: float) -> tuple[list[list[float
 
 
 def find_wall(
-    item: dict, label_data: dict, support: np.ndarray, frame: tuple[float, float, float, float], cfg: dict
+    item: dict,
+    label_data: dict,
+    support: np.ndarray,
+    frame: tuple[float, float, float, float],
+    cfg: dict,
+    topology_fallback: bool = False,
 ) -> tuple[dict, dict, dict | None]:
     label = item["id"]
     size_mm = label_data[label]["size_mm"]
@@ -283,6 +288,15 @@ def find_wall(
         anchor_pad = int(round(0.75 * abs(sx)))
         search0 = int(label_axis - length_px / 2 - anchor_pad)
         search1 = int(label_axis + length_px / 2 + anchor_pad)
+        if topology_fallback:
+            topology0 = int(min(p0[0], p1[0]) - pad_x)
+            topology1 = int(max(p0[0], p1[0]) + pad_x)
+            bounded0 = max(search0, topology0)
+            bounded1 = min(search1, topology1)
+            if bounded1 - bounded0 >= length_px:
+                search0, search1 = bounded0, bounded1
+            else:
+                search0, search1 = topology0, topology1
         a_px, b_px, score = best_fixed_interval(axis_score, search0, search1, length_px)
         centre_px = ((a_px + b_px) / 2, y_px)
         bins = np.array_split(axis_score[a_px:b_px], cfg["continuity_bins"])
@@ -307,6 +321,8 @@ def find_wall(
         bounded1 = min(search1, topology1)
         if bounded1 - bounded0 >= length_px:
             search0, search1 = bounded0, bounded1
+        elif topology_fallback:
+            search0, search1 = topology0, topology1
         a_px, b_px, score = best_fixed_interval(axis_score, search0, search1, length_px)
         centre_px = (x_px, (a_px + b_px) / 2)
         bins = np.array_split(axis_score[a_px:b_px], cfg["continuity_bins"])

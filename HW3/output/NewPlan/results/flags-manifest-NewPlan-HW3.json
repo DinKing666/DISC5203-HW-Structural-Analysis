@@ -1,0 +1,33 @@
+{
+  "plan": "NewPlan",
+  "confidence_threshold": 0.85,
+  "reference": "config/reference-manual-NewPlan-HW3.json",
+  "crops_frozen_before_vlm": true,
+  "question_order": [
+    "NewPlan:T1:continuity"
+  ],
+  "flags": [
+    {
+      "flag_id": "NewPlan:T1:continuity",
+      "label": "T1",
+      "flag": "misread_label",
+      "source": "locked classical audit",
+      "question": "For T1, does the labelled 400x3500 mm wall form one continuous bar along its labelled axis? Read the printed label and size and answer continuity only.",
+      "answer_schema": {
+        "label": "T1",
+        "size_mm": "400x3500",
+        "continuous": "boolean",
+        "confidence": "0..1",
+        "reason": "short text"
+      },
+      "crop": "output/NewPlan/flags/crops/NewPlan-T1-flag.png",
+      "crop_box_px": [
+        2746,
+        1922,
+        3181,
+        2720
+      ],
+      "crop_sha256": "1b15a6b35e64e4dbe148fb2003b4ac79f29dd4ac1eb81b61509987959bf5553f"
+    }
+  ]
+}

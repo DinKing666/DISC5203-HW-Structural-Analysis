@@ -145,6 +145,80 @@ def verify_classical() -> None:
         require(PLAN / "intermediate" / name)
 
 
+def verify_newplan_classical() -> None:
+    plan_dir = ROOT / "output" / "NewPlan"
+    record_path = (
+        plan_dir / "results" / "record-classical-label-supervised-NewPlan-HW3.json"
+    )
+    if not record_path.exists():
+        return
+    record = load_json(record_path)
+    elements = record["elements"]
+    labels = [item["labels"][0] for item in elements]
+    assert len(elements) == len(set(labels)) == 38
+    assert sum(item["class"] == "column" for item in elements) == 30
+    assert sum(item["class"] == "wall" for item in elements) == 8
+    assert record["method"]["locked_to_floorplan1_parameters"] is True
+    assert record["method"]["forest_selected"] is False
+    assert record["method"]["vlm_used_for_coordinates"] is False
+    assert record["floor"]["outline_area_m2"] == 828.0
+    assert record["checks"]["sum_tributary_areas_m2"] == 828.0
+    assert record["checks"]["sum_axial_kN"] == 36225.0
+    assert record["checks"]["floor_total_axial_kN"] == 36225.0
+    assert 110 < record["scale_px_per_m"]["x"] < 116
+    assert 110 < record["scale_px_per_m"]["y"] < 116
+
+    score = load_json(
+        plan_dir / "results" / "score-sheet-classical-NewPlan-HW3.json"
+    )
+    assert score["named_elements_expected"] == score["named_elements_found"] == 38
+    assert score["columns_found"] == 30 and score["walls_found"] == 8
+    assert score["split_label_reconstructions"] == ["T1"]
+    assert score["broken_or_low_support_named_elements"] == 1
+    assert score["flag_labels"] == ["T1"]
+
+    flags = load_json(plan_dir / "results" / "flags-manifest-NewPlan-HW3.json")
+    assert flags["crops_frozen_before_vlm"] is True
+    assert flags["confidence_threshold"] == 0.85
+    assert flags["question_order"] == ["NewPlan:T1:continuity"]
+    assert len(flags["flags"]) == 1
+    flag = flags["flags"][0]
+    crop = ROOT / flag["crop"]
+    require(crop)
+    assert hashlib.sha256(crop.read_bytes()).hexdigest() == flag["crop_sha256"]
+    assert flag["answer_schema"]["size_mm"] == "400x3500"
+
+    reference = load_json(ROOT / "config" / "reference-manual-NewPlan-HW3.json")
+    reference_walls = reference["walls"]
+    walls = {
+        item["labels"][0]: item for item in elements if item["class"] == "wall"
+    }
+    assert walls["T1"]["audit"]["label_reconstructed"] is True
+    assert walls["T1"]["audit"]["flags"] == ["misread_label"]
+    for label, wall in walls.items():
+        expected = reference_walls[label]
+        assert f"{wall['size_mm'][0]}x{wall['size_mm'][1]}" == expected["size_mm"]
+        assert wall["continuous"] is expected["continuous"]
+        assert abs(wall["centre_m"][0] - expected["centre_m"][0]) < 0.5
+        assert abs(wall["centre_m"][1] - expected["centre_m"][1]) < 0.5
+
+    for name in (
+        "hw3_08_newplan_classical_morphology.png",
+        "hw3_09_newplan_connected_components.png",
+        "hw3_10_newplan_label_supervision.png",
+        "hw3_11_newplan_label_supervised_record.png",
+    ):
+        require(plan_dir / "figures" / name)
+    for name in (
+        "newplan-threshold.png",
+        "newplan-diagonal-support.png",
+        "newplan-horizontal-open17.png",
+        "newplan-vertical-open21.png",
+        "newplan-long-lines-removed.png",
+    ):
+        require(plan_dir / "intermediate" / name)
+
+
 def verify_optional_later_stages() -> None:
     forest = PLAN / "results" / "random-forest-summary-HW3.json"
     if forest.exists():
@@ -341,6 +415,7 @@ def main() -> None:
     verify_frozen_inputs()
     verify_task8_frozen_sources()
     verify_classical()
+    verify_newplan_classical()
     verify_optional_later_stages()
     print("HW3 verification passed: frozen inputs, classical/forest gates, identical dual-VLM evidence, syntax audit and promoted-copy invariants are present.")
 
