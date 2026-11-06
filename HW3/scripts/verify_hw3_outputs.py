@@ -317,6 +317,58 @@ def verify_newplan_vlm() -> None:
     assert t1["audit"]["vlm_resolution"]["coordinates_changed"] is False
 
 
+def verify_newplan_structural() -> None:
+    plan_dir = ROOT / "output" / "NewPlan"
+    hand_path = plan_dir / "results" / "hand-structural-NewPlan-HW3.json"
+    if not hand_path.exists():
+        return
+    hand = load_json(hand_path)
+    assert hand["plan"] == "NewPlan"
+    assert hand["mechanics"]["locked_to_floorplan1_mechanics"] is True
+    mass = hand["mass"]
+    assert mass["effective_area_m2"] == 828.0
+    assert mass["cm_m"] == [23.0, 9.0]
+    assert abs(mass["polar_area_about_cm_m4"] - 168360.0) < 1e-9
+
+    promoted = hand["promoted_shear_included"]
+    reference = hand["independent_reference_shear"]
+    expected_walls = [f"T{index}" for index in range(1, 9)]
+    assert promoted["included_walls"] == expected_walls
+    assert reference["included_walls"] == expected_walls
+    assert abs(promoted["cr_m"][0] - 23.00745) < 1e-8
+    assert abs(promoted["cr_m"][1] - 9.945907229) < 1e-8
+    assert abs(promoted["eccentricity_m"] - 0.945936567) < 1e-8
+    assert abs(reference["cr_m"][0] - 23.0) < 1e-8
+    assert abs(reference["cr_m"][1] - 9.918072289) < 1e-8
+    assert abs(reference["eccentricity_m"] - 0.918072289) < 1e-8
+    assert hand["promoted_bending_only"]["eccentricity_m"] > promoted["eccentricity_m"]
+
+    for row_index, row in enumerate(promoted["K_at_cm"]):
+        for column_index, value in enumerate(row):
+            assert abs(value - promoted["K_at_cm"][column_index][row_index]) < 1e-6
+    for model_key in ("smolvlm2-256m", "llava-onevision-0.5b"):
+        consequence = hand["vlm_structural_consequence"][model_key]
+        assert consequence["cr_m"] == promoted["cr_m"]
+        assert all(consequence["continuity_states"].values())
+        assert abs(consequence["shift_norm_from_reference_m"] - 0.02881469) < 1e-8
+    assert max(abs(value) for value in hand["checks"].values()) < 1e-6
+    design = hand["design_load_and_equilibrium"]
+    assert abs(design["equilibrium_sum_fx_kN"] - 1000.0) < 1e-6
+    assert abs(design["equilibrium_sum_fy_kN"]) < 1e-6
+    assert abs(
+        design["equilibrium_moment_about_cr_kNm"]
+        - design["torque_about_cr_kNm"]
+    ) < 1e-6
+
+    csv_path = plan_dir / "results" / "wall-stiffness-and-forces-NewPlan-HW3.csv"
+    require(csv_path)
+    with csv_path.open(encoding="utf-8", newline="") as stream:
+        rows = list(csv.DictReader(stream))
+    assert len(rows) == 8
+    assert [row["id"] for row in rows] == expected_walls
+    require(plan_dir / "figures" / "hw3_13_newplan_cm_cr_and_wall_forces.png")
+
+
 def verify_optional_later_stages() -> None:
     forest = PLAN / "results" / "random-forest-summary-HW3.json"
     if forest.exists():
@@ -516,6 +568,7 @@ def main() -> None:
     verify_newplan_classical()
     verify_newplan_forest()
     verify_newplan_vlm()
+    verify_newplan_structural()
     verify_optional_later_stages()
     print("HW3 verification passed: frozen inputs, classical/forest gates, identical dual-VLM evidence, syntax audit and promoted-copy invariants are present.")
 

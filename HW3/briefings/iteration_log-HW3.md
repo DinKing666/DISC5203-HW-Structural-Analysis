@@ -245,3 +245,13 @@
 - LLaVA-OneVision returned a fenced five-key object with quoted boolean/decimal values. The already accepted parser normalization removed the single fence and coerced those two literal types without changing values. It read `T1`, `400x3500`, continuous true and confidence 0.9, agreeing with the frozen independent reference.
 - Promotion: LLaVA resolves 1/1 and breaks 0; SmolVLM2 resolves 0/1 and breaks 0. LLaVA is promoted, T1's classical audit flag is cleared and all 38 extracted centres remain exactly equal to the classical record.
 - Status: Gate 7d accepted pending score-only reproducibility, automated checks and Git commit. No human answer was substituted.
+
+## 2026-11-06 - Gate 7e: NewPlan hand CM/CR and VLM consequence
+
+- Reused the FloorPlan1 material and mechanics unchanged: E = 30 GPa, G = 12.5 GPa, H = 3 m, shear factor 5/6 and the same bending-plus-shear wall flexibility. The rectangular 46 m by 18 m floor gives area 828.0 m2, CM = (23.0, 9.0) m, single-floor mass 738.532 t and polar area 168,360 m4.
+- The promoted eight-wall extraction gives CR = (23.00745, 9.945907) m and eccentricity 0.945937 m. The frozen independent wall centres give CR = (23.0, 9.918072) m and eccentricity 0.918072 m; the extracted/reference CR difference is 0.028815 m.
+- The classical T1 continuity field was already true: its flag concerned the split OCR label, not a broken wall. Therefore unresolved SmolVLM2 and resolving LLaVA produce the same eight active walls and the same structural result. The useful VLM consequence here is audit certainty, not a change in stiffness topology.
+- Under the fixed 1000 kN +x push at CM, the CR torque is 945.907 kN m. Wall forces close to 1000 kN in x, zero in y and the applied torque; a unit push through CR has zero rotation to saved precision.
+- Bending-only eccentricity exceeds the shear-included value, so retaining the assignment's shear term remains material. The single-storey reference periods are Tx = 0.07077 s, Ty = 0.05504 s and Ttheta = 0.06752 s.
+- Visual review accepts the extracted wall layout, nearly coincident extracted/reference CR markers and the push-plus-turn force chart.
+- Status: accepted pending byte-for-byte rerun, automated checks and Git commit.

@@ -1,0 +1,387 @@
+{
+  "plan": "NewPlan",
+  "primary_source": "record-promoted-NewPlan-HW3.json",
+  "mechanics": {
+    "E_kN_m2": 30000000.0,
+    "nu": 0.2,
+    "G_kN_m2": 12500000.0,
+    "height_m": 3.0,
+    "shear_kappa": 0.833333333,
+    "wall_formula": "1 / (H^3/(3EI) + H/(G*(5/6)*t*L))",
+    "continuous_false_excluded": true,
+    "locked_to_floorplan1_mechanics": true
+  },
+  "mass": {
+    "regions": [
+      {
+        "name": "46 m x 18 m floor rectangle",
+        "sign": 1.0,
+        "area_m2": 828.0,
+        "centroid_x_m": 23.0,
+        "centroid_y_m": 9.0,
+        "width_m": 46.0,
+        "height_m": 18.0
+      }
+    ],
+    "effective_area_m2": 828.0,
+    "cm_m": [
+      23.0,
+      9.0
+    ],
+    "polar_area_about_cm_m4": 168360.0,
+    "mass_per_storey_t": 738.532110092,
+    "five_storey_mass_t": 3692.660550459,
+    "polar_mass_per_storey_t_m2": 150168.195718654
+  },
+  "promoted_shear_included": {
+    "included_walls": [
+      "T1",
+      "T2",
+      "T3",
+      "T4",
+      "T5",
+      "T6",
+      "T7",
+      "T8"
+    ],
+    "K_at_cm": [
+      [
+        5822109.988776656,
+        0.0,
+        -5507175.925925923
+      ],
+      [
+        0.0,
+        9624017.957351292,
+        71698.933782265
+      ],
+      [
+        -5507175.925925923,
+        71698.933782265,
+        1305694748.2713244
+      ]
+    ],
+    "F_at_cm": [
+      [
+        1.72e-07,
+        -0.0,
+        1e-09
+      ],
+      [
+        -0.0,
+        1.04e-07,
+        -0.0
+      ],
+      [
+        1e-09,
+        -0.0,
+        1e-09
+      ]
+    ],
+    "cr_m": [
+      23.00745,
+      9.945907229
+    ],
+    "eccentricity_m": 0.945936567,
+    "direct_weighted_cr_m": [
+      23.00745,
+      9.945907229
+    ]
+  },
+  "promoted_bending_only": {
+    "included_walls": [
+      "T1",
+      "T2",
+      "T3",
+      "T4",
+      "T5",
+      "T6",
+      "T7",
+      "T8"
+    ],
+    "K_at_cm": [
+      [
+        10861111.111111114,
+        0.0,
+        -16994474.999999996
+      ],
+      [
+        0.0,
+        19055555.55555556,
+        141963.888888881
+      ],
+      [
+        -16994474.999999996,
+        141963.888888881,
+        2529638579.4705553
+      ]
+    ],
+    "F_at_cm": [
+      [
+        9.3e-08,
+        -0.0,
+        1e-09
+      ],
+      [
+        -0.0,
+        5.2e-08,
+        -0.0
+      ],
+      [
+        1e-09,
+        -0.0,
+        0.0
+      ]
+    ],
+    "cr_m": [
+      23.00745,
+      10.564708696
+    ],
+    "eccentricity_m": 1.564726431,
+    "direct_weighted_cr_m": [
+      23.00745,
+      10.564708696
+    ]
+  },
+  "independent_reference_shear": {
+    "included_walls": [
+      "T1",
+      "T2",
+      "T3",
+      "T4",
+      "T5",
+      "T6",
+      "T7",
+      "T8"
+    ],
+    "K_at_cm": [
+      [
+        5822109.988776656,
+        0.0,
+        -5345117.845117848
+      ],
+      [
+        0.0,
+        9624017.957351292,
+        0.0
+      ],
+      [
+        -5345117.845117848,
+        0.0,
+        1289632435.465769
+      ]
+    ],
+    "F_at_cm": [
+      [
+        1.72e-07,
+        0.0,
+        1e-09
+      ],
+      [
+        0.0,
+        1.04e-07,
+        0.0
+      ],
+      [
+        1e-09,
+        0.0,
+        1e-09
+      ]
+    ],
+    "cr_m": [
+      23.0,
+      9.918072289
+    ],
+    "eccentricity_m": 0.918072289,
+    "direct_weighted_cr_m": [
+      23.0,
+      9.918072289
+    ]
+  },
+  "vlm_structural_consequence": {
+    "smolvlm2-256m": {
+      "cr_m": [
+        23.00745,
+        9.945907229
+      ],
+      "eccentricity_m": 0.945936567,
+      "cr_shift_from_reference_m": [
+        0.00745,
+        0.02783494
+      ],
+      "shift_norm_from_reference_m": 0.02881469,
+      "continuity_states": {
+        "T1": true,
+        "T2": true,
+        "T3": true,
+        "T4": true,
+        "T5": true,
+        "T6": true,
+        "T7": true,
+        "T8": true
+      }
+    },
+    "llava-onevision-0.5b": {
+      "cr_m": [
+        23.00745,
+        9.945907229
+      ],
+      "eccentricity_m": 0.945936567,
+      "cr_shift_from_reference_m": [
+        0.00745,
+        0.02783494
+      ],
+      "shift_norm_from_reference_m": 0.02881469,
+      "continuity_states": {
+        "T1": true,
+        "T2": true,
+        "T3": true,
+        "T4": true,
+        "T5": true,
+        "T6": true,
+        "T7": true,
+        "T8": true
+      }
+    }
+  },
+  "design_load_and_equilibrium": {
+    "design_force_kN": 1000.0,
+    "direction": "+x at CM",
+    "torque_about_cr_kNm": 945.907228916,
+    "torsional_stiffness_about_cr_kN_m": 1300484936.595024,
+    "rotation_rad": 7.27e-07,
+    "equilibrium_sum_fx_kN": 1000.0,
+    "equilibrium_sum_fy_kN": 0.0,
+    "equilibrium_moment_about_cr_kNm": 945.907228916
+  },
+  "push_turn_decoupling": {
+    "unit_x_at_cm_load": [
+      1.0,
+      0.0,
+      0.0
+    ],
+    "unit_x_at_cm_displacement": [
+      1.72e-07,
+      -0.0,
+      1e-09
+    ],
+    "unit_x_at_cr_load_about_cm": [
+      1.0,
+      0.0,
+      -0.945907229
+    ],
+    "unit_x_at_cr_displacement": [
+      1.72e-07,
+      -0.0,
+      0.0
+    ],
+    "rotation_at_cm_push_rad": 1e-09,
+    "rotation_at_cr_push_rad": 0.0,
+    "matrix_times_cm_displacement": [
+      1.0,
+      0.0,
+      -0.0
+    ]
+  },
+  "modal_properties": {
+    "mass_matrix_at_cm": [
+      [
+        738.532110092,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        738.532110092,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        150168.195718654
+      ]
+    ],
+    "coupled_modes": [
+      {
+        "mode": 1,
+        "eigenvalue_rad2_s2": 7627.213729447,
+        "period_s": 0.071944386,
+        "mass_normalized_vector_at_cm": [
+          0.033046122,
+          -2.0392e-05,
+          0.001135112
+        ],
+        "kinetic_energy_fractions": {
+          "x-translation": 0.806511169,
+          "y-translation": 3.07e-07,
+          "torsion": 0.193488524
+        },
+        "dominant_character": "x-translation"
+      },
+      {
+        "mode": 2,
+        "eigenvalue_rad2_s2": 8951.011388812,
+        "period_s": 0.06641158,
+        "mass_normalized_vector_at_cm": [
+          0.016186138,
+          5.514e-05,
+          -0.002317478
+        ],
+        "kinetic_energy_fractions": {
+          "x-translation": 0.193488805,
+          "y-translation": 2.245e-06,
+          "torsion": 0.806508949
+        },
+        "dominant_character": "torsion"
+      },
+      {
+        "mode": 3,
+        "eigenvalue_rad2_s2": 13031.289795146,
+        "period_s": 0.055040981,
+        "mass_normalized_vector_at_cm": [
+          -5.942e-06,
+          0.036797198,
+          4.102e-06
+        ],
+        "kinetic_energy_fractions": {
+          "x-translation": 2.6e-08,
+          "y-translation": 0.999997447,
+          "torsion": 2.527e-06
+        },
+        "dominant_character": "y-translation"
+      }
+    ],
+    "K_transformed_to_cr": [
+      [
+        5822109.988776656,
+        0.0,
+        -3e-09
+      ],
+      [
+        0.0,
+        9624017.957351292,
+        1.1e-08
+      ],
+      [
+        -3e-09,
+        1.1e-08,
+        1300484936.595024
+      ]
+    ],
+    "uncoupled_periods_s": {
+      "Tx": 0.070765953,
+      "Ty": 0.055041004,
+      "Ttheta": 0.067517474
+    },
+    "period_ratio_Ttheta_over_Tx": 0.954095461
+  },
+  "checks": {
+    "area_matches_promoted_m2": 0.0,
+    "cm_matches_reference_m": 0.0,
+    "cr_routes_difference_m": 0.0,
+    "unit_push_at_cr_rotation_abs_rad": 0.0,
+    "design_force_residual_kN": 0.0,
+    "cross_wall_force_residual_kN": 0.0,
+    "design_moment_residual_kNm": -0.0
+  }
+}
