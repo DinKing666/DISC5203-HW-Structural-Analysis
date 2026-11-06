@@ -1,0 +1,43 @@
+{
+  "plan": "NewPlan",
+  "purpose": "kept-but-never-chosen diagnostic model trained on classical pseudo-labels",
+  "selected": false,
+  "selection_prohibited_reason": "The forest labels are copied from the rule-derived record, so the model cannot independently correct the rules' mistakes.",
+  "locked_to_floorplan1_features_and_hyperparameters": true,
+  "model_path": "models/random-forest-NewPlan-HW3.joblib",
+  "random_seed": 21345221,
+  "roi_px": [
+    1402,
+    1163,
+    7132,
+    3634
+  ],
+  "training_samples": 96000,
+  "test_samples": 24000,
+  "positive_fraction": 0.5,
+  "oob_score": 0.971208,
+  "test_accuracy": 0.970333,
+  "test_precision": 0.978224,
+  "test_recall": 0.962083,
+  "test_f1": 0.970087,
+  "rule_target_iou": 0.557338,
+  "confusion_matrix": [
+    [
+      11743,
+      257
+    ],
+    [
+      455,
+      11545
+    ]
+  ],
+  "feature_importance": {
+    "grey": 0.05570943,
+    "edge_strength": 0.0175608,
+    "ink_density_5": 0.12073144,
+    "ink_density_11": 0.07253676,
+    "ink_density_21": 0.25048109,
+    "ink_density_45": 0.25039866,
+    "stroke_45deg_density_21": 0.23258183
+  }
+}

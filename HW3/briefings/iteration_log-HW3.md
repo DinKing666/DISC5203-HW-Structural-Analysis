@@ -224,3 +224,13 @@
 - Tributary Voronoi cells close exactly to the 828.0 m2 rectangular floor. At 8.75 kN/m2 and five storeys, column axial loads close to 36,225.0 kN.
 - Visual acceptance: all eight red fixed-length bars lie on the black wall strokes; every extracted wall centre is within 0.5 m of the corrected independent reading. The one frozen VLM crop contains the T1 bar and printed 3500 x 400 callout.
 - Status: accepted pending deterministic rerun, automated checks and Git commit.
+
+## 2026-11-06 - Gate 7c: retain the NewPlan forest without selecting it
+
+- Reused the exact FloorPlan1 seven feature maps, 80-tree forest, maximum depth 14, minimum leaf size 3, balanced class weights, seed 21345221 and 60,000-sample-per-class cap. The 46 m by 18 m frozen frame defines the prediction ROI with a 2 m margin; no forest output was used to tune that ROI.
+- The forest trains only against the NewPlan classical record raster. It is therefore circular evidence: useful as a reproducibility witness, but prohibited from replacing or correcting the label-supervised record.
+- Held-out F1 = 0.970087, OOB score = 0.971208 and full-ROI rule-target IoU = 0.557338. Density-family hand features carry 0.92673 of the total importance, confirming that the forest mostly re-learns the fixed morphology neighbourhoods.
+- The 4.37 MB model, target/prediction masks, importance table and audit figure are retained. Visual review confirms that the prediction includes thin grid-line leakage despite strong held-out agreement, reinforcing the non-selection decision.
+- The first combined regression command named the HW1 verifier incorrectly as `verify_hw1_outputs.py`; that path does not exist. HW2 and HW3 still passed, but the missing HW1 launch is not counted as a full regression gate. Correct the command to the repository's actual `HW1/scripts/verify_outputs.py` and rerun all three.
+- Determinism: a second complete training run reproduced the model and all five derived artifacts byte for byte.
+- Status: accepted pending the corrected three-homework regression run and Git commit; `selected` remains false.

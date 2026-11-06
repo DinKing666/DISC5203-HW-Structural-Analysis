@@ -219,6 +219,38 @@ def verify_newplan_classical() -> None:
         require(plan_dir / "intermediate" / name)
 
 
+def verify_newplan_forest() -> None:
+    plan_dir = ROOT / "output" / "NewPlan"
+    summary_path = plan_dir / "results" / "random-forest-summary-NewPlan-HW3.json"
+    if not summary_path.exists():
+        return
+    summary = load_json(summary_path)
+    assert summary["plan"] == "NewPlan"
+    assert summary["selected"] is False
+    assert summary["locked_to_floorplan1_features_and_hyperparameters"] is True
+    assert summary["random_seed"] == 21345221
+    assert summary["roi_px"] == [1402, 1163, 7132, 3634]
+    assert summary["training_samples"] == 96000
+    assert summary["test_samples"] == 24000
+    assert summary["test_f1"] > 0.95
+    assert summary["oob_score"] > 0.95
+    assert 0.5 < summary["rule_target_iou"] < 0.7
+    assert abs(sum(summary["feature_importance"].values()) - 1.0) < 1e-6
+    hand_features = sum(
+        value
+        for name, value in summary["feature_importance"].items()
+        if "density" in name
+    )
+    assert hand_features > 0.90
+    model = ROOT / summary["model_path"]
+    require(model)
+    assert model.stat().st_size < 6_000_000
+    require(plan_dir / "results" / "random-forest-feature-importance-NewPlan-HW3.csv")
+    require(plan_dir / "intermediate" / "forest-rule-target-NewPlan-HW3.png")
+    require(plan_dir / "intermediate" / "forest-prediction-NewPlan-HW3.png")
+    require(plan_dir / "figures" / "hw3_12_newplan_random_forest_never_chosen.png")
+
+
 def verify_optional_later_stages() -> None:
     forest = PLAN / "results" / "random-forest-summary-HW3.json"
     if forest.exists():
@@ -416,6 +448,7 @@ def main() -> None:
     verify_task8_frozen_sources()
     verify_classical()
     verify_newplan_classical()
+    verify_newplan_forest()
     verify_optional_later_stages()
     print("HW3 verification passed: frozen inputs, classical/forest gates, identical dual-VLM evidence, syntax audit and promoted-copy invariants are present.")
 
