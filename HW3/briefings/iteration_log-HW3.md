@@ -280,6 +280,15 @@
 - Expected accepted verdict: both models 0 resolved / 0 broken / 15 unresolved, no best reader, gate not passed and no structural record promoted.
 - Status: scoring Revision 2 pending score-only replay, automated checks and Git commit.
 
+## 2026-11-07 - Gate 7j: separate the MLStructFP reference benchmark from pipeline output
+
+- The accepted pipeline structural result is explicitly unavailable: zero classical elements, zero VLM-resolved flags and no numeric promoted sizes make a pipeline-derived CM/CR/e indefensible.
+- For comparison only, integrate the frozen slab polygon and use all 28 frozen dataset wall rectangles independently. CM = (14.220398, -9.818857) m, single-floor mass = 342.386 t and polar area = 25,171.628 m4.
+- Generalise the same bending-plus-shear wall formula to each frozen angle with direction vector `[cos(a), sin(a), -cos(a)(y-ym)+sin(a)(x-xm)]`. Solving the full 2D translational coupling gives reference CR = (13.266821, -9.988242) m and e = 0.968504 m.
+- The transformed CR matrix has zero translation-rotation coupling to saved precision. A 1000 kN +x load at CM closes to 1000 kN x force, zero y force and zero moment at CM using all 28 local wall forces.
+- The plot title and JSON basis both state `reference-only` / `not pipeline output`. Both VLM structural consequences remain unavailable rather than being back-filled from the public annotation.
+- Status: reference benchmark accepted pending byte-for-byte rerun, automated checks and Git commit.
+
 ## 2026-11-06 - Gate 7f: locked classical reader on public MLStructFP Floor 966
 
 - Preprocessed only as declared by the public loader: fully transparent pixels become white, while every non-transparent blue source pixel is preserved. Threshold 225, 11-px diagonal opening, 17/21-px orthogonal openings, 4:1 shape rule and OCR threshold 0.85 are unchanged from FloorPlan1.

@@ -583,6 +583,54 @@ def verify_mlstruct_vlm() -> None:
     assert rejected["structural_record_promoted"] is False
 
 
+def verify_mlstruct_reference_structural() -> None:
+    plan_dir = ROOT / "output" / "MLStructFP966"
+    result_path = (
+        plan_dir
+        / "results"
+        / "reference-structural-benchmark-MLStructFP966-HW3.json"
+    )
+    if not result_path.exists():
+        return
+    result = load_json(result_path)
+    assert result["plan"] == "MLStructFP966"
+    assert "not a promoted extraction" in result["basis"]
+    pipeline = result["pipeline_structural_result"]
+    assert pipeline["available"] is False
+    assert pipeline["cm_m"] is None
+    assert pipeline["cr_m"] is None
+    assert pipeline["eccentricity_m"] is None
+
+    reference = result["reference_benchmark"]
+    mass = reference["mass"]
+    assert abs(mass["effective_area_m2"] - 383.86362) < 1e-8
+    assert abs(mass["cm_m"][0] - 14.220397834) < 1e-8
+    assert abs(mass["cm_m"][1] + 9.818856515) < 1e-8
+    assert reference["wall_rectangle_count"] == 28
+    assert abs(reference["cr_m"][0] - 13.266820659) < 1e-8
+    assert abs(reference["cr_m"][1] + 9.988242048) < 1e-8
+    assert abs(reference["eccentricity_m"] - 0.968504459) < 1e-8
+    assert max(abs(value) for value in result["checks"].values()) < 1e-5
+    response = reference["design_1000kN_x_at_cm"]
+    assert abs(response["sum_force_x_kN"] - 1000.0) < 1e-6
+    assert abs(response["sum_force_y_kN"]) < 1e-6
+    assert abs(response["sum_moment_about_cm_kNm"]) < 1e-6
+    assert all(
+        value.startswith("unavailable")
+        for value in result["vlm_structural_consequence"].values()
+    )
+
+    csv_path = (
+        plan_dir / "results" / "reference-wall-stiffness-MLStructFP966-HW3.csv"
+    )
+    require(csv_path)
+    with csv_path.open(encoding="utf-8", newline="") as stream:
+        rows = list(csv.DictReader(stream))
+    assert len(rows) == 28
+    assert any(abs(float(row["angle_deg"]) - 8.5) < 1e-9 for row in rows)
+    require(plan_dir / "figures" / "hw3_19_mlstruct_reference_cm_cr.png")
+
+
 def verify_optional_later_stages() -> None:
     forest = PLAN / "results" / "random-forest-summary-HW3.json"
     if forest.exists():
@@ -786,6 +834,7 @@ def main() -> None:
     verify_mlstruct_classical()
     verify_mlstruct_forest()
     verify_mlstruct_vlm()
+    verify_mlstruct_reference_structural()
     verify_optional_later_stages()
     print("HW3 verification passed: frozen inputs, classical/forest gates, identical dual-VLM evidence, syntax audit and promoted-copy invariants are present.")
 

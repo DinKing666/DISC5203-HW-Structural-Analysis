@@ -1,0 +1,103 @@
+{
+  "plan": "MLStructFP966",
+  "basis": "independent public dataset reference; not a promoted extraction",
+  "pipeline_structural_result": {
+    "available": false,
+    "cm_m": null,
+    "cr_m": null,
+    "eccentricity_m": null,
+    "reason": "the locked label-supervision route claimed zero elements, both VLMs resolved zero flags, and no numeric sizes were promoted"
+  },
+  "reference_benchmark": {
+    "slab_source": "frozen MLStructFP slab polygon 972",
+    "wall_source": "28 frozen MLStructFP wall rectangles treated independently",
+    "mass": {
+      "effective_area_m2": 383.86362,
+      "cm_m": [
+        14.220397834,
+        -9.818856515
+      ],
+      "polar_area_about_cm_m4": 25171.627644396,
+      "mass_per_storey_t": 342.386001529,
+      "five_storey_mass_t": 1711.930007645,
+      "polar_mass_per_storey_t_m2": 22451.757582922
+    },
+    "mechanics": {
+      "E_kN_m2": 30000000.0,
+      "nu": 0.2,
+      "G_kN_m2": 12500000.0,
+      "height_m": 3.0,
+      "shear_kappa": 0.833333333,
+      "wall_formula": "1 / (H^3/(3EI) + H/(G*(5/6)*t*L))",
+      "arbitrary_angle_vector": "[cos(a), sin(a), -cos(a)*(y-ym)+sin(a)*(x-xm)]"
+    },
+    "wall_rectangle_count": 28,
+    "K_at_cm": [
+      [
+        7261014.340196361,
+        73962.796170939,
+        1159381.550290809
+      ],
+      [
+        73962.796170939,
+        10747547.245024694,
+        -10236087.507335741
+      ],
+      [
+        1159381.550290809,
+        -10236087.507335741,
+        412584381.24416703
+      ]
+    ],
+    "cr_m": [
+      13.266820659,
+      -9.988242048
+    ],
+    "eccentricity_m": 0.968504459,
+    "K_transformed_to_cr": [
+      [
+        7261014.340196361,
+        73962.796170939,
+        0.0
+      ],
+      [
+        73962.796170939,
+        10747547.245024694,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        402627099.3788231
+      ]
+    ],
+    "design_1000kN_x_at_cm": {
+      "load_at_cm": [
+        1000.0,
+        0.0,
+        0.0
+      ],
+      "displacement_at_cm": [
+        0.000137803,
+        -1.349e-06,
+        -4.21e-07
+      ],
+      "sum_force_x_kN": 1000.0,
+      "sum_force_y_kN": -0.0,
+      "sum_moment_about_cm_kNm": 0.0
+    }
+  },
+  "vlm_structural_consequence": {
+    "smolvlm2-256m": "unavailable: zero flags resolved and no promoted geometry",
+    "llava-onevision-0.5b": "unavailable: zero flags resolved and no promoted geometry"
+  },
+  "checks": {
+    "area_difference_from_frozen_reference_m2": 0.0,
+    "cm_difference_from_frozen_reference_m": 5.13e-07,
+    "K_symmetry_max_abs": 0.0,
+    "K_at_cr_translation_rotation_coupling_max_abs": 0.0,
+    "design_force_x_residual_kN": -0.0,
+    "design_force_y_residual_kN": -0.0,
+    "design_moment_residual_kNm": 0.0
+  }
+}
