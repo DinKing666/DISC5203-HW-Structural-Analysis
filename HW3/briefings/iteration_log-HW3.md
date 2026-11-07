@@ -306,3 +306,15 @@
 - The 45-px ink-density feature alone carries 0.693575 importance, while the 45-degree stroke feature is effectively unused. The prediction copies most visible blue outlines, including the L/C composites rejected by the fixed 4:1 candidate gate.
 - This is a stronger failure than on the two course plans: the forest neither reliably copies its own box target nor supplies the absent printed IDs and sizes. Its 1.78 MB model and audit artifacts are retained precisely to document that result; selection remains prohibited.
 - Status: accepted pending byte-for-byte rerun, automated checks and Git commit.
+
+## 2026-11-07 - Gate 8: assemble and audit the final HW3 report
+
+- Built the final Markdown report from the committed immutable records, promoted copies, force tables and figures; no numerical result is manually re-entered into the generated sections when a structured artifact exists.
+- The report keeps the three evidence classes separate: accepted pipeline output for FloorPlan1 and NewPlan, failed extraction evidence for MLStructFP966, and the explicitly reference-only MLStructFP structural benchmark. The public reference is never presented as a promoted pipeline result.
+- Built a 16-page A4 PDF with embedded figures, fixed header/footer, student and repository identifiers, hand/OpenSees comparisons, the modification result, both holdout outcomes, reproducibility commands and limitations.
+- Visual QA rendered every PDF page to PNG at 110 dpi. All 16 pages were inspected: no page is blank; no title, table, figure, caption, URL, matrix or footer is clipped or overlapped. Text extraction also returns non-empty content on every page.
+- ReportLab invariant mode fixes metadata. A second complete Markdown and PDF build reproduced both SHA-256 hashes byte for byte: Markdown `fa585e1963cfc63c7242f4cdb6b5520edf18a609794b6145413aa3c74f518859`; PDF `5b612ff15ff9ec90f886ac058699d7fac1fd5e00dd6c05cd9fbf22b9a684dab8`.
+- Extended the HW3 verifier to require the final report sources, public-source citations, PDF signature, minimum payload and exact 16-page object count. Updated both repository indexes from planned/in-progress to final deliverables.
+- Pre-commit review found the machine-level Git attributes treating the ReportLab PDF as plain text and reporting binary stream whitespace. Added the repository-level `*.pdf -text -diff` rule so PDF content remains binary and source-file whitespace checks stay meaningful.
+- Final regression: HW1 verifies 18 elements and exact load/area closure; HW2 verifies 24 beams, four models and its 11-page PDF; HW3 verifies all frozen gates, structural checks and the 16-page report.
+- Status: accepted; full regression passed, pending the final stage-sized Git commit.

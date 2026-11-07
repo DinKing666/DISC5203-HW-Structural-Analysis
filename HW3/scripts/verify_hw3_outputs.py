@@ -3,6 +3,7 @@ from __future__ import annotations
 import hashlib
 import json
 import csv
+import re
 from pathlib import Path
 
 
@@ -20,6 +21,32 @@ def load_json(path: Path) -> object:
 def require(path: Path) -> None:
     if not path.exists() or path.stat().st_size == 0:
         raise AssertionError(f"Missing or empty file: {path}")
+
+
+def verify_final_report() -> None:
+    markdown_path = ROOT / "report" / "21345221-report-HW3.md"
+    pdf_path = ROOT / "output" / "pdf" / "21345221-report-HW3.pdf"
+    require(markdown_path)
+    require(pdf_path)
+
+    markdown = markdown_path.read_text(encoding="utf-8")
+    required_text = (
+        "Floor-Plan Reading and Rigid-Diaphragm Centre of Stiffness",
+        "## 5. Tasks 1-2 - dual-VLM flag gate",
+        "## 7. Tasks 4-5 - pertinent OpenSees rigid diaphragm and no-rotation point",
+        "## 10. Task 8A - locked pipeline on course NewPlan",
+        "## 11. Task 8B - public MLStructFP Floor 966",
+        "https://github.com/MLSTRUCT/MLStructFP",
+        "https://doi.org/10.1016/j.autcon.2023.105132",
+        "reference-only, not pipeline output",
+    )
+    for text in required_text:
+        assert text in markdown, text
+
+    pdf = pdf_path.read_bytes()
+    assert pdf.startswith(b"%PDF-")
+    assert len(pdf) > 2_000_000
+    assert len(re.findall(rb"/Type\s*/Page\b", pdf)) == 16
 
 
 def verify_frozen_inputs() -> None:
@@ -836,7 +863,8 @@ def main() -> None:
     verify_mlstruct_vlm()
     verify_mlstruct_reference_structural()
     verify_optional_later_stages()
-    print("HW3 verification passed: frozen inputs, classical/forest gates, identical dual-VLM evidence, syntax audit and promoted-copy invariants are present.")
+    verify_final_report()
+    print("HW3 verification passed: frozen inputs, classical/forest gates, dual-VLM evidence, structural checks and the 16-page final report are present.")
 
 
 if __name__ == "__main__":

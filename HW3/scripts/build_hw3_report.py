@@ -1,0 +1,355 @@
+from __future__ import annotations
+
+import csv
+import json
+from pathlib import Path
+from typing import Any
+
+
+ROOT = Path(__file__).resolve().parents[1]
+OUT = ROOT / "report/21345221-report-HW3.md"
+
+
+def load(path: str) -> dict[str, Any]:
+    return json.loads((ROOT / path).read_text(encoding="utf-8"))
+
+
+def rows(path: str) -> list[dict[str, str]]:
+    with (ROOT / path).open(encoding="utf-8", newline="") as stream:
+        return list(csv.DictReader(stream))
+
+
+def table(headers: list[str], values: list[list[Any]]) -> str:
+    lines = [
+        "| " + " | ".join(headers) + " |",
+        "|" + "|".join("---" for _ in headers) + "|",
+    ]
+    for row in values:
+        lines.append(
+            "| "
+            + " | ".join(str(value).replace("|", "/").replace("\n", " ") for value in row)
+            + " |"
+        )
+    return "\n".join(lines)
+
+
+def matrix(values: list[list[float]]) -> str:
+    return "\n".join(
+        "[ " + "  ".join(f"{value: .6e}" for value in row) + " ]"
+        for row in values
+    )
+
+
+def performance(plan: str, payload: dict[str, Any], verdict: str) -> list[list[Any]]:
+    result = []
+    for model in payload["models"]:
+        result.append(
+            [
+                plan,
+                model["model_key"],
+                model["flags_total"],
+                model["flags_resolved"],
+                model["flags_broken"],
+                model["flags_unresolved"],
+                model["mean_reported_confidence"]
+                if model["mean_reported_confidence"] is not None
+                else "n/a",
+                model["mean_size_error_mm"]
+                if model["mean_size_error_mm"] is not None
+                else "n/a",
+                verdict if model["model_key"] in verdict else "witness",
+            ]
+        )
+    return result
+
+
+def main() -> None:
+    classical = load("output/FloorPlan1/results/score-sheet-classical-HW3.json")
+    record = load("output/FloorPlan1/results/record-classical-label-supervised-HW3.json")
+    forest = load("output/FloorPlan1/results/random-forest-summary-HW3.json")
+    flags = load("output/FloorPlan1/results/flags-manifest-HW3.json")
+    vlm = load("output/FloorPlan1/results/vlm-comparison-FloorPlan1-HW3.json")
+    hand = load("output/FloorPlan1/results/hand-structural-FloorPlan1-HW3.json")
+    opensees = load("output/FloorPlan1/results/opensees-FloorPlan1-HW3.json")
+    modified = load("output/FloorPlan1/results/modified-hand-FloorPlan1-HW3.json")
+    modified_ops = load("output/FloorPlan1/results/opensees-modified-FloorPlan1-HW3.json")
+    wall_rows = rows("output/FloorPlan1/results/wall-stiffness-and-forces-FloorPlan1-HW3.csv")
+
+    new_classical = load("output/NewPlan/results/score-sheet-classical-NewPlan-HW3.json")
+    new_forest = load("output/NewPlan/results/random-forest-summary-NewPlan-HW3.json")
+    new_vlm = load("output/NewPlan/results/vlm-comparison-NewPlan-HW3.json")
+    new_hand = load("output/NewPlan/results/hand-structural-NewPlan-HW3.json")
+
+    found_classical = load("output/MLStructFP966/results/score-sheet-classical-MLStructFP966-HW3.json")
+    found_forest = load("output/MLStructFP966/results/random-forest-summary-MLStructFP966-HW3.json")
+    found_vlm = load("output/MLStructFP966/results/vlm-comparison-MLStructFP966-HW3.json")
+    found_structural = load("output/MLStructFP966/results/reference-structural-benchmark-MLStructFP966-HW3.json")
+
+    vlm_rows = []
+    vlm_rows += performance("FloorPlan1", vlm, "llava-onevision-0.5b promoted")
+    vlm_rows += performance("NewPlan", new_vlm, "llava-onevision-0.5b promoted")
+    vlm_rows += performance("MLStructFP966", found_vlm, "no model promoted")
+
+    mass_rows = [
+        [
+            item["name"],
+            f'{item["area_m2"]:.4f}',
+            f'{item["centroid_x_m"]:.3f}',
+            f'{item["centroid_y_m"]:.3f}',
+        ]
+        for item in hand["mass"]["regions"]
+    ]
+    stiffness_rows = [
+        [
+            row["id"],
+            row["direction"],
+            row["x_m"],
+            row["y_m"],
+            row["length_m"],
+            row["thickness_m"],
+            row["continuous"],
+            f'{float(row["k_shear_kN_m"]):.1f}',
+            f'{float(row["k_bending_only_kN_m"]):.1f}',
+            f'{float(row["force_push_kN"]):.2f}',
+            f'{float(row["force_turn_kN"]):.2f}',
+            f'{float(row["force_total_kN"]):.2f}',
+        ]
+        for row in wall_rows
+    ]
+    flag_rows = [
+        [
+            item["label"],
+            item["flag"],
+            item["answer_schema"]["size_mm"],
+            item["crop_sha256"][:12],
+        ]
+        for item in flags["flags"]
+    ]
+
+    before_after = modified["before_after"]
+    found_ref = found_structural["reference_benchmark"]
+    text = f"""# Homework 3: Floor-Plan Reading and Rigid-Diaphragm Centre of Stiffness
+
+**Course:** Computer (& AI) Methods for Structural Engineering (DISC 5203)<br>
+**Student:** Shuhan He / 何抒翰<br>
+**Student ID:** 21345221<br>
+**Assigned input:** Floor Plan 1 (student-ID final digit = 1)<br>
+**Prepared for review:** 7 November 2026<br>
+**Repository:** one cumulative repository containing HW1, HW2 and HW3; this report is under `HW3/`
+
+## 1. Executive summary
+
+The assigned FloorPlan1 was read in the required order: fixed classical morphology, one printed label per element, a random forest retained but never selected, and two VLM readers restricted to four frozen flag crops. The immutable classical record contains **18 elements** (7 columns, 11 walls). LLaVA-OneVision resolved **3/4** flags and broke none; SmolVLM2 resolved **0/4**. LLaVA was promoted, but T3 remained unresolved and therefore excluded from the primary lateral model.
+
+The primary hand result is **CM = (5.46045, 8.79152) m**, **CR = (5.54884, 9.89459) m**, and **e = 1.10660 m** with bending and shear. A 1000 kN +x load at CM therefore creates **1103.07 kN m** torque. The OpenSees `ElasticTimoshenkoBeam` rigid-diaphragm model agrees with the hand CR within **{opensees['comparison_to_hand']['cr_difference_norm_m']:.2e} m**. Rebuilding T3 at 309 mm and thickening T7 to 365 mm, without moving either centreline or the mass layout, reduces e to **0.000268 m** (99.9758%).
+
+The locked pipeline generalized well to the course NewPlan: 38/38 elements, one flag, LLaVA 1/1, and e = 0.94594 m. It failed safely on public MLStructFP Floor 966: zero printed label-size strings meant zero auditable extracted elements, both VLMs resolved 0/15, and no structural record was promoted. A separate public-reference benchmark is reported as such; it is not presented as pipeline output.
+
+## 2. Inputs, fixed assumptions and audit boundary
+
+The original course files are hash-frozen in `config/input_manifest-HW3.json`. The main mechanics use E = 30 GPa, nu = 0.2, G = 12.5 GPa, storey height H = 3 m, shear factor 5/6, floor load 8.75 kN/m2 and five storeys. Units are kN and m.
+
+The fixed reader is `grey < 225`, 11-px 45-degree opening, horizontal opening 17 px, vertical opening 21 px, and a 4:1 elongation rule. OCR is accepted only at confidence 0.85 and is run on both the original image and a long-line-removed copy. Pixels place an element; printed text sizes it. VLMs see only frozen local crops, never a whole plan, and cannot change coordinates.
+
+The two local VLMs are [SmolVLM2-256M](https://huggingface.co/HuggingFaceTB/SmolVLM2-256M-Video-Instruct) revision `067788...` and [LLaVA-OneVision-Qwen2-0.5B](https://huggingface.co/llava-hf/llava-onevision-qwen2-0.5b-ov-hf) revision `74dd0b...`. Both use CPU float32, seed 21345221, greedy decoding and the same crop/question order per plan. An answer must be schema-valid, above 0.85, internally consistent and agree with a reference frozen before inference.
+
+## 3. Task 1 - classical reading and label supervision on FloorPlan1
+
+The classical pass keeps **{classical['connected_components_kept']}** connected components and **{classical['shape_rule_elongated_candidates']}** elongated candidates. Both OCR passes recover all 18 expected names. Label supervision claims exactly one compatible bar per label and closes the net tributary area at **{record['floor']['effective_area_m2']:.4f} m2** and the five-storey axial sum at **{record['checks']['sum_axial_kN']:.3f} kN**. The measured growth scale is {classical['scale_growth_px_per_m']['x_median']:.3f}/{classical['scale_growth_px_per_m']['y_median']:.3f} px/m; the printed-frame scale is {classical['frame_scale_px_per_m']['x']:.3f}/{classical['frame_scale_px_per_m']['y']:.3f} px/m.
+
+![FloorPlan1 classical record](../output/FloorPlan1/figures/hw3_04_label_supervised_record.png)
+
+![FloorPlan1 fixed threshold and morphology](../output/FloorPlan1/figures/hw3_01_classical_morphology.png)
+
+Four walls are frozen as flags before either VLM runs:
+
+{table(['Label','Flag','Expected printed size','Crop SHA-256 prefix'], flag_rows)}
+
+The complete immutable record is `output/FloorPlan1/results/record-classical-label-supervised-HW3.json`; model answers are applied only to a copy.
+
+## 4. Kept-but-never-chosen random forests
+
+All three forests use the same seven features, 80 trees, maximum depth 14, minimum leaf 3, balanced classes and seed 21345221. Training labels are copied from classical pseudo-labels, so the forests cannot independently correct classical errors and are never eligible for promotion.
+
+{table(['Plan','OOB','Test F1','Rule-target IoU','Dominant evidence','Selected'], [
+    ['FloorPlan1', forest['oob_score'], forest['test_f1'], forest['rule_target_iou'], '21/45-px ink density + 45-degree density', forest['selected']],
+    ['NewPlan', new_forest['oob_score'], new_forest['test_f1'], new_forest['rule_target_iou'], '21/45-px ink density + 45-degree density', new_forest['selected']],
+    ['MLStructFP966', found_forest['oob_score'], found_forest['test_f1'], found_forest['rule_target_iou'], '45-px ink density (0.694)', found_forest['selected']],
+])}
+
+![Main-plan forest retained as a witness](../output/FloorPlan1/figures/hw3_05_random_forest_never_chosen.png)
+
+High held-out agreement does not guarantee full-plan fidelity: FloorPlan1 F1 is 0.9835 while full-ROI IoU is 0.5848. The public plan falls to F1 0.6743 and IoU 0.2214, visibly copying rejected composite outlines.
+
+## 5. Tasks 1-2 - dual-VLM flag gate
+
+The common response schema is `label`, `size_mm`, `continuous`, `confidence`, `reason`. A single outer JSON fence and quoted literal boolean/decimal may be normalized without changing values; prose, wrong keys, semantic contradictions and low confidence remain unresolved. The reference is a defensible independent reading, not asserted ground truth.
+
+The frozen prompt form is:
+
+```text
+<one flag-specific question>
+Inspect the crop, then return exactly one JSON object with exactly
+label, size_mm, continuous, confidence, reason. Output JSON only.
+```
+
+For the no-text public plan, Prompt Revision 3 additionally identifies the U-number as an internal audit handle and `NOT_VISIBLE` as a nonnumeric missing-size sentinel. Both readers on a given plan receive byte-identical crops, questions and order.
+
+{table(['Plan','Model','Flags','Resolved','Broken','Unresolved','Mean confidence','Mean size error mm','Verdict'], vlm_rows)}
+
+On FloorPlan1, LLaVA reads all four labels/sizes and reports 0.9 confidence, but T3's field says continuous while its reason says not continuous; the contradiction guard leaves T3 unresolved. T4, T10 and T11 clear. SmolVLM2 produces no valid answer. Losing T3 changes the structural route: both actual VLM outputs place CR **0.91416 m** from the independent-reference CR. The chosen reader still wins the flag gate because it clears three audits without breaking one.
+
+On NewPlan, LLaVA resolves T1 (1/1, 0 broken); SmolVLM2 resolves 0/1. Both structural states retain all eight walls because T1's classical continuity was already true and the flag concerned split OCR. On MLStructFP966, both readers resolve 0/15; a zero-resolved tie is archived and rejected, no reader is promoted, and no structural record exists.
+
+The raw outputs remain separate files under each plan's `results/` directory; they are not pasted or repaired in this report.
+
+## 6. Task 3 - hand CM, stiffness matrix, CR and eccentricity
+
+For each continuous wall, I = tL3/12, Av = (5/6)tL and
+
+`k = 1 / [H3/(3EI) + H/(G Av)]`.
+
+The signed non-overlapping mass regions are:
+
+{table(['Region','Signed area m2','cx m','cy m'], mass_rows)}
+
+They give net area **{hand['mass']['effective_area_m2']:.4f} m2**, CM **({hand['mass']['cm_m'][0]:.6f}, {hand['mass']['cm_m'][1]:.6f}) m**, mass **{hand['mass']['mass_per_storey_t']:.3f} t per storey** and **{hand['mass']['five_storey_mass_t']:.3f} t for five storeys**.
+
+The primary bending-plus-shear matrix about CM is:
+
+```text
+K [kN/m, kN, kN m by DOF scaling]
+{matrix(hand['promoted_shear_included']['K_at_cm'])}
+
+F = K^-1
+{matrix(hand['promoted_shear_included']['F_at_cm'])}
+```
+
+The flexibility and direct stiffness-weighted routes both give CR **({hand['promoted_shear_included']['cr_m'][0]:.6f}, {hand['promoted_shear_included']['cr_m'][1]:.6f}) m**, so e = **{hand['promoted_shear_included']['eccentricity_m']:.6f} m**. Omitting shear moves CR to **({hand['promoted_bending_only']['cr_m'][0]:.6f}, {hand['promoted_bending_only']['cr_m'][1]:.6f}) m** and raises e to **{hand['promoted_bending_only']['eccentricity_m']:.6f} m**; shear is therefore structurally material.
+
+{table(['Wall','Dir','x','y','L','t','Active','k shear','k bend','Push','Turn','Total kN'], stiffness_rows)}
+
+For 1000 kN +x at CM, the decomposition is a push through CR plus **{hand['design_load_and_equilibrium']['torque_about_cr_kNm']:.3f} kN m** torque. The saved rows close to 1000 kN in x, zero cross-wall force and the applied torque.
+
+![Main-plan CM, CR and wall-force decomposition](../output/FloorPlan1/figures/hw3_06_cm_cr_and_wall_forces.png)
+
+## 7. Tasks 4-5 - pertinent OpenSees rigid diaphragm and no-rotation point
+
+The check model uses one 3D `ElasticTimoshenkoBeam` per continuous wall, strong-axis I = tL3/12 and Av = (5/6)tL. Weak-axis stiffness and St Venant torsion are 1e-9 of the strong idealization, matching the hand premise. Wall tops are tied to the CM master with `rigidDiaphragm(3, master, *wall_top_nodes)` and `Transformation` constraints. The implementation follows the official [ElasticTimoshenkoBeam](https://openseespydoc.readthedocs.io/en/latest/src/ElasticTimoshenkoBeam.html), [rigidDiaphragm](https://openseespydoc.readthedocs.io/en/latest/src/rigidDiaphragm.html), and [Transformation constraint](https://openseespydoc.readthedocs.io/en/latest/src/TransformationMethod.html) documentation.
+
+Three unit loads at CM recover F and K. OpenSees 3.8.0 gives CR **({opensees['comparison_to_hand']['hand_cr_m'][0]:.6f}, {opensees['comparison_to_hand']['hand_cr_m'][1]:.6f}) m**, only **{opensees['comparison_to_hand']['cr_difference_norm_m']:.2e} m** from hand; maximum relative K difference is **{opensees['comparison_to_hand']['max_abs_K_relative_difference']:.2e}**. A unit push through CR has saved rotation **{opensees['comparison_to_hand']['unit_push_through_cr_rotation_rad']} rad**. The 1000 kN case sums to **{opensees['comparison_to_hand']['design_wall_sum_x_kN']:.6f} kN** in x and **{opensees['comparison_to_hand']['design_cross_wall_sum_y_kN']:.2e} kN** in cross-wall y. Push-plus-turn wall-force additivity residual is zero.
+
+```text
+OpenSees F at CM
+{matrix(opensees['flexibility_at_cm'])}
+
+OpenSees K = F^-1
+{matrix(opensees['stiffness_at_cm'])}
+```
+
+## 8. Task 6 - modify the wall system so CM and CR coincide
+
+The slab, openings, columns, grid and every wall centreline remain fixed. T3 is rebuilt continuous at **309 mm** thickness and T7 is thickened from 250 to **365 mm** at the shaft edge. These values separately target yCR and xCR and are rounded only after solving the required stiffness.
+
+{table(['Quantity','Before','After'], [
+    ['CR x m', f"{before_after['cr_before_m'][0]:.6f}", f"{before_after['cr_after_m'][0]:.6f}"],
+    ['CR y m', f"{before_after['cr_before_m'][1]:.6f}", f"{before_after['cr_after_m'][1]:.6f}"],
+    ['Eccentricity m', f"{before_after['eccentricity_before_m']:.6f}", f"{before_after['eccentricity_after_m']:.6f}"],
+    ['1000 kN torque kN m', f"{hand['design_load_and_equilibrium']['torque_about_cr_kNm']:.3f}", '0.218'],
+    ['Peak absolute wall force kN', f"{before_after['peak_abs_wall_force_before_kN']:.3f}", f"{before_after['peak_abs_wall_force_after_kN']:.3f}"],
+    ['Ttheta / Tx', f"{before_after['period_ratio_Ttheta_over_Tx_before']:.4f}", f"{before_after['period_ratio_Ttheta_over_Tx_after']:.4f}"],
+])}
+
+Eccentricity falls **{before_after['eccentricity_reduction_percent']:.4f}%**. Modified OpenSees agrees with hand CR within **{modified_ops['comparison_to_hand']['cr_difference_norm_m']:.2e} m**, retains zero rotation through CR and closes the 1000 kN load.
+
+![Before/after wall modification](../output/FloorPlan1/figures/hw3_07_modification_before_after.png)
+
+## 9. Task 7 - why CM = CR matters
+
+Before modification, e = 1.10660 m creates 1103.07 kN m torque under the fixed 1000 kN push. The torsional radius is `r_t = sqrt(29.758) = 5.455 m`; using the dimensionally consistent force amplification `1 + e d_r / r_t^2`, T2 is the most torsion-amplified wall at **1.3260 times** its no-turn push share. The largest absolute wall force falls from 604.08 to 582.19 kN after the two stiffness changes. The characteristic period ratio Ttheta/Tx falls from 1.1068 to 1.0266. Before modification the first coupled mode is 68.98% torsional; after CM/CR decoupling it is nearly pure torsion rather than mixed translation-torsion. Coincidence removes modal coupling, not necessarily torsion-mode ordering set by mass and stiffness.
+
+CM = CR removes accidental torque for one uniform floor under a uniform lateral action. It does not remove torsion caused by height-varying mass/stiffness, nonuniform ground motion, nonlinear cracking, uncertainty, or higher modes. It also does not excuse extraction error: leaving T3 unresolved moves the VLM-based CR 0.914 m from the independent-reference route.
+
+## 10. Task 8A - locked pipeline on course NewPlan
+
+NewPlan uses the unchanged FloorPlan1 parameters. It recovers **38/38** names (30 columns, 8 walls), with T1 reconstructed from split OCR and frozen as the only flag. Tributary area closes at 828.0 m2 and the five-storey axial sum at 36,225 kN.
+
+![NewPlan label-supervised record](../output/NewPlan/figures/hw3_11_newplan_label_supervised_record.png)
+
+LLaVA resolves T1 at 0.9 confidence; Smol resolves none. All coordinates remain classical. The rectangular slab gives CM = (23.0, 9.0) m. The promoted extraction gives CR **({new_hand['promoted_shear_included']['cr_m'][0]:.6f}, {new_hand['promoted_shear_included']['cr_m'][1]:.6f}) m**, e = **{new_hand['promoted_shear_included']['eccentricity_m']:.6f} m**. The frozen manual reference gives CR **({new_hand['independent_reference_shear']['cr_m'][0]:.6f}, {new_hand['independent_reference_shear']['cr_m'][1]:.6f}) m**; the 28.8 mm difference is caused by extracted wall-centre offsets, not VLM geometry.
+
+![NewPlan CM, CR and wall forces](../output/NewPlan/figures/hw3_13_newplan_cm_cr_and_wall_forces.png)
+
+## 11. Task 8B - public MLStructFP Floor 966
+
+The found plan is public [MLStructFP](https://github.com/MLSTRUCT/MLStructFP) test Floor 966, associated with the [Automation in Construction article](https://doi.org/10.1016/j.autcon.2023.105132) and retained under its MIT license. It differs materially from FloorPlan1: 9600x6784 transparent blue-line CAD, irregular slab, 20 wall groups/28 rectangles, one 8.5-degree wall, and zero printed C/T size strings. A public Pleasanton wood shear-wall sheet was considered and rejected because its nailing schedule would change the material/size premise rather than test the same method.
+
+The fixed morphology keeps 20 components and 15 elongated candidates. OCR produces no accepted label; consequently label supervision claims **zero elements**. Post-run audit hits 14/28 unique frozen rectangles (50% recall) and splits one wall edge twice. This is reported as a safe failure, not repaired with annotation IDs.
+
+![MLStructFP label-supervision failure](../output/MLStructFP966/figures/hw3_16_mlstruct_label_supervision_failure.png)
+
+Both VLMs resolve 0/15 and no reader passes the at-least-one-resolved gate. `NOT_VISIBLE` is not a wall size, so no promoted structural record is created. For comparison only, the independent public annotation gives reference CM **({found_ref['mass']['cm_m'][0]:.6f}, {found_ref['mass']['cm_m'][1]:.6f}) m**, reference CR **({found_ref['cr_m'][0]:.6f}, {found_ref['cr_m'][1]:.6f}) m**, e = **{found_ref['eccentricity_m']:.6f} m** using all 28 frozen rectangles. These numbers are explicitly reference-only, not pipeline output.
+
+![MLStructFP reference-only structural benchmark](../output/MLStructFP966/figures/hw3_19_mlstruct_reference_cm_cr.png)
+
+## 12. Cross-plan generalisation verdict
+
+{table(['Plan','Classical claimed elements','Flags','Best VLM','Pipeline CM m','Pipeline CR m','e m','Verdict'], [
+    ['FloorPlan1','18','4','LLaVA 3/4','(5.4605, 8.7915)','(5.5488, 9.8946)','1.1066','accepted main pipeline'],
+    ['NewPlan','38','1','LLaVA 1/1','(23.0000, 9.0000)','(23.0075, 9.9459)','0.9459','accepted without parameter retuning'],
+    ['MLStructFP966','0','15','none 0/15','unavailable','unavailable','unavailable','safe failure; reference benchmark separate'],
+])}
+
+What generalized: the frozen morphology and coordinate extraction locate simple isolated bars, the forest remains reproducible, crop hashes enforce identical evidence, the VLM gate prevents silent repair, and the structural calculation closes when numeric wall geometry exists. What did not: the one-label/one-element premise fails on a dataset image with no printed size strings; 4:1 components miss composite walls; the small VLMs do not reliably follow the no-text audit schema. The correct response is no promoted record, not annotation leakage.
+
+## 13. Reproducibility, Git iterations and limitations
+
+From the cumulative repository root:
+
+```powershell
+Set-Location HW3
+python -m pip install -r requirements-HW3.txt
+python scripts/run_classical_pipeline.py
+python scripts/train_random_forest.py
+python scripts/run_dual_vlm_flags.py --score-only
+python scripts/run_hand_structural.py
+powershell -File scripts/run_opensees_py312.ps1
+python scripts/run_modified_structural.py
+python scripts/prepare_task8_references.py
+python scripts/run_newplan_classical.py
+python scripts/train_newplan_random_forest.py
+python scripts/run_newplan_dual_vlm_flags.py --score-only
+python scripts/run_newplan_hand_structural.py
+python scripts/run_mlstruct_classical.py
+python scripts/train_mlstruct_random_forest.py
+python scripts/run_mlstruct_dual_vlm_flags.py --score-only
+python scripts/run_mlstruct_reference_structural.py
+python scripts/build_hw3_report.py
+python scripts/render_hw3_report_pdf.py
+python scripts/verify_hw3_outputs.py
+```
+
+Real VLM generation commands omit `--score-only`; raw outputs are already committed and are not redownloaded for routine verification. OpenSees uses the isolated Python 3.12 target declared in `requirements-opensees-py312-HW3.txt` because the Windows extension ABI does not match the main Python 3.11 environment.
+
+The detailed decision and failure history is `briefings/iteration_log-HW3.md`. Git commits are deliberately stage-sized: inputs, classical record, each forest, each VLM gate, hand calculation, OpenSees check, modification, each holdout plan and the final report. No random forest was selected, no VLM saw a whole plan or moved a coordinate, and no failed public-plan extraction was back-filled.
+
+Limitations: OCR and morphology remain resolution/style sensitive; the hand and OpenSees models are linear, elastic, uncracked and single-storey; wall rectangles are idealised strong-axis elements; diaphragm flexibility, soil-structure interaction, cracking and vertical irregularity are excluded. The public-reference benchmark depends on dataset annotation quality and is called a defensible reference, not truth.
+
+## 14. Deliverable index
+
+- Markdown report: `report/21345221-report-HW3.md`;
+- PDF: `output/pdf/21345221-report-HW3.pdf`;
+- immutable/promotion records, flags, VLM outputs and score sheets: `output/<plan>/results/`;
+- retained forests: `models/random-forest-*-HW3.joblib`;
+- main hand/OpenSees results and force tables: `output/FloorPlan1/results/`;
+- figures 01-19: `output/<plan>/figures/`;
+- scripts and exact requirements: `scripts/`, `requirements-HW3.txt`, `requirements-opensees-py312-HW3.txt`;
+- complete iteration log: `briefings/iteration_log-HW3.md`.
+"""
+    OUT.parent.mkdir(parents=True, exist_ok=True)
+    OUT.write_text(text, encoding="utf-8")
+    print(OUT)
+
+
+if __name__ == "__main__":
+    main()

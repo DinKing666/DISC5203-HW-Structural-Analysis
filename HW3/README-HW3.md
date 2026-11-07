@@ -18,9 +18,9 @@ This folder is the Homework 3 package for **Shuhan He / 何抒翰**, student ID 
 - Coordinates are in metres; forces are in kN; stiffness is in consistent kN-m units.
 - The original classical JSON is never overwritten. Every VLM works on its own copy.
 - Every stage is recorded in `briefings/iteration_log-HW3.md` before it is committed.
-- Generated results must be reproducible from scripts and pass `scripts/verify_hw3_outputs.py` once that verifier is introduced.
+- Generated results must be reproducible from scripts and pass `scripts/verify_hw3_outputs.py`.
 
-## Planned primary deliverables
+## Primary deliverables
 
 - `report/21345221-report-HW3.md`
 - `output/pdf/21345221-report-HW3.pdf`
@@ -29,3 +29,26 @@ This folder is the Homework 3 package for **Shuhan He / 何抒翰**, student ID 
 - hand and OpenSees stiffness results, wall-force tables, modal checks and the CM=CR modification
 
 The source assignment and asset hashes are frozen in `config/input_manifest-HW3.json`.
+
+## Reproduce and verify
+
+From the cumulative repository root, use the main environment for deterministic extraction, scoring and report generation. Real VLM responses are already retained, so the routine commands score those frozen responses instead of downloading models again.
+
+```powershell
+& .\.venv\Scripts\python.exe HW3\scripts\run_classical_pipeline.py
+& .\.venv\Scripts\python.exe HW3\scripts\train_random_forest.py
+& .\.venv\Scripts\python.exe HW3\scripts\run_dual_vlm_flags.py --score-only
+& .\.venv\Scripts\python.exe HW3\scripts\run_hand_structural.py
+powershell -File HW3\scripts\run_opensees_py312.ps1
+& .\.venv\Scripts\python.exe HW3\scripts\run_modified_structural.py
+& .\.venv\Scripts\python.exe HW3\scripts\run_newplan_classical.py
+& .\.venv\Scripts\python.exe HW3\scripts\run_newplan_dual_vlm_flags.py --score-only
+& .\.venv\Scripts\python.exe HW3\scripts\run_mlstruct_classical.py
+& .\.venv\Scripts\python.exe HW3\scripts\run_mlstruct_dual_vlm_flags.py --score-only
+& .\.venv\Scripts\python.exe HW3\scripts\run_mlstruct_reference_structural.py
+& .\.venv\Scripts\python.exe HW3\scripts\build_hw3_report.py
+& .\.venv\Scripts\python.exe HW3\scripts\render_hw3_report_pdf.py
+& .\.venv\Scripts\python.exe HW3\scripts\verify_hw3_outputs.py
+```
+
+OpenSees is isolated in `.opensees-py312` because the Windows extension requires its Python 3.12 ABI. The complete command list, assumptions, results and limitations are in `report/21345221-report-HW3.md`; the submission PDF is `output/pdf/21345221-report-HW3.pdf`.
