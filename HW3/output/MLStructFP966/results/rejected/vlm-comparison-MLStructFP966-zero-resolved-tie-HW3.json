@@ -1,0 +1,308 @@
+{
+  "plan": "MLStructFP966",
+  "independent_reference": "HW3/config/reference-flags-MLStructFP966-HW3.json",
+  "confidence_threshold": 0.85,
+  "same_crops_questions_order": true,
+  "selection_rule": "zero broken required; then more resolved; ties use lower mean size error, higher mean reported confidence, then deterministic model key",
+  "models": [
+    {
+      "model_key": "smolvlm2-256m",
+      "model_id": "HuggingFaceTB/SmolVLM2-256M-Video-Instruct",
+      "flags_total": 15,
+      "flags_resolved": 0,
+      "flags_broken": 0,
+      "flags_unresolved": 15,
+      "mean_reported_confidence": null,
+      "mean_size_error_mm": null,
+      "details": [
+        {
+          "flag_id": "MLStructFP966:U001:unclaimed_bar",
+          "label": "U001",
+          "status": "unresolved",
+          "confidence": null,
+          "size_error_mm": null,
+          "internal_contradiction": false,
+          "gate_reason": "JSON parse failed after allowed syntax normalization: Unterminated string starting at"
+        },
+        {
+          "flag_id": "MLStructFP966:U002:unclaimed_bar",
+          "label": "U002",
+          "status": "unresolved",
+          "confidence": null,
+          "size_error_mm": null,
+          "internal_contradiction": false,
+          "gate_reason": "JSON parse failed after allowed syntax normalization: Unterminated string starting at"
+        },
+        {
+          "flag_id": "MLStructFP966:U003:unclaimed_bar",
+          "label": "U003",
+          "status": "unresolved",
+          "confidence": null,
+          "size_error_mm": null,
+          "internal_contradiction": false,
+          "gate_reason": "JSON parse failed after allowed syntax normalization: Expecting value"
+        },
+        {
+          "flag_id": "MLStructFP966:U004:unclaimed_bar",
+          "label": "U004",
+          "status": "unresolved",
+          "confidence": null,
+          "size_error_mm": null,
+          "internal_contradiction": false,
+          "gate_reason": "JSON parse failed after allowed syntax normalization: Unterminated string starting at"
+        },
+        {
+          "flag_id": "MLStructFP966:U005:unclaimed_bar",
+          "label": "U005",
+          "status": "unresolved",
+          "confidence": null,
+          "size_error_mm": null,
+          "internal_contradiction": false,
+          "gate_reason": "JSON parse failed after allowed syntax normalization: Unterminated string starting at"
+        },
+        {
+          "flag_id": "MLStructFP966:U006:unclaimed_bar",
+          "label": "U006",
+          "status": "unresolved",
+          "confidence": null,
+          "size_error_mm": null,
+          "internal_contradiction": false,
+          "gate_reason": "JSON parse failed after allowed syntax normalization: Expecting value"
+        },
+        {
+          "flag_id": "MLStructFP966:U007:unclaimed_bar",
+          "label": "U007",
+          "status": "unresolved",
+          "confidence": null,
+          "size_error_mm": null,
+          "internal_contradiction": false,
+          "gate_reason": "answer does not contain exactly the five required keys"
+        },
+        {
+          "flag_id": "MLStructFP966:U008:unclaimed_bar",
+          "label": "U008",
+          "status": "unresolved",
+          "confidence": null,
+          "size_error_mm": null,
+          "internal_contradiction": false,
+          "gate_reason": "JSON parse failed after allowed syntax normalization: Expecting value"
+        },
+        {
+          "flag_id": "MLStructFP966:U009:unclaimed_bar",
+          "label": "U009",
+          "status": "unresolved",
+          "confidence": null,
+          "size_error_mm": null,
+          "internal_contradiction": false,
+          "gate_reason": "JSON parse failed after allowed syntax normalization: Expecting value"
+        },
+        {
+          "flag_id": "MLStructFP966:U010:unclaimed_bar",
+          "label": "U010",
+          "status": "unresolved",
+          "confidence": null,
+          "size_error_mm": null,
+          "internal_contradiction": false,
+          "gate_reason": "JSON parse failed after allowed syntax normalization: Expecting value"
+        },
+        {
+          "flag_id": "MLStructFP966:U011:unclaimed_bar",
+          "label": "U011",
+          "status": "unresolved",
+          "confidence": null,
+          "size_error_mm": null,
+          "internal_contradiction": false,
+          "gate_reason": "JSON parse failed after allowed syntax normalization: Expecting value"
+        },
+        {
+          "flag_id": "MLStructFP966:U012:unclaimed_bar",
+          "label": "U012",
+          "status": "unresolved",
+          "confidence": null,
+          "size_error_mm": null,
+          "internal_contradiction": false,
+          "gate_reason": "JSON parse failed after allowed syntax normalization: Expecting value"
+        },
+        {
+          "flag_id": "MLStructFP966:U013:unclaimed_bar",
+          "label": "U013",
+          "status": "unresolved",
+          "confidence": null,
+          "size_error_mm": null,
+          "internal_contradiction": false,
+          "gate_reason": "JSON parse failed after allowed syntax normalization: Expecting value"
+        },
+        {
+          "flag_id": "MLStructFP966:U014:unclaimed_bar",
+          "label": "U014",
+          "status": "unresolved",
+          "confidence": null,
+          "size_error_mm": null,
+          "internal_contradiction": false,
+          "gate_reason": "JSON parse failed after allowed syntax normalization: Expecting value"
+        },
+        {
+          "flag_id": "MLStructFP966:U015:unclaimed_bar",
+          "label": "U015",
+          "status": "unresolved",
+          "confidence": null,
+          "size_error_mm": null,
+          "internal_contradiction": false,
+          "gate_reason": "answer does not contain exactly the five required keys"
+        }
+      ]
+    },
+    {
+      "model_key": "llava-onevision-0.5b",
+      "model_id": "llava-hf/llava-onevision-qwen2-0.5b-ov-hf",
+      "flags_total": 15,
+      "flags_resolved": 0,
+      "flags_broken": 0,
+      "flags_unresolved": 15,
+      "mean_reported_confidence": null,
+      "mean_size_error_mm": null,
+      "details": [
+        {
+          "flag_id": "MLStructFP966:U001:unclaimed_bar",
+          "label": "U001",
+          "status": "unresolved",
+          "confidence": null,
+          "size_error_mm": null,
+          "internal_contradiction": false,
+          "gate_reason": "continuous must be a JSON boolean"
+        },
+        {
+          "flag_id": "MLStructFP966:U002:unclaimed_bar",
+          "label": "U002",
+          "status": "unresolved",
+          "confidence": null,
+          "size_error_mm": null,
+          "internal_contradiction": false,
+          "gate_reason": "continuous must be a JSON boolean"
+        },
+        {
+          "flag_id": "MLStructFP966:U003:unclaimed_bar",
+          "label": "U003",
+          "status": "unresolved",
+          "confidence": null,
+          "size_error_mm": null,
+          "internal_contradiction": false,
+          "gate_reason": "continuous must be a JSON boolean"
+        },
+        {
+          "flag_id": "MLStructFP966:U004:unclaimed_bar",
+          "label": "U004",
+          "status": "unresolved",
+          "confidence": null,
+          "size_error_mm": null,
+          "internal_contradiction": false,
+          "gate_reason": "continuous must be a JSON boolean"
+        },
+        {
+          "flag_id": "MLStructFP966:U005:unclaimed_bar",
+          "label": "U005",
+          "status": "unresolved",
+          "confidence": null,
+          "size_error_mm": null,
+          "internal_contradiction": false,
+          "gate_reason": "continuous must be a JSON boolean"
+        },
+        {
+          "flag_id": "MLStructFP966:U006:unclaimed_bar",
+          "label": "U006",
+          "status": "unresolved",
+          "confidence": null,
+          "size_error_mm": null,
+          "internal_contradiction": false,
+          "gate_reason": "continuous must be a JSON boolean"
+        },
+        {
+          "flag_id": "MLStructFP966:U007:unclaimed_bar",
+          "label": "U007",
+          "status": "unresolved",
+          "confidence": null,
+          "size_error_mm": null,
+          "internal_contradiction": false,
+          "gate_reason": "continuous must be a JSON boolean"
+        },
+        {
+          "flag_id": "MLStructFP966:U008:unclaimed_bar",
+          "label": "U008",
+          "status": "unresolved",
+          "confidence": null,
+          "size_error_mm": null,
+          "internal_contradiction": false,
+          "gate_reason": "continuous must be a JSON boolean"
+        },
+        {
+          "flag_id": "MLStructFP966:U009:unclaimed_bar",
+          "label": "U009",
+          "status": "unresolved",
+          "confidence": null,
+          "size_error_mm": null,
+          "internal_contradiction": false,
+          "gate_reason": "continuous must be a JSON boolean"
+        },
+        {
+          "flag_id": "MLStructFP966:U010:unclaimed_bar",
+          "label": "U010",
+          "status": "unresolved",
+          "confidence": null,
+          "size_error_mm": null,
+          "internal_contradiction": false,
+          "gate_reason": "continuous must be a JSON boolean"
+        },
+        {
+          "flag_id": "MLStructFP966:U011:unclaimed_bar",
+          "label": "U011",
+          "status": "unresolved",
+          "confidence": null,
+          "size_error_mm": null,
+          "internal_contradiction": false,
+          "gate_reason": "continuous must be a JSON boolean"
+        },
+        {
+          "flag_id": "MLStructFP966:U012:unclaimed_bar",
+          "label": "U012",
+          "status": "unresolved",
+          "confidence": null,
+          "size_error_mm": null,
+          "internal_contradiction": false,
+          "gate_reason": "continuous must be a JSON boolean"
+        },
+        {
+          "flag_id": "MLStructFP966:U013:unclaimed_bar",
+          "label": "U013",
+          "status": "unresolved",
+          "confidence": null,
+          "size_error_mm": null,
+          "internal_contradiction": false,
+          "gate_reason": "continuous must be a JSON boolean"
+        },
+        {
+          "flag_id": "MLStructFP966:U014:unclaimed_bar",
+          "label": "U014",
+          "status": "unresolved",
+          "confidence": null,
+          "size_error_mm": null,
+          "internal_contradiction": false,
+          "gate_reason": "continuous must be a JSON boolean"
+        },
+        {
+          "flag_id": "MLStructFP966:U015:unclaimed_bar",
+          "label": "U015",
+          "status": "unresolved",
+          "confidence": null,
+          "size_error_mm": null,
+          "internal_contradiction": false,
+          "gate_reason": "continuous must be a JSON boolean"
+        }
+      ]
+    }
+  ],
+  "best_safe_reader_key": "smolvlm2-256m",
+  "best_safe_reader_id": "HuggingFaceTB/SmolVLM2-256M-Video-Instruct",
+  "gate_passed": true,
+  "structural_record_promoted": false,
+  "structural_record_prohibition": "The classical record has zero claimed elements and NOT_VISIBLE is not a wall size, so continuity answers cannot supply structural geometry."
+}

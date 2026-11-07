@@ -47,10 +47,22 @@ def crop_audit_prompt(flag: dict[str, Any]) -> str:
 
 
 gate.frozen_prompt = crop_audit_prompt
+SCORING_VERSION = 2
 
 
 def score_and_compare(manifest: dict[str, Any]) -> None:
     gate.refresh_parser_outputs()
+    existing_comparison = gate.comparison_path()
+    if existing_comparison.exists():
+        existing = gate.read_json(existing_comparison)
+        if existing.get("scoring_version") != SCORING_VERSION:
+            rejected = gate.RESULTS_DIR / "rejected"
+            rejected.mkdir(parents=True, exist_ok=True)
+            gate.shutil.copy2(
+                existing_comparison,
+                rejected
+                / "vlm-comparison-MLStructFP966-zero-resolved-tie-HW3.json",
+            )
     reference = gate.read_json(gate.REFERENCE_PATH)
     results = {
         key: gate.read_json(gate.RESULTS_DIR / spec["result"])
@@ -59,7 +71,11 @@ def score_and_compare(manifest: dict[str, Any]) -> None:
     scores = [
         gate.score_model(results[key], manifest, reference) for key in gate.MODELS
     ]
-    safe = [item for item in scores if item["flags_broken"] == 0]
+    safe = [
+        item
+        for item in scores
+        if item["flags_broken"] == 0 and item["flags_resolved"] > 0
+    ]
     winner = (
         sorted(safe, key=gate.promotion_rank, reverse=True)[0] if safe else None
     )
@@ -69,10 +85,12 @@ def score_and_compare(manifest: dict[str, Any]) -> None:
             "\\", "/"
         ),
         "confidence_threshold": manifest["confidence_threshold"],
+        "scoring_version": SCORING_VERSION,
         "same_crops_questions_order": True,
         "selection_rule": (
-            "zero broken required; then more resolved; ties use lower mean size error, "
-            "higher mean reported confidence, then deterministic model key"
+            "zero broken and at least one resolved required; then more resolved; ties "
+            "use lower mean size error, higher mean reported confidence, then "
+            "deterministic model key"
         ),
         "models": scores,
         "best_safe_reader_key": winner["model_key"] if winner else None,
@@ -94,7 +112,10 @@ def score_and_compare(manifest: dict[str, Any]) -> None:
             "no structural record promoted"
         )
     else:
-        print("No reader passed the zero-broken gate; no structural record promoted")
+        print(
+            "No reader resolved at least one flag while breaking zero; "
+            "no structural record promoted"
+        )
 
 
 def main() -> None:

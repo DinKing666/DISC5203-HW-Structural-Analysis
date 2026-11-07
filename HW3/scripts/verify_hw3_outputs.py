@@ -518,6 +518,71 @@ def verify_mlstruct_forest() -> None:
     )
 
 
+def verify_mlstruct_vlm() -> None:
+    plan_dir = ROOT / "output" / "MLStructFP966"
+    comparison_path = (
+        plan_dir / "results" / "vlm-comparison-MLStructFP966-HW3.json"
+    )
+    if not comparison_path.exists():
+        return
+    manifest = load_json(
+        plan_dir / "results" / "flags-manifest-MLStructFP966-HW3.json"
+    )
+    expected_order = [item["flag_id"] for item in manifest["flags"]]
+    result_names = (
+        "vlm-smolvlm2-256m-MLStructFP966-HW3.json",
+        "vlm-llava-onevision-0.5b-MLStructFP966-HW3.json",
+    )
+    results = [load_json(plan_dir / "results" / name) for name in result_names]
+    assert [item["model_key"] for item in results] == [
+        "smolvlm2-256m",
+        "llava-onevision-0.5b",
+    ]
+    assert [item["revision"] for item in results] == [
+        "067788b187b95ebe7b2e040b3e4299e342e5b8fd",
+        "74dd0bf867a4cda7950c17663794267c60cf4b40",
+    ]
+    for result in results:
+        assert result["plan"] == "MLStructFP966"
+        assert result["prompt_version"] == 3
+        assert result["parser_version"] == 2
+        assert result["whole_plan_seen"] is False
+        assert result["coordinates_editable_by_vlm"] is False
+        assert result["question_order"] == expected_order
+        assert len(result["answers"]) == 15
+        for answer, flag in zip(result["answers"], manifest["flags"], strict=True):
+            assert answer["flag_id"] == flag["flag_id"]
+            assert answer["crop_sha256"] == flag["crop_sha256"]
+            assert answer["question"] == flag["question"]
+            assert answer["raw_answer"].strip()
+            assert answer["parsed_answer"] is None
+
+    comparison = load_json(comparison_path)
+    assert comparison["scoring_version"] == 2
+    assert comparison["same_crops_questions_order"] is True
+    assert comparison["gate_passed"] is False
+    assert comparison["best_safe_reader_key"] is None
+    assert comparison["best_safe_reader_id"] is None
+    assert comparison["structural_record_promoted"] is False
+    scores = {item["model_key"]: item for item in comparison["models"]}
+    for model_key in ("smolvlm2-256m", "llava-onevision-0.5b"):
+        score = scores[model_key]
+        assert (score["flags_resolved"], score["flags_broken"], score["flags_unresolved"]) == (0, 0, 15)
+    assert not (
+        plan_dir / "results" / "record-promoted-MLStructFP966-HW3.json"
+    ).exists()
+
+    rejected = load_json(
+        plan_dir
+        / "results"
+        / "rejected"
+        / "vlm-comparison-MLStructFP966-zero-resolved-tie-HW3.json"
+    )
+    assert rejected["best_safe_reader_key"] == "smolvlm2-256m"
+    assert rejected["gate_passed"] is True
+    assert rejected["structural_record_promoted"] is False
+
+
 def verify_optional_later_stages() -> None:
     forest = PLAN / "results" / "random-forest-summary-HW3.json"
     if forest.exists():
@@ -720,6 +785,7 @@ def main() -> None:
     verify_newplan_structural()
     verify_mlstruct_classical()
     verify_mlstruct_forest()
+    verify_mlstruct_vlm()
     verify_optional_later_stages()
     print("HW3 verification passed: frozen inputs, classical/forest gates, identical dual-VLM evidence, syntax audit and promoted-copy invariants are present.")
 

@@ -271,6 +271,15 @@
 - Even the best safe reader cannot promote a structural record: the classical result has zero claimed elements and no numeric sizes. The comparison will select only a best continuity reader, if one passes.
 - Status: harness frozen before real MLStructFP VLM inference; pending baseline non-regression and Git commit.
 
+### MLStructFP VLM execution Revision 1
+
+- SmolVLM2 completed all 15 crops in 208.462 s. It resolved 0: most answers were unterminated JSON or prompt repetition; U007/U015 used the wrong object structure. No answer is hand repaired.
+- LLaVA-OneVision completed the same 15 crops in 625.680 s. Every answer used string `"yes"` instead of a JSON boolean and `"mm"` instead of the frozen `NOT_VISIBLE` sentinel; several reasons also claimed the clearly visible blue candidate was absent. The parser therefore leaves all 15 unresolved.
+- The initial mechanical ranking called SmolVLM2 the best safe reader because both models had zero broken and the model-key tie-break applied. Reject that comparison: as already learned in FloorPlan1 Prompt Revision 1, zero resolved cannot constitute a defensible winner.
+- Correction: archive the first comparison unchanged, then require both zero broken and at least one resolved before naming a best reader. This is a stricter safety condition; it does not reinterpret any model answer or rerun inference.
+- Expected accepted verdict: both models 0 resolved / 0 broken / 15 unresolved, no best reader, gate not passed and no structural record promoted.
+- Status: scoring Revision 2 pending score-only replay, automated checks and Git commit.
+
 ## 2026-11-06 - Gate 7f: locked classical reader on public MLStructFP Floor 966
 
 - Preprocessed only as declared by the public loader: fully transparent pixels become white, while every non-transparent blue source pixel is preserved. Threshold 225, 11-px diagonal opening, 17/21-px orthogonal openings, 4:1 shape rule and OCR threshold 0.85 are unchanged from FloorPlan1.
